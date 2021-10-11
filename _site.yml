@@ -1,14 +1,21 @@
 name: "website"
 title: "Nam-Anh"
 description: |
-  Nam-Anh
 output_dir: "docs"
+favicon: 'images/logo.png'
 navbar:
+  logo: 
+    image: 'images/logo.png'
   right:
     - text: "Home"
       href: index.html
-    - text: "About"
-      href: about.html
+#    - text: "About"
+#      href: about.html
 ####====####====####====####====####====####====####====####====####====####====####
     - text: "Notes"
-output: distill::distill_article
+      menu:
+      - text: "Bayesian Computational Approaches"
+        href: "010101.html"
+output: 
+  distill::distill_article:
+    css: styles.css

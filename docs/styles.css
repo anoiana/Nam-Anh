@@ -1,0 +1,73 @@
+
+/*Header fonts*/
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display";
+  letter-spacing: 2px;  
+  line-height: 2rem; /* increases, so wrapping headers don't overlap */ 
+}
+
+/*body font*/
+body {
+  font-family: "Asap";
+  color: #1f1f1f;
+}
+
+/* --------------Navbar-------------------- */
+
+.distill-site-header{ 
+  padding: 7px 0px;
+  font-size: 15px;
+  font-family: "Playfair Display";
+  letter-spacing: 2px;
+  /*text-transform: uppercase;*/
+  
+  /* background-image for fade-to-white color of navbar */
+  /*
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255,255,255,0.5));*/
+  background-color: #2E2E2E;
+}
+
+
+.distill-site-header .logo img{
+  max-height: 34px; /* Makes logo bigger, default was 20px */
+}
+
+/* dropdown navbar color on mobile */
+
+@media screen and (max-width: 768px){
+  .distill-site-header.responsive {
+      background: rgba(255,255,255,0.99);
+  }
+}
+
+/* No navbar links on mobile except for the title and the nav-toggle */
+
+@media screen and (max-width: 768px) {
+  .distill-site-header a, .distill-site-header .nav-dropdown {
+    display: none;
+  }
+  
+  .distill-site-header a.title, .distill-site-header a.nav-toggle {
+    display: inline-block;
+    padding: 10px 0px;
+    margin: 10px 14px; 
+  }
+}
+
+d-appendix {
+  background-color: #f7f7f7;
+  border-top: none !important;
+}
+
+/* -------------Footer------------------*/
+
+.distill-site-footer {
+  color: #f7f7f7b0;
+  background-color: #1f1f1f;
+  margin-top: 0px;
+  padding: 50px 20px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 12px;
+}

@@ -87,29 +87,30 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>Nam-Anh</title>
+  <title>Nam-Anh: Bayesian Statistics</title>
 
-  <meta property="description" itemprop="description" content="Welcome to the website. I hope you enjoy it!"/>
+  <meta property="description" itemprop="description" content="&quot;Begin with an estimate of the probability that any claim, belief, hypothesis is true, then look at any new data and update the probability given the new data.&quot;&#10;&#10;-Steven Novella-"/>
 
+  <link rel="icon" type="image/png" href="images/logo.png"/>
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Nam-Anh"/>
+  <meta property="og:title" content="Nam-Anh: Bayesian Statistics"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="Welcome to the website. I hope you enjoy it!"/>
+  <meta property="og:description" content="&quot;Begin with an estimate of the probability that any claim, belief, hypothesis is true, then look at any new data and update the probability given the new data.&quot;&#10;&#10;-Steven Novella-"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="Nam-Anh"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Nam-Anh"/>
-  <meta property="twitter:description" content="Welcome to the website. I hope you enjoy it!"/>
+  <meta property="twitter:title" content="Nam-Anh: Bayesian Statistics"/>
+  <meta property="twitter:description" content="&quot;Begin with an estimate of the probability that any claim, belief, hypothesis is true, then look at any new data and update the probability given the new data.&quot;&#10;&#10;-Steven Novella-"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","site"]}},"value":[{"type":"character","attributes":{},"value":["Nam-Anh"]},{"type":"character","attributes":{},"value":["Welcome to the website. I hope you enjoy it!\n"]},{"type":"character","attributes":{},"value":["distill::distill_website"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","site"]}},"value":[{"type":"character","attributes":{},"value":["Bayesian Statistics"]},{"type":"character","attributes":{},"value":["\"Begin with an estimate of the probability that any claim, belief, hypothesis is true, then look at any new data and update the probability given the new data.\"\n\n-Steven Novella-\n"]},{"type":"character","attributes":{},"value":["distill::distill_website"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2047,8 +2048,84 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
+  <style type="text/css">
+
+  /*Header fonts*/
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Playfair Display";
+    letter-spacing: 2px;  
+    line-height: 2rem; /* increases, so wrapping headers don't overlap */ 
+  }
+
+  /*body font*/
+  body {
+    font-family: "Asap";
+    color: #1f1f1f;
+  }
+
+  /* --------------Navbar-------------------- */
+
+  .distill-site-header{ 
+    padding: 7px 0px;
+    font-size: 15px;
+    font-family: "Playfair Display";
+    letter-spacing: 2px;
+    /*text-transform: uppercase;*/
+    
+    /* background-image for fade-to-white color of navbar */
+    /*
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255,255,255,0.5));*/
+    background-color: #2E2E2E;
+  }
+
+
+  .distill-site-header .logo img{
+    max-height: 34px; /* Makes logo bigger, default was 20px */
+  }
+
+  /* dropdown navbar color on mobile */
+
+  @media screen and (max-width: 768px){
+    .distill-site-header.responsive {
+        background: rgba(255,255,255,0.99);
+    }
+  }
+
+  /* No navbar links on mobile except for the title and the nav-toggle */
+
+  @media screen and (max-width: 768px) {
+    .distill-site-header a, .distill-site-header .nav-dropdown {
+      display: none;
+    }
+    
+    .distill-site-header a.title, .distill-site-header a.nav-toggle {
+      display: inline-block;
+      padding: 10px 0px;
+      margin: 10px 14px; 
+    }
+  }
+
+  d-appendix {
+    background-color: #f7f7f7;
+    border-top: none !important;
+  }
+
+  /* -------------Footer------------------*/
+
+  .distill-site-footer {
+    color: #f7f7f7b0;
+    background-color: #1f1f1f;
+    margin-top: 0px;
+    padding: 50px 20px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 12px;
+  }
+  </style>
   <!--/radix_placeholder_site_in_header-->
 
+  <link rel="stylesheet" href="styles.css" type="text/css"/>
 
 </head>
 
@@ -2057,7 +2134,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Nam-Anh","description":"Welcome to the website. I hope you enjoy it!","authors":[]}
+{"title":"Bayesian Statistics","description":"\"Begin with an estimate of the probability that any claim, belief, hypothesis is true, then look at any new data and update the probability given the new data.\"\n\n-Steven Novella-","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2065,12 +2142,23 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <header class="header header--fixed" role="banner">
 <nav class="distill-site-nav distill-site-header">
 <div class="nav-left">
+<a class="logo">
+<img src="images/logo.png" alt="Logo"/>
+</a>
 <a href="index.html" class="title">Nam-Anh</a>
 </div>
 <div class="nav-right">
 <a href="index.html">Home</a>
-<a href="about.html">About</a>
-<span class="nav-dropdown-header">Notes</span>
+<div class="nav-dropdown">
+<button class="nav-dropbtn">
+Notes
+ 
+<span class="down-arrow">&#x25BE;</span>
+</button>
+<div class="nav-dropdown-content">
+<a href="010101.html">Bayesian Computational Approaches</a>
+</div>
+</div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
 </div>
 </nav>
@@ -2080,10 +2168,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Nam-Anh</h1>
+<h1>Bayesian Statistics</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Welcome to the website. I hope you enjoy it!</p></p>
+<p><p>“Begin with an estimate of the probability that any claim, belief, hypothesis is true, then look at any new data and update the probability given the new data.”</p>
+<p>-Steven Novella-</p></p>
 </div>
 
 

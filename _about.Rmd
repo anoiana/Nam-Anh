@@ -1,7 +1,7 @@
 ---
-title: "About this site"
+title: "Statistics"
 description: |
-  Some additional details about the website
+  Statistics notes
 ---
 
 ```{r setup, include=FALSE}
