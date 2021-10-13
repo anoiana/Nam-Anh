@@ -2061,9 +2061,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   /*body font*/
   body {
-    font-family: "Asap";
+    font-family: "Arial";
     color: #1f1f1f;
-    font-size: 13pt;
+    font-size: 16pt;
   }
 
   /* --------------Navbar-------------------- */
@@ -2149,6 +2149,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <img src="images/logo.png" alt="Logo"/>
 </a>
 <a href="index.html" class="title">ANOIANA</a>
+<input id="distill-search" class="nav-search hidden" type="text" placeholder="Search..."/>
 </div>
 <div class="nav-right">
 <a href="index.html">Home</a>
@@ -2189,15 +2190,26 @@ Notes
 <h3>Contents</h3>
 <ul>
 <li><a href="#maximize-posterior-distribution">Maximize posterior distribution</a></li>
+<li><a href="#numerical-integration">Numerical integration</a></li>
 </ul>
 </nav>
 </div>
 <h1 id="maximize-posterior-distribution">Maximize posterior distribution</h1>
 <p>Let us define <span class="math inline">\(p(\boldsymbol{\theta}|\boldsymbol{Y})\)</span> be posterior distribution, and</p>
-<p><span class="math display">\[
+<p><span class="math display" id="eq:1">\[
 \widehat{\boldsymbol{\theta}}_{MAP} = \arg\max_{\boldsymbol{\theta}}\ln p(\boldsymbol{\theta}|\boldsymbol{Y}) = \arg\max_{\boldsymbol{\theta}}\ln f(\boldsymbol{Y}|\boldsymbol{\theta}) + \ln \pi(\boldsymbol{\theta})
+\tag{1}
 \]</span> is the maximizer of <span class="math inline">\(p(\boldsymbol{\theta}|\boldsymbol{Y})\)</span>.</p>
-<p>MAP estimator can be obtained by function <code>optim</code> in R. Its illustration in R will be pored over latter.</p>
+<p>MAP estimator can be obtained by function <code>optim</code> in <code>R</code>. Its illustration in R will be pored over latter.</p>
+<h1 id="numerical-integration">Numerical integration</h1>
+<p>Some summary statistics of interest can be written as integrals, so they can be approximated by summations. For example, expectation, variance and proportions of a distribution can be written as follows</p>
+<p><span class="math display" id="eq:2">\[
+\begin{aligned}
+\Bbb{E}(\theta|\boldsymbol{Y}) &amp;= \int \theta_1p(\theta|\boldsymbol{Y})d\theta \\
+\Bbb{V}(\theta|\boldsymbol{Y}) &amp;= \int [\theta - \Bbb{E}(\theta|\boldsymbol{Y})]^2p(\theta|\boldsymbol{Y})d\theta \\
+\Bbb{P}(\theta &gt; c|\boldsymbol{Y}) &amp;= \int_c^{\infty}p(\theta|\boldsymbol{Y})d\theta
+\end{aligned}\tag{2}
+\]</span></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

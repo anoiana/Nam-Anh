@@ -10,8 +10,8 @@
         }
       ],
       "date": "Oct. 11, 2021",
-      "contents": "\n\nContents\nMaximize posterior distribution\n\nMaximize posterior distribution\nLet us define \\(p(\\boldsymbol{\\theta}|\\boldsymbol{Y})\\) be posterior distribution, and\n\\[\n\\widehat{\\boldsymbol{\\theta}}_{MAP} = \\arg\\max_{\\boldsymbol{\\theta}}\\ln p(\\boldsymbol{\\theta}|\\boldsymbol{Y}) = \\arg\\max_{\\boldsymbol{\\theta}}\\ln f(\\boldsymbol{Y}|\\boldsymbol{\\theta}) + \\ln \\pi(\\boldsymbol{\\theta})\n\\] is the maximizer of \\(p(\\boldsymbol{\\theta}|\\boldsymbol{Y})\\).\nMAP estimator can be obtained by function optim in R. Its illustration in R will be pored over latter.\n\n\n\n",
-      "last_modified": "2021-10-11T05:23:37-03:00"
+      "contents": "\n\nContents\nMaximize posterior distribution\nNumerical integration\n\nMaximize posterior distribution\nLet us define \\(p(\\boldsymbol{\\theta}|\\boldsymbol{Y})\\) be posterior distribution, and\n\\[\n\\widehat{\\boldsymbol{\\theta}}_{MAP} = \\arg\\max_{\\boldsymbol{\\theta}}\\ln p(\\boldsymbol{\\theta}|\\boldsymbol{Y}) = \\arg\\max_{\\boldsymbol{\\theta}}\\ln f(\\boldsymbol{Y}|\\boldsymbol{\\theta}) + \\ln \\pi(\\boldsymbol{\\theta})\n\\tag{1}\n\\] is the maximizer of \\(p(\\boldsymbol{\\theta}|\\boldsymbol{Y})\\).\nMAP estimator can be obtained by function optim in R. Its illustration in R will be pored over latter.\nNumerical integration\nSome summary statistics of interest can be written as integrals, so they can be approximated by summations. For example, expectation, variance and proportions of a distribution can be written as follows\n\\[\n\\begin{aligned}\n\\Bbb{E}(\\theta|\\boldsymbol{Y}) &= \\int \\theta_1p(\\theta|\\boldsymbol{Y})d\\theta \\\\\n\\Bbb{V}(\\theta|\\boldsymbol{Y}) &= \\int [\\theta - \\Bbb{E}(\\theta|\\boldsymbol{Y})]^2p(\\theta|\\boldsymbol{Y})d\\theta \\\\\n\\Bbb{P}(\\theta > c|\\boldsymbol{Y}) &= \\int_c^{\\infty}p(\\theta|\\boldsymbol{Y})d\\theta\n\\end{aligned}\\tag{2}\n\\]\n\n\n\n",
+      "last_modified": "2021-10-13T03:05:25-03:00"
     },
     {
       "path": "index.html",
@@ -19,7 +19,7 @@
       "description": "\"Begin with an estimate of the probability that any claim, belief, hypothesis is true, then look at any new data and update the probability given the new data.\"\n\n-Steven Novella-\n",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2021-10-11T05:23:39-03:00"
+      "last_modified": "2021-10-13T03:05:26-03:00"
     }
   ],
   "collections": []

@@ -4,6 +4,7 @@ description: |
 output_dir: "docs"
 favicon: 'images/logo.png'
 navbar:
+  search: true
   logo: 
     image: 'images/logo.png'
   right:

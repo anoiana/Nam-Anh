@@ -37,9 +37,20 @@ Let us define $p(\v{\theta}|\v{Y})$ be posterior distribution, and
 
 $$
 \hat{\v{\theta}}_{MAP} = \arg\max_{\v\theta}\ln p(\v{\theta}|\v{Y}) = \arg\max_{\v\theta}\ln f(\v{Y}|\v{\theta}) + \ln \pi(\v\theta)
+(\#eq:1)
 $$
 is the maximizer of $p(\v{\theta}|\v{Y})$. 
 
-MAP estimator can be obtained by function `optim` in R. Its illustration in R will be pored over latter. 
+MAP estimator can be obtained by function `optim` in `R`. Its illustration in R will be pored over latter. 
 
+# Numerical integration
 
+Some summary statistics of interest can be written as integrals, so they can be approximated by summations. For example, expectation, variance and proportions of a distribution can be written as follows
+
+$$
+\begin{aligned}
+\E(\theta|\v{Y}) &= \int \theta_1p(\theta|\v{Y})d\theta \\
+\V(\theta|\v{Y}) &= \int [\theta - \E(\theta|\v{Y})]^2p(\theta|\v{Y})d\theta \\
+\P(\theta > c|\v Y) &= \int_c^{\infty}p(\theta|\v{Y})d\theta
+\end{aligned}(\#eq:2)
+$$
