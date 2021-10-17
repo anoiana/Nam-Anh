@@ -2063,7 +2063,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   body {
     font-family: "Arial";
     color: #1f1f1f;
-    font-size: 16pt;
+    font-size: 12pt;
   }
 
   /* --------------Navbar-------------------- */
@@ -2191,6 +2191,7 @@ Notes
 <ul>
 <li><a href="#maximize-posterior-distribution">Maximize posterior distribution</a></li>
 <li><a href="#numerical-integration">Numerical integration</a></li>
+<li><a href="#markov-chain-monte-carlo-mcmc">Markov Chain Monte Carlo (MCMC)</a></li>
 </ul>
 </nav>
 </div>
@@ -2208,8 +2209,20 @@ Notes
 \Bbb{E}(\theta|\boldsymbol{Y}) &amp;= \int \theta_1p(\theta|\boldsymbol{Y})d\theta \\
 \Bbb{V}(\theta|\boldsymbol{Y}) &amp;= \int [\theta - \Bbb{E}(\theta|\boldsymbol{Y})]^2p(\theta|\boldsymbol{Y})d\theta \\
 \Bbb{P}(\theta &gt; c|\boldsymbol{Y}) &amp;= \int_c^{\infty}p(\theta|\boldsymbol{Y})d\theta
-\end{aligned}\tag{2}
+\end{aligned}
+\tag{2}
 \]</span></p>
+<p>All three measures in <a href="#eq:2">(2)</a> can be rewritten as <span class="math inline">\(\Bbb{E}[g(\theta)]\)</span>, for example, <span class="math inline">\(\Bbb{P}(\theta &gt; c| \boldsymbol{Y})\)</span> is equivalent to</p>
+<p><span class="math display">\[
+\int_{-\infty}^{\infty}{\large\unicode{x1D7D9}}_{\theta &gt; c}(\theta)p(\theta|\boldsymbol{Y})d\theta
+\]</span></p>
+<p>Since integration can be approximated by summation, <span class="math inline">\(\Bbb{E}[g(\theta)] = \int_{\Theta}g(\theta)p(\theta|\boldsymbol{Y})\)</span> is equivalent to</p>
+<p><span class="math display">\[
+\sum_{j=1}^m g(\theta_j)W_j,
+\]</span></p>
+<p>where <span class="math inline">\(W_j\)</span> is the weight given to the grid point <span class="math inline">\(j\)</span>.</p>
+<h1 id="markov-chain-monte-carlo-mcmc">Markov Chain Monte Carlo (MCMC)</h1>
+<p>Monte Carlo (MC) methods are appealing since they mimic the process of statistical concept where a sample is used to draw inferences of population. Two well-known measures are first two moments of distribution, i.e. <span class="math inline">\(\Bbb{E}(X)\)</span> and <span class="math inline">\(\Bbb{E}(X^2)\)</span>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

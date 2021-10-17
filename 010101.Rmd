@@ -52,5 +52,24 @@ $$
 \E(\theta|\v{Y}) &= \int \theta_1p(\theta|\v{Y})d\theta \\
 \V(\theta|\v{Y}) &= \int [\theta - \E(\theta|\v{Y})]^2p(\theta|\v{Y})d\theta \\
 \P(\theta > c|\v Y) &= \int_c^{\infty}p(\theta|\v{Y})d\theta
-\end{aligned}(\#eq:2)
+\end{aligned}
+(\#eq:2)
 $$
+
+All three measures in \@ref(eq:2) can be rewritten as $\E[g(\theta)]$, for example, $\P(\theta > c| \v Y)$ is equivalent to 
+
+$$
+\int_{-\infty}^{\infty}\I_{\theta > c}(\theta)p(\theta|\v Y)d\theta
+$$
+
+Since integration can be approximated by summation, $\E[g(\theta)] = \int_{\Theta}g(\theta)p(\theta|\v Y)$ is equivalent to
+
+$$
+\sum_{j=1}^m g(\theta_j)W_j,
+$$
+
+where $W_j$ is the weight given to the grid point $j$. 
+
+# Markov Chain Monte Carlo (MCMC)
+
+Monte Carlo (MC) methods are appealing since they mimic the process of statistical concept where a sample is used to draw inferences of population. Two well-known measures are first two moments of distribution, i.e. $\E(X)$ and $\E(X^2)$.  
