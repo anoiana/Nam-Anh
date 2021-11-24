@@ -87,30 +87,32 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>ANOIANA: Bayesian Statistics</title>
+  <title>ANOIANA: Bayesian Meta Analysis</title>
 
-  <meta property="description" itemprop="description" content="&quot;Begin with an estimate of the probability that any claim, belief, hypothesis is true, then look at any new data and update the probability given the new data.&quot;&#10;&#10;-Steven Novella-"/>
 
   <link rel="icon" type="image/png" href="images/logo.png"/>
 
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2021-11-20"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-11-20"/>
+  <meta name="article:author" content="Nam Anh"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="ANOIANA: Bayesian Statistics"/>
+  <meta property="og:title" content="ANOIANA: Bayesian Meta Analysis"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="&quot;Begin with an estimate of the probability that any claim, belief, hypothesis is true, then look at any new data and update the probability given the new data.&quot;&#10;&#10;-Steven Novella-"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="ANOIANA"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="ANOIANA: Bayesian Statistics"/>
-  <meta property="twitter:description" content="&quot;Begin with an estimate of the probability that any claim, belief, hypothesis is true, then look at any new data and update the probability given the new data.&quot;&#10;&#10;-Steven Novella-"/>
+  <meta property="twitter:title" content="ANOIANA: Bayesian Meta Analysis"/>
 
   <!--/radix_placeholder_meta_tags-->
+  
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","site"]}},"value":[{"type":"character","attributes":{},"value":["Bayesian Statistics"]},{"type":"character","attributes":{},"value":["\"Begin with an estimate of the probability that any claim, belief, hypothesis is true, then look at any new data and update the probability given the new data.\"\n\n-Steven Novella-\n"]},{"type":"character","attributes":{},"value":["distill::distill_website"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","subtitle","params","description","author","date","bibliography","output"]}},"value":[{"type":"character","attributes":{},"value":["Bayesian Meta Analysis"]},{"type":"character","attributes":{},"value":["010101"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["printcode"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]},{"type":"NULL"},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Nam Anh"]}]}]},{"type":"character","attributes":{},"value":["Nov. 20, 2021"]},{"type":"character","attributes":{},"value":["citation.bib"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth","code_folding"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]},{"type":"character","attributes":{},"value":["hide"]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2135,7 +2137,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Bayesian Statistics","description":"\"Begin with an estimate of the probability that any claim, belief, hypothesis is true, then look at any new data and update the probability given the new data.\"\n\n-Steven Novella-","authors":[]}
+{"title":"Bayesian Meta Analysis","authors":[{"author":"Nam Anh","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-11-20T00:00:00.000-05:00","citationText":"Anh, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2170,15 +2172,193 @@ Notes
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Bayesian Statistics</h1>
+<h1>Bayesian Meta Analysis</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>“Begin with an estimate of the probability that any claim, belief, hypothesis is true, then look at any new data and update the probability given the new data.”</p>
-<p>-Steven Novella-</p></p>
+
 </div>
 
+<div class="d-byline">
+  Nam Anh  
+  
+<br/>Nov. 20, 2021
+</div>
 
 <div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#introduction-to-2-arm-analysis">Introduction to 2 arm analysis</a></li>
+<li><a href="#meta-analysis-of-binomial-data">Meta analysis of binomial data</a></li>
+<li><a href="#forward-to-indirect-network-meta-analysis">Forward to indirect network meta-analysis</a>
+<ul>
+<li><a href="#multi-arm-trials">Multi-arm trials</a></li>
+<li><a href="#example">Example</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+<h1 id="introduction-to-2-arm-analysis">Introduction to 2 arm analysis</h1>
+<p>We shall consider a set of M studies in which each study is denoted by <span class="math inline">\(i \in \{1,\dots,M\}\)</span> and has 2 treatment arms, say <span class="math inline">\(k \in \{1,2\}\)</span>. A fixed effects analysis assumes study <span class="math inline">\(i\)</span> generates the same parameter <span class="math inline">\(d_{12}\)</span>, a relative effect of treatment <span class="math inline">\(2\)</span> and <span class="math inline">\(1\)</span>. The relative effect is denoted <span class="math inline">\(\delta_{i,12}\)</span> in random effect analysis and specific to study <span class="math inline">\(i\)</span>. This means <span class="math inline">\(\delta_{i,12}\)</span> is a trial-specific effect of treatment <span class="math inline">\(2\)</span> and <span class="math inline">\(1\)</span> in study <span class="math inline">\(i\)</span>. In Bayesian framework, <span class="math inline">\(\delta_{i,12}\)</span> is distributed normally as follows</p>
+<p><span class="math display">\[
+\delta_{i,12} \sim \mathcal{N}(d_{12},\sigma^2_{12}),
+\]</span></p>
+<p>in fixed effects analysis, <span class="math inline">\(\sigma^2_{12} = 0\)</span> that means <span class="math inline">\(\delta_{i,12} = d_{12}, \forall i\)</span>. Distribution of <span class="math inline">\(d_{12}\)</span> is known as prior distribution, and the common distribution used such a prior distribution is normal, so</p>
+<p><span class="math display">\[
+d_{12} \sim \mathcal{N}(0, 100^2)
+\]</span></p>
+<p>Distribution of between-study variance <span class="math inline">\(\sigma^2_{12}\)</span> widely used is uniform whose lower bound is zero and upper bound is chosen suitably according to knowledge of researcher.</p>
+<h1 id="meta-analysis-of-binomial-data">Meta analysis of binomial data</h1>
+<p>Let us consider 11 studies (<span class="math inline">\(M=11\)</span>), each study compares 2 treatments, active and control arm. Let <span class="math inline">\(r_{ik}\)</span> and <span class="math inline">\(n_{ik}\)</span> be the number of event and sample size in arm <span class="math inline">\(k\)</span> of trial <span class="math inline">\(i\)</span>, respectively. Thus,</p>
+<p><span class="math display">\[
+r_{ik} \sim \mathcal{B} in(p_{ik},n_{ik}).
+\]</span></p>
+<p>Link function used to model probability of events is logit, <span class="math inline">\(logit(x) = x/(1-x)\)</span>, so</p>
+<p><span class="math display">\[
+logit(p_{ik}) = \mu_i + \delta_{i,1k}.
+\]</span></p>
+<p>Recall that <span class="math inline">\(\delta_{i,1k}\)</span> is relative effect of treatment <span class="math inline">\(k\)</span> compared with treatment <span class="math inline">\(1\)</span>, so <span class="math inline">\(\delta_{i,11} = 0, \forall i\)</span>. <span class="math inline">\(\delta_{i1k}\)</span> is equal to <span class="math inline">\(d_{1k}\)</span> in fixed effect analysis.</p>
+<p>Prior distributions chosen for parameters are</p>
+<p><span class="math display">\[
+\mu_i \sim \mathcal{N}(0,100^2); \quad \delta_{i,12} \sim \mathcal{N}(d_{12}, \sigma^2_{12}),
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\sigma^2_{12} \sim \mathcal{U}(0,2)
+\]</span></p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+hide
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://mcmc-jags.sourceforge.io'>rjags</a></span><span class='op'>)</span>; <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>; <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://magrittr.tidyverse.org'>magrittr</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/load.html'>load</a></span><span class='op'>(</span><span class='st'>"_data/thrombolytic.RData"</span><span class='op'>)</span>
+
+<span class='va'>data</span> <span class='op'>=</span> <span class='fu'>purrr</span><span class='fu'>::</span><span class='fu'><a href='https://purrr.tidyverse.org/reference/splice.html'>splice</a></span><span class='op'>(</span><span class='va'>d</span>, <span class='st'>"ns"</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>d</span><span class='op'>$</span><span class='va'>r</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='va'>model_string</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/textconnections.html'>textConnection</a></span><span class='op'>(</span>
+<span class='st'>"model{ # *** PROGRAM STARTS
+for(i in 1:ns){ # LOOP THROUGH STUDIES
+mu[i] ~ dnorm(0,.0001) # vague priors for all trial baselines
+for (k in 1:2) { # LOOP THROUGH ARMS
+r[i,k] ~ dbin(p[i,k],n[i,k]) # binomial likelihood
+logit(p[i,k]) &lt;- mu[i] + d[k] # model for linear predictor
+}
+}
+d[1]&lt;- 0 # treatment effect is zero for reference treatment
+d[2] ~ dnorm(0,.0001) # vague prior for treatment effect
+}"</span>
+<span class='op'>)</span>
+<span class='co'># *** PROGRAM ENDS</span>
+
+<span class='va'>inits</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>d<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span> <span class='cn'>NA</span>, <span class='op'>-</span><span class='fl'>1</span><span class='op'>)</span>, mu<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>3</span>,<span class='op'>-</span><span class='fl'>3</span>,<span class='op'>-</span><span class='fl'>3</span>,<span class='op'>-</span><span class='fl'>3</span>,<span class='op'>-</span><span class='fl'>3</span>, <span class='op'>-</span><span class='fl'>3</span>,<span class='op'>-</span><span class='fl'>3</span>,<span class='op'>-</span><span class='fl'>3</span>,<span class='op'>-</span><span class='fl'>3</span>,<span class='op'>-</span><span class='fl'>3</span>, <span class='op'>-</span><span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>model</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/rjags/man/jags.model.html'>jags.model</a></span><span class='op'>(</span><span class='va'>model_string</span>,data <span class='op'>=</span> <span class='va'>data</span>, inits<span class='op'>=</span><span class='va'>inits</span>, n.chains<span class='op'>=</span><span class='fl'>2</span>, quiet <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/stats/update.html'>update</a></span><span class='op'>(</span><span class='va'>model</span>, <span class='fl'>10000</span>, progress.bar<span class='op'>=</span><span class='st'>"none"</span><span class='op'>)</span>
+
+<span class='va'>parameters</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"d[2]"</span><span class='op'>)</span>
+<span class='va'>samples</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/rjags/man/coda.samples.html'>coda.samples</a></span><span class='op'>(</span><span class='va'>model</span>,
+                           variable.names<span class='op'>=</span><span class='va'>parameters</span>,
+                           n.iter<span class='op'>=</span><span class='fl'>20000</span>, progress.bar<span class='op'>=</span><span class='st'>"none"</span><span class='op'>)</span>
+
+<span class='va'>s</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>samples</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+</div>
+<p>Running MCMC using code above, we obtain summary statistics as follows</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+hide
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>lift_dv</span><span class='op'>(</span><span class='va'>tibble</span><span class='op'>)</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>s</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span><span class='op'>]</span>, <span class='va'>s</span><span class='op'>[[</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span><span class='op'>%&gt;%</span>
+     <span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">SD</th>
+<th style="text-align: right;">2.5%</th>
+<th style="text-align: right;">25%</th>
+<th style="text-align: right;">50%</th>
+<th style="text-align: right;">75%</th>
+<th style="text-align: right;">97.5%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">-0.2339332</td>
+<td style="text-align: right;">0.1177529</td>
+<td style="text-align: right;">-0.4643134</td>
+<td style="text-align: right;">-0.3133644</td>
+<td style="text-align: right;">-0.2342242</td>
+<td style="text-align: right;">-0.1549683</td>
+<td style="text-align: right;">-0.0037466</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="forward-to-indirect-network-meta-analysis">Forward to indirect network meta-analysis</h1>
+<p>Two arm studies were considered in previous section, we now extend the result by including studies with more than two arms. It means we will consider <span class="math inline">\(\delta_{i,1k}\)</span> with <span class="math inline">\(k = 1,2,\dots,S\)</span>. It is worth noting that the transitivity relation is supposed to be true, which means</p>
+<p><span class="math display">\[
+\delta_{i,kk&#39;} = \delta_{i,1k&#39;} - \delta_{i,1k},
+\]</span></p>
+<p>and that is called <em>indirect treatment comparison (ITC)</em>. Its prior distribution is</p>
+<p><span class="math display">\[
+\delta_{i,kk&#39;} \sim \mathcal{N}(d_{kk&#39;}, \sigma^2_{kk&#39;}), \quad k \ne k&#39;
+\]</span></p>
+<p>It can be shown that the above prior distribution impies</p>
+<p><span class="math display">\[
+d_{kk&#39;} = d_{1k&#39;} - d_{1k}
+\]</span> and</p>
+<p><span class="math display">\[
+\sigma^2_{kk&#39;} = \sigma^2_{1k}+\sigma^2_{1k&#39;} - 2\rho^{(1)}_{23}\sigma_{12}\sigma_{13}.
+\]</span></p>
+<p>For simplicity, we will assume that <span class="math inline">\(\sigma^2_{1k} = \sigma^2_{1k&#39;}\)</span> with <span class="math inline">\(k \ne k&#39;\)</span> and <span class="math inline">\(k,k&#39; \ge 2\)</span>. This assumption is reasonable since we suppose population in all studies are the same, and trial designs are also similar across studies.</p>
+<p>To allow comparison for multiple treatments, notations are revised such that arm <span class="math inline">\(k\)</span> of trial <span class="math inline">\(i\)</span> and treatments compared in that arm are distinguishable. The relative effect of the treatment in arm <span class="math inline">\(k\)</span> and the treatment in arm <span class="math inline">\(1\)</span> in trial <span class="math inline">\(i\)</span> is <span class="math inline">\(\delta_{ik}\)</span> and it is distributed normally</p>
+<p><span class="math display">\[
+\delta_{ik} \sim \mathcal{N}(d_{t_{i1},t_{ik}}, \sigma^2),
+\]</span></p>
+<p>where <span class="math inline">\(d_{t_{i1},t_{ik}}\)</span> is mean of relative effect between treatment in arm <span class="math inline">\(k\)</span> and treatment in arm <span class="math inline">\(1\)</span> of trial <span class="math inline">\(i\)</span>, and <span class="math inline">\(\delta_{i1} = 0, \forall i\)</span>. The general consistency equation is</p>
+<p><span class="math display">\[
+d_{t_{i1},t_{ik}} = d_{1,t_{ik}} - d_{1,t_{ik}}
+\]</span></p>
+<p><span class="math inline">\(d_{1k}\)</span> with <span class="math inline">\(k=1,2,\dots,S\)</span> are estimated, and to provide non-informative prior we assume</p>
+<p><span class="math display">\[
+d_{1k} \sim \mathcal{N}(0, 100^2)
+\]</span></p>
+<h2 id="multi-arm-trials">Multi-arm trials</h2>
+<p>Suppose each study <span class="math inline">\(i\)</span> has <span class="math inline">\(a_i+1\)</span> treatments (1 reference, e.g. control or placebo, and <span class="math inline">\(a_i\)</span> treatments), so all effect measures of treatment in arm <span class="math inline">\(k\)</span> compared with treatment in arm <span class="math inline">\(1\)</span> are <span class="math inline">\(\boldsymbol{\delta}_i = (\delta_{i,12}, \delta_{i,13}, \dots, \delta_{i,1a_i})^{\top}\)</span> and</p>
+<p><span class="math display">\[
+\boldsymbol{\delta}_i = (\delta_{i,12}, \delta_{i,13}, \dots, \delta_{i,1a_i})^{\top} \sim \mathcal{N}_{a_i}\begin{pmatrix}
+\begin{pmatrix}
+d_{t_{i1},t_{i2}}\\
+d_{t_{i1},t_{i3}}\\
+\vdots\\
+d_{t_{i1},t_{ia_i}}
+\end{pmatrix},
+\begin{pmatrix}
+\sigma^2 &amp; \sigma^2/2 &amp; \dots &amp; \sigma^2/2 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\sigma^2/2 &amp; \sigma^2/2 &amp; \dots &amp; \sigma^2
+\end{pmatrix}
+\end{pmatrix}
+\]</span> and we can show that</p>
+<p><span class="math display">\[
+\delta_{i,1k}|(\delta_{i,12}, \dots, \delta_{i,1(k-1)})^{\top} \sim \mathcal{N}\Bigg(
+(d_{1,t_{ik}}-d_{1,t_{í}})+\frac{1}{k-1}\sum^{k-1}_{j=1}\Big[\delta_{i,1j}-\big(d_{1,t_{ij}}-d_{1,t_{i1}}\big)\Big],
+\frac{k}{2(k-1)}\sigma^2
+\Bigg)
+\]</span></p>
+<h2 id="example">Example</h2>
+<p>We shall consider the following example for illustration.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
@@ -2187,11 +2367,23 @@ Notes
 <div class="d-appendix">
 </div>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->
 <!--radix_placeholder_appendices-->
-<div class="appendix-bottom"></div>
+<div class="appendix-bottom">
+<h3 id="references">References</h3>
+<div id="references-listing"></div>
+</div>
 <!--/radix_placeholder_appendices-->
 <!--radix_placeholder_navigation_after_body-->
 <!--/radix_placeholder_navigation_after_body-->

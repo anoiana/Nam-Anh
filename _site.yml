@@ -15,8 +15,10 @@ navbar:
 ####====####====####====####====####====####====####====####====####====####====####
     - text: "Notes"
       menu:
-      - text: "Bayesian Computational Approaches"
-        href: "010101.html"
+      #- text: "Bayesian Computational Approaches"
+      #  href: "010101.html"
+      - text: "Network Meta Analysis"
+        href: "010201.html"
 output: 
   distill::distill_article:
     css: styles.css
