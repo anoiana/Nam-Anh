@@ -1,8 +1,8 @@
 ---
-title: "Bayesian Meta Analysis"
+title: "Network Meta Analysis"
 subtitle: "010101"
 params:
-  printcode: TRUE
+  printcode: FALSE
 description: |
 author:
   - name: Nam Anh
@@ -188,7 +188,7 @@ $$
 
 ## Example
 
-We shall consider the following example for illustration. 
+For illustration, we consider 36 studies including 7 treatments. We will 
 
 
 

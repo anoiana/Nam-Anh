@@ -85,32 +85,57 @@ code span.vs { color: #20794d; } /* VerbatimString */
 code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
+<style>
+  div.csl-bib-body { }
+  div.csl-entry {
+    clear: both;
+    }
+  .hanging div.csl-entry {
+    margin-left:2em;
+    text-indent:-2em;
+  }
+  div.csl-left-margin {
+    min-width:2em;
+    float:left;
+  }
+  div.csl-right-inline {
+    margin-left:2em;
+    padding-left:1em;
+  }
+  div.csl-indent {
+    margin-left: 2em;
+  }
+</style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>ANOIANA: Bayesian Statistics</title>
+  <title>ANOIANA: Bayesian Sample Size Determination</title>
 
-  <meta property="description" itemprop="description" content="&quot;Begin with an estimate of the probability that any claim, belief, hypothesis is true, then look at any new data and update the probability given the new data.&quot;&#10;&#10;-Steven Novella-"/>
 
   <link rel="icon" type="image/png" href="images/logo.png"/>
 
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2021-11-20"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-11-20"/>
+  <meta name="article:author" content="Nam Anh"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="ANOIANA: Bayesian Statistics"/>
+  <meta property="og:title" content="ANOIANA: Bayesian Sample Size Determination"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="&quot;Begin with an estimate of the probability that any claim, belief, hypothesis is true, then look at any new data and update the probability given the new data.&quot;&#10;&#10;-Steven Novella-"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="ANOIANA"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="ANOIANA: Bayesian Statistics"/>
-  <meta property="twitter:description" content="&quot;Begin with an estimate of the probability that any claim, belief, hypothesis is true, then look at any new data and update the probability given the new data.&quot;&#10;&#10;-Steven Novella-"/>
+  <meta property="twitter:title" content="ANOIANA: Bayesian Sample Size Determination"/>
 
   <!--/radix_placeholder_meta_tags-->
+  
+  <meta name="citation_reference" content="citation_title=Sample size calculations for binomial proportions via highest posterior density intervals;citation_publication_date=1995;citation_publisher=JSTOR;citation_volume=44;citation_doi=10.2307/2348439;citation_author=Lawrence Joseph;citation_author=David B. Wolfson;citation_author=Roxane Du Berger"/>
+  <meta name="citation_reference" content="citation_title=Bayesian sample size determination for normal means and differences between normal means;citation_publication_date=1997;citation_publisher=[Royal Statistical Society, Wiley];citation_volume=46;citation_issn=00390526, 14679884;citation_author=Lawrence Joseph;citation_author=Patrick Bélisle"/>
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","site"]}},"value":[{"type":"character","attributes":{},"value":["Bayesian Statistics"]},{"type":"character","attributes":{},"value":["\"Begin with an estimate of the probability that any claim, belief, hypothesis is true, then look at any new data and update the probability given the new data.\"\n\n-Steven Novella-\n"]},{"type":"character","attributes":{},"value":["distill::distill_website"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","subtitle","params","description","author","date","bibliography","csl","output"]}},"value":[{"type":"character","attributes":{},"value":["Bayesian Sample Size Determination"]},{"type":"character","attributes":{},"value":["010301"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["printcode"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]},{"type":"NULL"},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Nam Anh"]}]}]},{"type":"character","attributes":{},"value":["Nov. 20, 2021"]},{"type":"character","attributes":{},"value":["citation.bib"]},{"type":"character","attributes":{},"value":["citation.csl"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth","code_folding"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]},{"type":"character","attributes":{},"value":["hide"]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2135,7 +2160,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Bayesian Statistics","description":"\"Begin with an estimate of the probability that any claim, belief, hypothesis is true, then look at any new data and update the probability given the new data.\"\n\n-Steven Novella-","authors":[]}
+{"title":"Bayesian Sample Size Determination","authors":[{"author":"Nam Anh","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-11-20T00:00:00.000-05:00","citationText":"Anh, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2170,16 +2195,166 @@ Notes
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Bayesian Statistics</h1>
+<h1>Bayesian Sample Size Determination</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>“Begin with an estimate of the probability that any claim, belief, hypothesis is true, then look at any new data and update the probability given the new data.”</p>
-<p>-Steven Novella-</p></p>
+
 </div>
 
+<div class="d-byline">
+  Nam Anh  
+  
+<br/>Nov. 20, 2021
+</div>
 
 <div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#bayesian-criteria-for-sample-size">Bayesian criteria for sample size</a></li>
+<li><a href="#determine-size-of-one-binomial-sample">Determine size of one binomial sample</a></li>
+<li><a href="#determine-size-of-normal-distribution">Determine size of normal distribution</a>
+<ul>
+<li><a href="#single-normal-mean">Single normal mean</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+<h1 id="bayesian-criteria-for-sample-size">Bayesian criteria for sample size</h1>
+<p>Let <span class="math inline">\(\boldsymbol{\mathfrak{X}} \ni \boldsymbol{x} = (x_1,\dots,x_n)^{\top}\)</span> and <span class="math inline">\(\boldsymbol{\theta} \in \boldsymbol{\Theta}\)</span> are a random sample with the size of <span class="math inline">\(n\)</span> and parameter of interest, respectively. The predictive distribution of <span class="math inline">\(\{x_i\}_{i=1}^n\)</span>, i.e. pre-posterior distribution, is capable of obtaining from likelihood function as follows</p>
+<p><span class="math display" id="eq:1">\[
+f(x_i) = \int_{\boldsymbol{\Theta}} f(x|\boldsymbol{\theta})d\boldsymbol{\theta},
+\tag{1}
+\]</span> and the posterior distribution can be obtained</p>
+<p><span class="math display" id="eq:2">\[
+f(\boldsymbol{\theta}|x) = \frac{f(x|\boldsymbol{\theta})f(\boldsymbol{\theta})}{f(x)},
+\tag{2}
+\]</span></p>
+<p><a href="#eq:2">(2)</a> also means</p>
+<p><span class="math display">\[
+f(\boldsymbol{\theta}|x) \propto f(x|\boldsymbol{\theta})f(\boldsymbol{\theta}).
+\]</span></p>
+<p>The posterior coverage probability of region R with volume of V is given by</p>
+<p><span class="math display">\[
+\int_{R}f(\boldsymbol{\theta}|x)d\boldsymbol{\theta},
+\]</span></p>
+<p>R is HPD iff <span class="math inline">\(f(\boldsymbol{\theta}_1|x) \ge f(\boldsymbol{\theta}_2|x), \forall \boldsymbol{\theta}_1 \in R, \boldsymbol{\theta}_2 \notin R\)</span>. We now consider <span class="math inline">\(\boldsymbol{\Theta}\)</span> is one-dimensional space, namely <span class="math inline">\(\boldsymbol{\theta}\)</span> can be written as <span class="math inline">\(\theta\)</span>. For the case of monotone increasing posterior densities defined on <span class="math inline">\((u,v)\)</span>, the corresponding condition for HPD is modified, see <span class="citation" data-cites="joseph1995">[<a href="#ref-joseph1995" role="doc-biblioref">1</a>]</span> for further detail.</p>
+<p>Three criteria considered in <span class="citation" data-cites="joseph1995">[<a href="#ref-joseph1995" role="doc-biblioref">1</a>]</span> are average coverage, average length and worst outcome, but we shall consider the average length criterion (ALC) in this review. Such a criterion is given by</p>
+<p><span class="math display" id="eq:3">\[
+\int_{a(x,n)}^{a(x,n)+l&#39;(x,n)}f(\theta|x)d\theta = 1-\alpha,
+\tag{3}
+\]</span></p>
+<p>here we fix the coverage probability <span class="math inline">\(1-\alpha\)</span> of HPD credible set for <span class="math inline">\(\theta\)</span>. Each <span class="math inline">\(x\)</span> will need a certain <span class="math inline">\(l&#39;(x,n)\)</span> to reach the desired coverage probability. We then calculate the expectation of <span class="math inline">\(l&#39;(x,n)\)</span> w.r.t predictive distribution <span class="math inline">\(f(x)\)</span> and such a expectation is less than or equal a pre-specified length <span class="math inline">\(l\)</span>,</p>
+<p><span class="math display" id="eq:4">\[
+\int_{\mathfrak{X}}l&#39;(x,n)f(x)dx \le l,
+\tag{4}
+\]</span></p>
+<h1 id="determine-size-of-one-binomial-sample">Determine size of one binomial sample</h1>
+<p>Suppose distribution of data <span class="math inline">\(X\)</span> and prior distribution of <span class="math inline">\(\theta\)</span> are <span class="math inline">\(X \sim \mathcal{Bin}(n,\theta)\)</span> and <span class="math inline">\(\theta \sim \mathcal{Beta}(c,d)\)</span>, respectively. Thus we can show that posterior distribution of <span class="math inline">\(\theta\)</span> is</p>
+<p><span class="math display" id="eq:5">\[
+\theta|x,n,c,d \sim \mathcal{Beta}(c+x, d+n-x),
+\tag{5}
+\]</span></p>
+<p>and preposterior marginal distribution is</p>
+<p><span class="math display" id="eq:6">\[
+p(x,n) = \binom{n}{x}\frac{B(c+x,d+n-x)}{B(c,d)},
+\tag{6}
+\]</span></p>
+<p>where <span class="math inline">\(B(c,d) = \frac{\Gamma(c)\Gamma(d)}{\Gamma(c+d)}\)</span>. We then calculate</p>
+<p><span class="math display">\[
+\int^{a(x,n)+l&#39;(x,n)}_{a(x,n)}f(\theta|,x,n,c,d)d\theta = 1-\alpha
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\sum^{n}_{x=0}l&#39;(x,n)p(x,n) \le l, \quad \textit{(l is prespecified)}
+\]</span></p>
+<p>(cont.)</p>
+<h1 id="determine-size-of-normal-distribution">Determine size of normal distribution</h1>
+<h2 id="single-normal-mean">Single normal mean</h2>
+<p>Suppose we have a random vector <span class="math inline">\(\boldsymbol{X} = (X_1,X_2,\dots,X_n)\)</span> that comprises exchangeable components following normal distribution with mean <span class="math inline">\(\mu\)</span> and precision <span class="math inline">\(\lambda = 1/\sigma^2\)</span>. prior distributions of <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\lambda\)</span> are</p>
+<p><span class="math display">\[
+\lambda \sim \mathcal{Ga}(\nu,\beta),
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\mu|\lambda \sim \mathcal{N}(\mu_0, n_0\lambda)
+\]</span></p>
+<p>Here, we suppose both <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\tau\)</span> are unknown, and marginal posterior distribution <span class="math inline">\(\mu|\boldsymbol{x}\)</span> is</p>
+<p><span class="math display">\[
+\mu|\boldsymbol{x} \sim t_{2\nu+n}\sqrt{\frac{\beta_n}{(n+n_0)(\nu+n/2)}}+\mu_n,
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+\mu_n = \frac{n_0\mu_0+n\overline{x}}{n+n_0}
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\beta_n = \beta+ \frac{1}{2}ns^2+\frac{1}{2}\frac{nn_0}{n+n_0}(\overline{x}-\mu_0)^2, \text{ where } ns^2 = \sum_{i=1}^n(x_i-\overline{x})^2
+\]</span> SSD w.r.t ALC criterion is obtained in <span class="citation" data-cites="joseph1997">[<a href="#ref-joseph1997" role="doc-biblioref">2</a>]</span> as <span class="math inline">\(n\)</span> is sufficiently large such that</p>
+<p><span class="math display">\[
+l \ge 2 t_{n+2\nu, 1-\alpha/2}\sqrt{\frac{2\beta}{(n+2\nu)(n+n_0)}}\frac{\Gamma(\frac{n+2\nu}{2})\Gamma(\frac{2\nu-1}{2})}{\Gamma(\frac{n+2\nu-1}{2})\Gamma(\nu)}
+\]</span></p>
+<p>We shall now consider how to choose hyperparameters <span class="math inline">\(\nu\)</span> and <span class="math inline">\(\beta\)</span> for the precision <span class="math inline">\(\lambda\)</span>. Suppose the aim is to obtain sample size of each treatment arm in a three-arm studies in which mean and standard deviation of outcome associated with each arm are known. This is,</p>
+<div class="layout-chunk" data-layout="l-body">
+<details>
+<summary>
+hide
+</summary>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'>if</span><span class='op'>(</span><span class='op'>!</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/trinker/pacman'>pacman</a></span>, logical.return <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"pacman"</span><span class='op'>)</span>
+<span class='fu'>pacman</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/pacman/man/p_load.html'>p_load</a></span><span class='op'>(</span><span class='va'>tidyverse</span>, <span class='va'>magrittr</span><span class='op'>)</span>
+<span class='va'>d</span><span class='op'>&lt;-</span>
+<span class='fu'>tibble</span><span class='op'>(</span>
+  Agent <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"midazolam"</span>, <span class='st'>"lidocaine"</span>, <span class='st'>"placebo"</span><span class='op'>)</span>,
+  Mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>3.2</span>,<span class='fl'>4</span>,<span class='fl'>4.8</span><span class='op'>)</span>,
+  SE <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2.9</span>, <span class='fl'>3.3</span>,<span class='fl'>3.4</span><span class='op'>)</span>,
+  n <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>57</span>,<span class='fl'>52</span>,<span class='fl'>50</span><span class='op'>)</span>
+<span class='op'>)</span>
+<span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/kable.html'>kable</a></span><span class='op'>(</span><span class='va'>d</span><span class='op'>)</span>
+</code></pre>
+</div>
+</details>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Agent</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">SE</th>
+<th style="text-align: right;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">midazolam</td>
+<td style="text-align: right;">3.2</td>
+<td style="text-align: right;">2.9</td>
+<td style="text-align: right;">57</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">lidocaine</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">3.3</td>
+<td style="text-align: right;">52</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">placebo</td>
+<td style="text-align: right;">4.8</td>
+<td style="text-align: right;">3.4</td>
+<td style="text-align: right;">50</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div id="refs" class="references csl-bib-body" role="doc-bibliography">
+<div id="ref-joseph1995" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">Joseph L, Wolfson DB, Berger RD. Sample size calculations for binomial proportions via highest posterior density intervals. The Statistician 1995;44:143. <a href="https://doi.org/10.2307/2348439">https://doi.org/10.2307/2348439</a>.</div>
+</div>
+<div id="ref-joseph1997" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">Joseph L, Bélisle P. Bayesian sample size determination for normal means and differences between normal means. Journal of the Royal Statistical Society Series D (The Statistician) 1997;46:209–26.</div>
+</div>
+</div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2187,11 +2362,23 @@ Notes
 <div class="d-appendix">
 </div>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->
 <!--radix_placeholder_appendices-->
-<div class="appendix-bottom"></div>
+<div class="appendix-bottom">
+<h3 id="references">References</h3>
+<div id="references-listing"></div>
+</div>
 <!--/radix_placeholder_appendices-->
 <!--radix_placeholder_navigation_after_body-->
 <!--/radix_placeholder_navigation_after_body-->

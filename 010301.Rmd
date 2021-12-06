@@ -1,0 +1,173 @@
+---
+title: "Bayesian Sample Size Determination"
+subtitle: "010301"
+params:
+  printcode: FALSE
+description: |
+author:
+  - name: Nam Anh
+date: "Nov. 20, 2021"
+bibliography: citation.bib
+csl: citation.csl
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 3
+    code_folding: hide
+---
+
+\newcommand{\v}[1]{\boldsymbol{#1}}
+\newcommand{\hat}[1]{\widehat{#1}}
+\newcommand{\mm}[1]{\mathbb{#1}}
+\newcommand{\bar}[1]{\overline{#1}}
+
+\def\E{\Bbb{E}}
+\def\V{\Bbb{V}}
+\def\P{\Bbb{P}}
+\def\I{{\large\unicode{x1D7D9}}}
+\def\indep{\perp\!\!\!\!\perp}
+\newcommand{\overeq}[2]{\stackrel{#1}{#2}}
+\def\epsilon{\varepsilon} 
+
+# Bayesian criteria for sample size
+
+Let $\v{\mathfrak{X}} \ni \v{x} = (x_1,\dots,x_n)^{\top}$ and $\v{\theta} \in \v{\Theta}$ are a random sample with the size of $n$ and parameter of interest, respectively. The predictive distribution of $\{x_i\}_{i=1}^n$, i.e. pre-posterior distribution, is capable of obtaining from likelihood function as follows
+
+$$
+f(x_i) = \int_{\v{\Theta}} f(x|\v{\theta})d\v{\theta},
+(\#eq:1)
+$$
+and the posterior distribution can be obtained 
+
+$$
+f(\v{\theta}|x) = \frac{f(x|\v{\theta})f(\v{\theta})}{f(x)},
+(\#eq:2)
+$$
+
+\@ref(eq:2) also means
+
+$$
+f(\v{\theta}|x) \propto f(x|\v{\theta})f(\v{\theta}).
+$$
+
+The posterior coverage probability of region R with volume of V is given by 
+
+$$
+\int_{R}f(\v{\theta}|x)d\v{\theta},
+$$
+
+R is HPD iff $f(\v{\theta}_1|x) \ge f(\v{\theta}_2|x), \forall \v{\theta}_1 \in R, \v{\theta}_2 \notin R$. We now consider $\v{\Theta}$ is one-dimensional space, namely $\v{\theta}$ can be written as $\theta$. For the case of monotone increasing posterior densities defined on $(u,v)$, the corresponding condition for HPD is modified, see @joseph1995 for further detail. 
+
+Three criteria considered in @joseph1995 are average coverage, average length and worst outcome, but we shall consider the average length criterion (ALC) in this review. Such a criterion is given by
+
+$$
+\int_{a(x,n)}^{a(x,n)+l'(x,n)}f(\theta|x)d\theta = 1-\alpha,
+(\#eq:3)
+$$
+
+here we fix the coverage probability $1-\alpha$ of HPD credible set for $\theta$. Each $x$ will need a certain $l'(x,n)$ to reach the desired coverage probability. We then calculate the expectation of $l'(x,n)$ w.r.t predictive distribution $f(x)$ and such a expectation is less than or equal a pre-specified length $l$, 
+
+$$
+\int_{\mathfrak{X}}l'(x,n)f(x)dx \le l,
+(\#eq:4)
+$$
+
+# Determine size of one binomial sample
+
+Suppose distribution of data $X$ and prior distribution of $\theta$ are $X \sim \mathcal{Bin}(n,\theta)$ and $\theta \sim \mathcal{Beta}(c,d)$, respectively. Thus we can show that posterior distribution of $\theta$ is
+
+$$
+\theta|x,n,c,d \sim \mathcal{Beta}(c+x, d+n-x),
+(\#eq:5)
+$$
+
+and preposterior marginal distribution is
+
+$$
+p(x,n) = \binom{n}{x}\frac{B(c+x,d+n-x)}{B(c,d)},
+(\#eq:6)
+$$
+
+where $B(c,d) = \frac{\Gamma(c)\Gamma(d)}{\Gamma(c+d)}$. We then calculate
+
+$$
+\int^{a(x,n)+l'(x,n)}_{a(x,n)}f(\theta|,x,n,c,d)d\theta = 1-\alpha
+$$
+
+and
+
+$$
+\sum^{n}_{x=0}l'(x,n)p(x,n) \le l, \quad \textit{(l is prespecified)}
+$$
+
+(cont.)
+
+# Determine size of normal distribution
+
+## Single normal mean
+
+Suppose we have a random vector $\v X = (X_1,X_2,\dots,X_n)$ that comprises exchangeable components following normal distribution with mean $\mu$ and precision $\lambda = 1/\sigma^2$. prior distributions of $\mu$ and $\lambda$ are 
+
+$$
+\lambda \sim \mathcal{Ga}(\nu,\beta),
+$$
+
+and 
+
+$$
+\mu|\lambda \sim \mathcal{N}(\mu_0, n_0\lambda)
+$$
+
+Here, we suppose both $\mu$ and $\tau$ are unknown, and marginal posterior distribution $\mu|\v x$ is 
+
+$$
+\mu|\v x \sim t_{2\nu+n}\sqrt{\frac{\beta_n}{(n+n_0)(\nu+n/2)}}+\mu_n,
+$$
+
+where
+
+$$
+\mu_n = \frac{n_0\mu_0+n\bar{x}}{n+n_0}
+$$
+
+and 
+
+$$
+\beta_n = \beta+ \frac{1}{2}ns^2+\frac{1}{2}\frac{nn_0}{n+n_0}(\bar{x}-\mu_0)^2, \text{ where } ns^2 = \sum_{i=1}^n(x_i-\bar{x})^2
+$$
+SSD w.r.t ALC criterion is obtained in @joseph1997 as $n$ is sufficiently large such that 
+
+$$
+l \ge 2 t_{n+2\nu, 1-\alpha/2}\sqrt{\frac{2\beta}{(n+2\nu)(n+n_0)}}\frac{\Gamma(\frac{n+2\nu}{2})\Gamma(\frac{2\nu-1}{2})}{\Gamma(\frac{n+2\nu-1}{2})\Gamma(\nu)}
+$$
+
+We shall now consider how to choose hyperparameters $\nu$ and $\beta$ for the precision $\lambda$. Suppose the aim is to obtain sample size of each treatment arm in a three-arm studies in which mean and standard deviation of outcome associated with each arm are known. This is,
+
+```{r}
+if(!library(pacman, logical.return = T)) install.packages("pacman")
+pacman::p_load(tidyverse, magrittr)
+d<-
+tibble(
+  Agent = c("midazolam", "lidocaine", "placebo"),
+  Mean = c(3.2,4,4.8),
+  SE = c(2.9, 3.3,3.4),
+  n = c(57,52,50)
+)
+knitr::kable(d)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
