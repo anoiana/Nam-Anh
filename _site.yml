@@ -19,6 +19,8 @@ navbar:
       #  href: "010101.html"
       - text: "Network Meta Analysis"
         href: "010201.html"
+      - text: "Bayesian Sample Size Determination (normal sample)"
+        href: "010301.html"
 output: 
   distill::distill_article:
     css: styles.css
