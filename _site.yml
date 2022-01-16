@@ -15,12 +15,8 @@ navbar:
 ####====####====####====####====####====####====####====####====####====####====####
     - text: "Notes"
       menu:
-      #- text: "Bayesian Computational Approaches"
-      #  href: "010101.html"
-      - text: "Network Meta Analysis"
-        href: "010201.html"
-      - text: "Bayesian Sample Size Determination (normal sample)"
-        href: "010301.html"
+      - text: "Generate Sample with Rjags"
+        href: "generate-sample-with-rjags.html"
 output: 
   distill::distill_article:
     css: styles.css
