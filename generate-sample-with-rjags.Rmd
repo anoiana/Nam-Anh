@@ -1,5 +1,5 @@
 ---
-title: "Generate Samples with Rjags"
+title: "Generate Samples with `Rjags`"
 description: "This note summarizes methods to generate samples and calculate measures of interest through such generated samples."
 author:
   - name: Nam-Anh
