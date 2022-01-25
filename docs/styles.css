@@ -72,3 +72,10 @@ d-appendix {
   text-transform: uppercase;
   line-height: 12px;
 }
+
+/* make scrollbar for long math equations*/
+
+.MathJax_Display, .MJXc-display, .MathJax_SVG_Display {
+    overflow-x: auto;
+    overflow-y: hidden;
+}

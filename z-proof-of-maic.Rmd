@@ -25,6 +25,14 @@ if(!library(pacman, logical.return = TRUE)) install.packages("pacman")
 pacman::p_load(tidyverse, rjags, magrittr)
 ```
 
+```{css, echo=FALSE}
+.makebox{
+border: 2px solid #566573;
+border-radius: 5px; 
+margin-bottom: 15px;
+}
+```
+
 
 Let $\bf{p} = \tp{(p_1,p_2,\dots,p_n)}$ be propensity score and $\bf X = \tp{(\bf{x}_1,\bf{x}_2, \dots, \bf{x}_n)}$ baseline characteristics of subjects in IPD. Also, $\bf{\mu}$ denotes average vector of baseline characteristics found in SLD. We aim to estimate $\bf p$ such that $\tp{\bf{p}}\bf{X} = \tp{\bf{\mu}}$, i.e. we want to minimize *Kullback Leibler divergence* of $\bf p$ and empirical function with some constraints. Specifically, we want to minimize 
 
@@ -80,7 +88,7 @@ $$
 
 substitute \@ref(eq:eq4) to \@ref(eq:eq3)`, we obtain 
 
-::: { style="background-color: #F2D7D5;"}
+::: {.makebox}
 \begin{equation}
 p_i = \frac{\exp[\lambda(x_i - \mu)]}{\sum_{i=1}^n\exp[\lambda(x_i-\mu)]}
 (\#eq:eq5)

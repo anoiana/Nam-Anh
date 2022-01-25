@@ -1,0 +1,76 @@
+---
+title: "Statistical cost-effectiveness"
+author:
+  - name: Nam-Anh
+date: "`r Sys.Date()`"
+bibliography: citation.bib
+csl: citation.csl
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 3
+    pandoc_args: ["--number-sections"]
+    code_folding: hide
+editor_options: 
+  chunk_output_type: console
+fontfamily: Arial
+---
+
+\newcommand{\tp}[1]{{#1}^{\top}}
+\newcommand{\bf}[1]{\boldsymbol{#1}}
+
+
+```{r setup, include=FALSE}
+if(!library(pacman, logical.return = TRUE)) install.packages("pacman")
+pacman::p_load(tidyverse, rjags, magrittr)
+
+lb = function(...){
+     x = unlist(strsplit(as.character(rlang::expr(...)),"\\."))
+     word = switch(which(c("tab","fig","eq")%in% x[1]),"Table ","Figure ","Eq.")
+     paste0(word,"\\@ref(",x[1],":",x[2],")")
+}
+```
+
+# Mathematical background
+
+Let $t \in \mathcal{T}$ be a decision or intervention/treatment, and $o \in \mathcal{O}$ consequence or outcome. We also introduce the random quantity $\boldsymbol{\omega} \in \Omega$, so the outcome can be described by relationship $o = (\boldsymbol{\omega},t)$ which could be interpreted as the result of selecting treatment $t$ with a series of random quantities obtained in the future. 
+
+Since $\boldsymbol{\omega}$ is random component, we have the probability measure $p(\boldsymbol{\omega})$, i.e. $p: \Omega \rightarrow [0,1]$. Also, the value of each outcome is quantified by measure of utility $u: \mathcal{O} \rightarrow \mathbb{R}$. In general, the random component is nothing but distribution, i.e. $\boldsymbol{\omega} = (y,\boldsymbol{\theta})$ where $y \in \mathcal{Y}$ is future result of individual(s), and $\boldsymbol{\theta} \in \mathbb{\Theta}$ is a set of parameters. Having had sub-components of $\boldsymbol{\omega}$, the outcome can be rewritten as 
+
+$$
+\begin{aligned}
+&o = (y,\boldsymbol{\theta},t), \text{ implying that } \\
+&p(o) = u(y,\boldsymbol{\theta},t)
+\end{aligned}
+$$
+where 
+
+$$
+p(y,\boldsymbol{\theta}) = p(y|\boldsymbol{\theta})p(\boldsymbol{\theta}).
+$$
+
+For example, we shall consider 5 states of happiness denoted by $\{y_i\}_{i=1}^5$, each state has probability $\boldsymbol{\theta}_i^t, t = 0,1$. We temporarily assume that the degree of uncertainty of $\boldsymbol{\theta}^t_i$ equal zero. Thus, The preffered outcome is can be obtained in either of two ways
+
+1. directly, base on the probability of first state of each treatment, i.e. $\boldsymbol{\theta}^t_1$.
+2. indirectly, through other states. In fact, state $\{y_{s}\}_{s=2}^5$ is often defined as the utilities equivalent to a scenario in which perfect health is obtained with probability $\pi_s = u(y_s,t)$.
+
+Using the law of total probability we obtain the chance of preferred consequence $y_1$ as follows
+
+$$
+\begin{aligned}
+\mathbb{P}(y_1|\boldsymbol{\theta}^t) &= \boldsymbol{\theta}_1^t + \sum_{s=2}^5\pi_s\mathbb{P}(y_s|\boldsymbol{\theta}^t)
+\\&= \boldsymbol{\theta}_1^t+ \sum_{s=1}^5\pi_s\boldsymbol{\theta}_s^t
+\\&=\sum_{s=1}^5u(y_s,t)\boldsymbol{\theta}_s^t
+\\&= \mathbb{E}[u(Y,t)]
+\end{aligned}
+(\#eq:1)
+$$
+
+In practice, $\boldsymbol{\theta}^t$ always involves uncertainty, so we will need to consider $p(\boldsymbol{\theta}^t|\mathcal{D})$, where $\mathcal{D}$ is the background information. Also, we can generalize `r lb(eq.1)` as follows
+
+$$
+\mathcal{U}^t = \int_{\Theta}\int_{\mathcal{Y}} u(y,t)p(y|\boldsymbol{\theta}^t)p(\boldsymbol{\theta}^t|\mathcal{D})dyd\boldsymbol{\theta}^t
+$$
+
+
+

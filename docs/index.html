@@ -2123,6 +2123,13 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     text-transform: uppercase;
     line-height: 12px;
   }
+
+  /* make scrollbar for long math equations*/
+
+  .MathJax_Display, .MJXc-display, .MathJax_SVG_Display {
+      overflow-x: auto;
+      overflow-y: hidden;
+  }
   </style>
   <!--/radix_placeholder_site_in_header-->
 
@@ -2159,6 +2166,7 @@ Notes 1
 </button>
 <div class="nav-dropdown-content">
 <a href="z-generate-sample-with-rjags.html">Generate Sample with Rjags</a>
+<span class="nav-dropdown-header">Statistical cost-effectiveness</span>
 </div>
 </div>
 <div class="nav-dropdown">

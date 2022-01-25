@@ -17,14 +17,14 @@ navbar:
       menu:
       - text: "Generate Sample with Rjags"
         href: "z-generate-sample-with-rjags.html"
+      - text: "Statistical cost-effectiveness"
+#        href: "z-statistical-cost-effectiveness.html"
     - text: "Notes 2"
       menu:
       - text: "Proof of MAIC"
         href: "z-proof-of-maic.html"  
       - text: "Limit of sup and inf"
         href: "z-limit-of-sup-inf.html"
-        
-     
 output: 
   distill::distill_article:
     css: styles.css
