@@ -18,7 +18,7 @@ navbar:
       - text: "Generate Sample with Rjags"
         href: "z-generate-sample-with-rjags.html"
       - text: "Statistical cost-effectiveness"
-#        href: "z-statistical-cost-effectiveness.html"
+        href: "z-statistical-cost-effectiveness.html"
     - text: "Notes 2"
       menu:
       - text: "Proof of MAIC"

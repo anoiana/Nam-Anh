@@ -8,7 +8,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /*body font*/
 body {
-  font-family: "Arial";
+  font-family: "Times New Roman";
   color: #1f1f1f;
   font-size: 12pt;
 }
@@ -78,4 +78,11 @@ d-appendix {
 .MathJax_Display, .MJXc-display, .MathJax_SVG_Display {
     overflow-x: auto;
     overflow-y: hidden;
+}
+
+/*change fontsize for caption*/
+
+caption {
+  font-size: 12pt;
+  font-style: italic;
 }
