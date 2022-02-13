@@ -14,12 +14,22 @@ output:
     code_folding: hide
 editor_options: 
   chunk_output_type: console
-fontfamily: Arial
 ---
 
 ```{r setup, include=FALSE}
 if(!library(pacman, logical.return = TRUE)) install.packages("pacman")
-pacman::p_load(tidyverse, rjags, magrittr)
+pacman::p_load(tidyverse, rjags, magrittr, kableExtra)
+
+lb = function(...){
+     x = unlist(strsplit(as.character(rlang::expr(...)),"\\."))
+     word = switch(which(c("tab","fig","eq")%in% x[1]),"Table ","Figure ","Eq.")
+     paste0(word,"\\@ref(",x[1],":",x[2],")")
+}
+
+MyTable = function(x, cap = NULL, ...){
+     kableExtra::kbl(x, booktab = T, caption = cap,...)%>%
+          kable_styling(latex_options = "striped")
+}
 ```
 
 
@@ -27,17 +37,17 @@ pacman::p_load(tidyverse, rjags, magrittr)
 
 ## Generalized t distribution
 
-Suppose one wants to generate samples from generalized $t$ distribution whose density function is as follows
+Suppose we want to generate samples from generalized $t$ defined as follows
 
 \begin{equation}
 f(x) = \frac{c\sigma^{-1}}{\bigg[n+\Big(\frac{x-\theta}{\sigma}\Big)^2\bigg]^{0.5(n+1)}},
 \end{equation}
 
-one says $X \sim t(\theta,\sigma,n)$, where $\theta, \sigma$ and $n$ are location, scale parameter and degree of freedom.
+we say $X \sim t(\theta,\sigma,n)$, where $\theta, \sigma$ and $n$ are location, scale parameter and degree of freedom.
 
-To generate samples of $X$, one can use `rt` function in R to simulate from standard $t$ distribution and then transform such samples. one, however, now wants to simulate generalized $t$ distribution directly, which does not require an extra step of transformation. To this end, one employs `rjags` which is popular for obtaining samples from posterior distribution in Bayesian framework. 
+To generate samples of $X$, we could use `rt` function in R to simulate from standard $t$ distribution and then transform such samples. We, however, now wants to simulate generalized $t$ distribution directly, which does not require an extra step of transformation. To this end, we employ `rjags` which is popular for obtaining samples from posterior distribution in Bayesian framework. 
 
-It is worth noting that the generalized $t$ distribution function `dt` in `rjags` requires *mean* and *precision* rather than location and scale as its parameters. For example, one simulates samples from a generalized $t$ distribution whose mean and variance are 10 and 0.5, one shall need to plug in values of 10 and 1/0.5 as its first two parameters (third parameter is degree of freedom which equals 4). 
+It is worth noting that the generalized $t$ distribution function `dt` in `rjags` requires *mean* and *precision* rather than location and scale as its parameters. For example, we simulate samples from a generalized $t$ distribution whose mean and variance are 10 and 0.5, we shall need to plug in values of 10 and 1/0.5 as its first two parameters (third parameter is degree of freedom which equals 4). 
 
 ```{r,  message=FALSE, warning=FALSE}
 model_string <- textConnection(
@@ -64,9 +74,9 @@ points(x,wiqid::dt3(x,10,sqrt(0.5),4), col = "red", type = "l", lty = 2)
 
 ## Transformation
 
-One sometimes requires simulating samples from a transformed random variable, i.e one generates $Y = (2Z+1)^3$, where $Z \sim \mathcal{N}(0,1)$ and calculate $\mathbb{E}(Y)$ and $\mathbb{P}(Y \ge10)$. Such measures can be obtained analytically, more specifically $\mathbb{E}(Y) = 13$ and $\mathbb{P}(Y \ge 10) = 0.28$. @fouley2013
+We sometimes require simulating samples from a transformed random variable, i.e we generate $Y = (2Z+1)^3$, where $Z \sim \mathcal{N}(0,1)$ and calculate $\mathbb{E}(Y)$ and $\mathbb{P}(Y \ge10)$. Such measures can be obtained analytically, more specifically $\mathbb{E}(Y) = 13$ and $\mathbb{P}(Y \ge 10) = 0.28$. @fouley2013
 
-One now uses `rjags` to simulate samples 
+We now use `rjags` to simulate samples 
 
 ```{r,  message=FALSE, warning=FALSE}
 model_string <- textConnection(
@@ -88,17 +98,17 @@ exp_val = mean(samples[[1]][,2])
 prob = mean(samples[[1]][,1])
 ```
 
-and one obtained $\mathbb{E}(Y) =$ `r exp_val` and $\mathbb{P}(Y\ge 10) =$ `r prob`.
+and we obtained $\mathbb{E}(Y) =$ `r exp_val` and $\mathbb{P}(Y\ge 10) =$ `r prob`.
 
 ## A more complicated problem
 
-Suppose one is required calculating how many items can be fixed with \$1000 given the cost to repair an item follows gamma distribution with mean $\mu = 100$ and standard deviation $\sigma = 50$, i.e
+Suppose we are required calculating how many items can be fixed with \$1000 given the cost to repair an item follows gamma distribution with mean $\mu = 100$ and standard deviation $\sigma = 50$, i.e
 
 \begin{equation}
 X \sim \mathcal{G}am(4, 0.04)
 \end{equation}
 
-one implements as follows
+we implement as follows
 
 ```{r,  message=FALSE, warning=FALSE}
 model_string <- textConnection(
@@ -129,7 +139,7 @@ Mean of `item` is `r item` indicates there are about `r ceiling(item)` items whi
 
 # Prediction with unknown parameters
 
-for the sake of ease, one shall consider a mixed distribution as follows
+for the sake of ease, we shall consider a mixed distribution as follows
 
 \begin{equation}
 X = K\mathcal{N}(0,1) + (1-K)\mathcal{N}(5,1),
@@ -142,7 +152,7 @@ f(x) = \int f(y|k)f(k)dk,
 (\#eq:1)
 \end{equation}
 
-which is predictive prior distribution, where $k$ was defined above, and $Y|K=1 \sim \mathcal{N}(0,1)$ while $Y|K=0 \sim \mathcal{N}(5,1)$. To simulate samples of above distribution, one employs Bernoulli and Normal distributions as follows
+which is predictive prior distribution, where $k$ was defined above, and $Y|K=1 \sim \mathcal{N}(0,1)$ while $Y|K=0 \sim \mathcal{N}(5,1)$. To simulate samples of above distribution, we employ Bernoulli and Normal distributions as follows
 
 ```{r, eval = FALSE}
 model_string <- textConnection(
@@ -165,7 +175,7 @@ samples <- coda.samples(model,
 samples[[1]][,2] %>% hist()
 ```
 
-\@ref(eq:1) can be expended on distribution of $K$ that is known as prior distribution. For example, one wants to estimate, of 20 new students, how many ones will join painting club given the number of people joining the painting club follows Binomial distribution whose second paprameter follows Beta distribution. i.e
+\@ref(eq:1) can be expended on distribution of $K$ that is known as prior distribution. For example, we want to estimate, of 20 new students, how many ones will join painting club given the number of people joining the painting club follows Binomial distribution whose the second parameter follows Beta distribution. i.e
 
 \begin{equation}
 X \sim \mathcal{B}in(20,\pi), \quad \pi \sim \mathcal{B}eta(3,2).
@@ -191,18 +201,95 @@ samples <- coda.samples(model,
 summary(samples)
 ```
 
-hence, `r ceiling(mean(samples[[1]][,1]))` of 20 new students will join the club. If one wants to calculate probability that there is at least 2 students who will join the club, the result is
+hence, `r ceiling(mean(samples[[1]][,1]))` of 20 new students will join the club. If we'd like to calculate probability that there is at least 2 students who will join the club, the result is
 
 ```{r}
 mean(samples[[1]][,1]>=5)
 ```
 
+# Running MCMC using `rjags`
+
+We shall consider the following setup of a linear model:
+
+$$
+\begin{aligned}
+y_i &\sim \mathcal{N}(\mu_i,\sigma^2), \text{ and} \\
+\mu_i &= \alpha+\beta X_i, \text{ where } i= 1,\dots,N \\
+\alpha,\beta &\sim \mathcal{N}(0,h^2) \\
+\ln{\sigma} &\sim \mathcal{U}nif(-k,k) \\
+\text{we choose } h &= 100, \text{ and } k = 5000
+\end{aligned}
+$$
+
+(this example refers to @baio2013.)
+
+We shall generate fake data for the model with $\alpha = 150$ and $\beta=-4$. 
+
+```{r tab1}
+
+model_string <- textConnection(
+  "model{
+  # likelihood
+  for(i in 1:N){
+  y[i] ~ dnorm(mu[i],tau)
+  mu[i] <- alpha + beta*x[i]
+  }
+  
+  # redundant parameter 
+  lsigma ~ dunif(-k,k)
+  tau <- pow(exp(lsigma),-2)
+  #sigma = pow(tau,-1)
+  
+  # hyperparameters
+  alpha ~ dnorm(142,prec)
+  beta ~ dnorm(0,prec)
+  prec <- pow(h,-2)
+  }")
 
 
+# data setup
+set.seed(12345)
+x=rnorm(100,50,9)
+error=rnorm(100,0,16)
+y=150-(4*x)+error
 
 
+dat = list("N" = length(y), h = 100, k = 5000, y =y, x = x)
+params = c("alpha","beta")
+inits = function(){list(alpha=rnorm(1),beta=rnorm(1),lsigma=rnorm(1))}
 
 
+model <- jags.model(model_string, data =  dat, inits = inits, n.chains = 2, quiet = T)
+update(model, 10000, progress.bar="none")
+samples <- coda.samples(model,
+                        variable.names=params,
+                        n.iter=4000, progress.bar="none")
+
+samps = purrr::lift_dl(rbind)(samples)
+
+apply(samps,2,HDInterval::hdi, credMass = 0.95)%>%
+     purrr::compose(~rownames_to_column(.,"params"),as.data.frame,t)()%>%
+     mutate(mean = apply(samps,2,mean), .before = "lower")|>
+     mutate(params = recode(params, alpha = "$\\alpha$", beta = '$\\beta$'))|>
+     MyTable("95% highest density intervals.")
+```
+
+`r lb(tab.tab1)` shows the 95% highest density intervals of two parameters $\alpha$ and $\beta$.  
+
+Another deserved consideration is convergence diagnostic. To archive this, the number of chains `n.chains` should be greater than 1, we chose `n.chains` = 2 in above example.  
+
+If we fitted the linear model by the frequentist approach, we would have 
+
+```{r tab2}
+out = lm(y~x)|>
+     broom::tidy()
+tibble(
+     params = c("$\\alpha$", "$\\beta$"),
+     mean = c(out$estimate),
+     lower = c(out$estimate-qnorm(0.975)*out$std.error),
+     upper = c(out$estimate+qnorm(0.975)*out$std.error))|>
+     MyTable("95% confidence interval.")
+```
 
 
 

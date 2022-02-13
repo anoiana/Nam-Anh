@@ -1,14 +1,14 @@
 
 /*Header fonts*/
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Playfair Display";
+  font-family: "Sans-Serif";
   letter-spacing: 2px;  
   line-height: 2rem; /* increases, so wrapping headers don't overlap */ 
 }
 
 /*body font*/
 body {
-  font-family: "Times New Roman";
+  font-family: "Sans-Serif";
   color: #1f1f1f;
   font-size: 12pt;
 }
@@ -17,8 +17,8 @@ body {
 
 .distill-site-header{ 
   padding: 7px 0px;
-  font-size: 15px;
-  font-family: "Playfair Display";
+  font-size: 11pt;
+  font-family: "Sans-Serif";
   letter-spacing: 2px;
   /*text-transform: uppercase;*/
   
@@ -67,7 +67,7 @@ d-appendix {
   background-color: #1f1f1f;
   margin-top: 0px;
   padding: 50px 20px;
-  font-size: 13px;
+  font-size: 11pt;
   letter-spacing: 1px;
   text-transform: uppercase;
   line-height: 12px;
@@ -78,11 +78,15 @@ d-appendix {
 .MathJax_Display, .MJXc-display, .MathJax_SVG_Display {
     overflow-x: auto;
     overflow-y: hidden;
+    font-size: 12pt !important;
 }
+
+
 
 /*change fontsize for caption*/
 
 caption {
-  font-size: 12pt;
+  font-size: 11pt;
   font-style: italic;
+  font-family: "Sans-Serif";
 }

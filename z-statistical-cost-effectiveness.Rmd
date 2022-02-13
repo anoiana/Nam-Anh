@@ -11,8 +11,6 @@ output:
     toc_depth: 3
     pandoc_args: ["--number-sections"]
     code_folding: hide
-editor_options: 
-  chunk_output_type: console
 ---
 
 \newcommand{\bf}[1]{\boldsymbol{#1}}
@@ -23,7 +21,7 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE)
 
 if(!library(pacman, logical.return = TRUE)) install.packages("pacman")
-pacman::p_load(tidyverse, rjags, magrittr, xaringan, kableExtra)
+pacman::p_load(tidyverse, rjags, magrittr, kableExtra, distill, knitr)
 
 lb = function(...){
      x = unlist(strsplit(as.character(rlang::expr(...)),"\\."))
@@ -63,7 +61,7 @@ $$
 p(y,\boldsymbol{\theta}) = p(y|\boldsymbol{\theta})p(\boldsymbol{\theta}).
 $$
 
-For example, we shall consider 5 states of happiness denoted by $\{y_i\}_{i=1}^5$, each state has probability $\boldsymbol{\theta}_i^t, t = 0,1$. We temporarily assume that the degree of uncertainty of $\boldsymbol{\theta}^t_i$ equal zero. Thus, The preffered outcome is can be obtained in either of two ways
+For example, we shall consider 5 states of happiness denoted by $\{y_i\}_{i=1}^5$, each state has probability $\boldsymbol{\theta}_i^t, t = 0,1$. We temporarily assume that the degree of uncertainty of $\boldsymbol{\theta}^t_i$ equal zero. Thus, The preferred outcome is can be obtained in either of two ways
 
 1. directly, base on the probability of first state of each treatment, i.e. $\boldsymbol{\theta}^t_1$.
 2. indirectly, through other states. In fact, state $\{y_{s}\}_{s=2}^5$ is often defined as the utilities equivalent to a scenario in which perfect health is obtained with probability $\pi_s = u(y_s,t)$.
@@ -91,9 +89,10 @@ $$
 Also, we can generalize `r lb(eq.1)` as follows
 
 $$
-\mathcal{U}^t = \int_{\Theta}\int_{\mathcal{Y}} u(y,t)p(y|\boldsymbol{\theta}^t)p(\boldsymbol{\theta}^t|\mathcal{D})dyd\boldsymbol{\theta}^t
+\mathcal{U}^t = \int_{\Theta}\int_{\mathcal{Y}} u(y,t)p(y|\boldsymbol{\theta}^t)p(\boldsymbol{\theta}^t|\mathcal{D})d\color{red}{y}d\boldsymbol{\color{blue}{\theta}}^t
 (\#eq:2)
 $$
+
 
 # The setup of decision-making in health economics
 
@@ -103,7 +102,7 @@ Let $t \in \mathcal{T}:= \{0,1\}$ be a set of interventions and $y_i$ outcome of
 
 For example, suppose that $\pi_1$ and $\pi_0$ are probabilities that a patient is treated by active treatment and placebo, respectively, and $\pi_1 = \pi_0\rho$ where $\rho$ is the measure of difference, i.e absolute or relative difference. Conditionally on $\pi_t$, $\gamma$ is the probability of needing ambulatory care and $1-\gamma$ is the probability a patient requires hospital admission. 
 
-We take the sample size of $N =1000$ and the number of patients experiencing side effect is $SE_t \sim \mathcal{Bin}(\pi_t,N)$; the number of patients requiring ambulatory care is $A_t \sim \mathcal{Bin}(\gamma,SE_t)$, and hence the number of patients with side effects requring hospital admission is $H_t = SE_t-A_t$. Also, $c_t^{drug}$ is a fixed cost value and $c^{hosp}$ and $c^{amb}$ are costs of ambulatory care and hospital admission, such two costs are independent. We now modify the parameters of interest as $\bf{\theta} = (\bf{\theta}_0,\bf{\theta}_1)$ where $\bf{\theta}_0 = (\pi_0,\gamma,c^{amb},c^{hosp})$ and $\bf{\theta}_1 = (\pi_1,\gamma,c^{amb},c^{hosp})$. Therefore, condition on $\bf\theta$ the observable outcome is $Y = (SE_t,A_t,H_t)$. 
+We take the sample size of $N =1000$ and the number of patients experiencing side effect is $SE_t \sim \mathcal{Bin}(\pi_t,N)$; the number of patients requiring ambulatory care is $A_t \sim \mathcal{Bin}(\gamma,SE_t)$, and hence the number of patients with side effects requiring hospital admission is $H_t = SE_t-A_t$. Also, $c_t^{drug}$ is a fixed cost value and $c^{hosp}$ and $c^{amb}$ are costs of ambulatory care and hospital admission, such two costs are independent. We now modify the parameters of interest as $\bf{\theta} = (\bf{\theta}_0,\bf{\theta}_1)$ where $\bf{\theta}_0 = (\pi_0,\gamma,c^{amb},c^{hosp})$ and $\bf{\theta}_1 = (\pi_1,\gamma,c^{amb},c^{hosp})$. Therefore, condition on $\bf\theta$ the observable outcome is $Y = (SE_t,A_t,H_t)$. 
 
 ## Decision process
 
@@ -174,12 +173,14 @@ Also, we will need to define an appropriate measures of the cost and effectivene
 
 $$
 c_t := c_t^{drug}(N-SE_t)+ (c_t^{drug}+c^{amb})A_t+(c_t^{drug}+c^{hosp})H_t.
+(\#eq:5minus2)
 $$
 
 As for the measure of effectiveness, we count the number of patients who do not experience side effects
 
 $$
 e_t:= N-SE_t.
+(\#eq:5minus1)
 $$
 
 # The value of information (VoI)
@@ -201,11 +202,11 @@ MyTable(tab1, "current information.")
 and two measures *expected value with perfect information (EVwPI)* and *expected value without perfect information (EVwoPI)*, which are defined as follows
 
 $$
-EVwPI = \max\mathbb{E}(S);
+EVwPI = \mathbb{E}[\max(S)];
 (\#eq:5)
 $$
 $$
-EVwoPI = \mathbb{E}[\max(S)].
+EVwoPI = \max\mathbb{E}(S).
 (\#eq:6)
 $$
 
@@ -222,21 +223,243 @@ so $\max\mathbb{E}(S)=$ `r max_exp<-max(exp_s);max_exp`. Then we calculate $\mat
 ```{r}
 exp_max<-
 as.matrix(tab1[4,-1])%*%sapply(tab1[-4,-1], max)%>% c()
+exp_max
 ```
 
-Finally, the so-called the *expected value of perfect information (EVPI)* is the difference between EVwPI and EVwoPI, i.e. $EVwPI - EVwoPI =$ `r exp_max -max_exp`.
+Finally, the so-called the *expected value of perfect information (EVPI)* is the difference between EVwPI and EVwoPI, i.e. $EVwoPI - EVwPI =$ `r exp_max -max_exp`.
 
-The rationale of EVPI is very much similar to these calculations.
+The rationale behind EVPI is very much similar to these calculations.
 
 ## Probabilistic sensitivity analysis (PSA)
 
 We now suppose the prior distribution $p(\bf{\theta}|\mathcal{D})$ is close to one-point distribution at the true value. Hence, the expected utility is 
 
 $$
-U(\theta_t) := \mathbb{E}[u(Y,t)|\mathcal{D}] = \int u(y,t)p(y|\theta_t)dy.
+U(\theta_t) := \mathbb{E}[u(Y,t)|\mathcal{D}] = \int u(y,t)p(y|\theta_t)d\color{red}{y}.
 $$
 
-Consequently 
+and $U^*(\bf{\theta}):= \max_t U(\theta_t)$. Thus, we would choose $t=1$ as the *incremental benefit* $IB(\bf{\theta}) > 0$ where
+
+$$
+IB(\bf{\theta}):= U(\theta_1) - U(\theta_0),
+$$
+
+and as previous expansion, we are able to obtain $U^*(\bf{\theta}) = \max\{IB(\bf{\theta}),0\}+U(\theta_0)$. In practice, the certainty of $\bf \theta$ is not able to happen, so the value of information is often used rather than PSA.
+
+## The value of information (VoI)
+
+VoI will be obtained by two utilities term, namely $U^*(\bf{\theta})$ and $\mathcal{U}^*$ relative to the *expectation value with perfect information (EVwPI)* and the *expectation value without perfect information (EVwoPI)*. Indeed, 
+
+$$
+VI(\bf{\theta}) := U^*(\bf{\theta}) - \mathcal{U}^*,
+$$
+
+which is a function of a random component $\bf{\theta}$, and hence we are interested in the expectation of $VI$ instead of itself, i.e the *expected value of perfect information (EVPI)*
+
+$$
+EVPI := \mathbb{E}[VI(\bf{\theta})] = \mathbb{E}_{\bf{\theta}|\mathcal{}D}[U^*(\bf{\theta})] -\mathbb{E}_{\bf{\theta}|\mathcal{D}}(\mathcal{U}^*) = \mathcal{V}^*-\mathcal{U}^*,
+$$
+
+we can consider $\mathcal{V}^*$ as EVwPI or "expectation of maximum", and $\mathcal{U}^*$ EVwoPI or "maximum of expectation".
+
+EVPI can also be described through the *opportunity loss (OL)*. Let $\tau =\arg\max_t(\mathcal{U}_t)$, we have 
+
+$$
+OL(\bf{\theta}) := U^*(\bf{\theta}) - U(\theta_{\tau})
+$$
+
+and then 
+
+$$
+\mathbb{E}[OL(\bf{\theta})] = \mathbb{E}_{\bf{\theta}|\mathcal{D}}[U^*(\bf{\theta})] - \mathbb{E}_{\theta_{\tau}|\mathcal{D}}[U(\theta_{\tau})] = \mathcal{V}^*-\mathcal{U}^*
+$$
+
+note that $\mathbb{E}_{\theta_{\tau}|\mathcal{D}}[U(\theta_{\tau})]$ is equivalent to $\max_{\tau}\mathbb{E}_{\bf{\theta}|\mathcal{D}}[U(\bf{\theta})]$
+
+## The value of partial information
+
+# Examples
+
+For the sake of illustration, we shall consider the following example. Let $t \in \{0,1\}$ be treatment $t$, $\pi_t$ the probability of an exposure under treatment $t$. The effect size of interest is usually ratio or difference between probabilities $\pi_0$ and $\pi_1$, so we assume $\pi_1 = \pi_0\rho$ where $\rho = \pi_1/\pi_0$ is the relative difference between two treatments. Conditioning on $\pi_t$, $\gamma$ indicates the probability of needing ambulatory care. Therefore, the probability that an exposure needs hospital admission is $(1-\gamma)$. Furthermore, let $N= 1000$, so the total number of patients having exposure is $SE_t \sim \mathcal{B}in(N,\pi_t)$ and $A_t \sim \mathcal{B}in(\gamma,SE_t)$ is the number of exposures requiring ambulatory care. As a result, $H_t=SE_t-A_t$ is the total number of exposures requiring hospital admission. 
+
+As for the costs, all patients are subjected to the cost $c^{drug}_t$. Additionally, those exposed patients are required paying extra cost, namely $c^{amb}$ for ambulatory care and $c^{hosp}$ for hospital admission. Hence, we consider parameter $\bf{\theta} = (\bf{\theta}_0,\bf{\theta}_1)$ where $\bf{\theta}_t = (\pi_t,\gamma,c^{amb},c^{hosp})$ with $t=0,1$. 
+
+We now summary the model as follows:
+
+Suppose we have observed `N.studies` studies, each study reported the number of exposures `se` out of $n$ patients and `amb` patients exposed requires only ambulatory care. This information would be used to update $\pi_0$ and $\gamma$. Thus, the prior information in this case can be expressed as $Y = (se_0,amb_0)$. $t=0$ is the current treatment being used.
+
+1. Based on the prior information we can can set $se_0 \sim \mathcal{B}in(\pi_0,n)$ and $amb_0 \sim \mathcal{B}in(\gamma,se_0)$;
+2. Also, 
+   i. $\pi_1 := \pi_0\rho$, and 
+   ii. $\pi_0 \sim \mathcal{B}eta(a_{\pi_0},b_{\pi_0})$, $\rho \sim \mathcal{N}(m_{\rho},\tau_{\rho})$ and $\gamma \sim \mathcal{B}eta(a_{\gamma},b_{\gamma})$. 
+   iii. For the costs, we set $c^{amb} \sim \log\mathcal{N}(m_{amb},\tau_{amb})$ and $c^{hosp} \sim \log\mathcal{N}(m_{hosp},\tau_{hosp})$.
+3. For prediction, we estimate the number of exposures under treatment $t =1$, i.e $SE_1 \sim \mathcal{B}in(\pi_1,N)$, and the number of patients exposed requiring ambulatory $A_1 \sim \mathcal{B}in(\gamma,SE_1)$.
+4. Besides, we set $c_0^{drug} = 110$ and $c_1^{drug} = 520$.
+
+Obviously, step (1) is likelihood that we can observed from data; step (2) is prior information obtained from previous studies; step (4) is predictive distribution of interest; and step (4) is pre-defined values. 
+
+In step 1, we shall generate fake data as follows
+
+```{r tab2}
+set.seed(1234)
+## Generates data for the number of side effects under t=0
+N.studies <- 5 # the number of accessible studies 
+sample.size <- 32 # potential sample size in each study 
+prop.pi <- .24 # TRUE VALUE of the proportion of exposure
+n <- rpois(N.studies,sample.size) # we simulate sample size for N.studies studies. 
+se <- rbinom(N.studies,n,prop.pi) # simulate the number of exposure for each study 
+
+## Generates the data for the number of patients with exposure requiring ambulatory care
+prop.gamma <- .619 # TRUE VALUE of the proportion of patients exposed requiring ambulatory
+amb <- rbinom(N.studies,se,prop.gamma) # simulate the number of ambulatory 
+
+dat<- tibble(
+          Study = 1:5,
+          n = n,
+          exposure = se,
+          ambulatory = amb)
+
+MyTable(dat, "Observed data")
+```
+
+In step 2, we shall set hyper-parameters for prior distributions. There being 5 prior distributions, hyper-parameters should be chosen such that such the available prior information at hand can be delineated adequately through hyper-parameters. Thus,
+
+- *Distribution of $\pi_0$*: describes the proportion of exposure and follows $\mathcal{B}eta$ distribution. Thus, such hyper-parameters are used to warrant uncertainties of parameters. for illustration, we select mean $m_{\pi_0} = 0.5$ and standard deviation $s_{\pi_0} = \sqrt{0.125}$ for the $\mathcal{B}eta$ distribution. 
+- *Distribution of $\gamma$*:  delineates the probability that patients exposed requires ambulatory .Again, we set $\gamma$ to follow $\mathcal{B}eta$ distribution with $m_{\gamma} = 0.5$ and $s_{\gamma} = \sqrt{0.125}$
+- *Distribution of $\rho$*: delineates relative difference between two groups, and set $\rho \sim \mathcal{N}(0.8,0.2^2)$.
+
+We shall consider prior distributions in step (2.iii), i.e. distribution costs
+
+- Both costs for ambulatory  and hospital follow log-normal with mean and standard deviation $(120,20)$ and $(5500,980)$, respectively.
+- Also, we need to define functions that convert prior metrics to distribution's parameters. More specifically, we obtain parameters for Beta and log-normal distribution. Thus
+
+```{r}
+betaPar <- function(m,s){
+a <- m*((m*(1-m)/s^2)-1)
+b <- (1-m)*((m*(1-m)/s^2)-1)
+list(a=a,b=b)
+}
+
+lognPar <- function(m,s) {
+s2 <- s^2
+mulog <- log(m)-0.5*log(1+s2/m^2)
+s2log <- log(1+(s2/m^2))
+sigmalog <- sqrt(s2log)
+list(mulog=mulog,sigmalog=sigmalog)
+}
+```
+
+Then, we utilize above functions to obtain hyper-parameters as follows abut
+
+```{r}
+## Computes the hyper-parameters for the informative prior distributions 
+m.pi <- .5 
+s.pi <- sqrt(.125)
+a.pi <- betaPar(m.pi,s.pi)$a
+b.pi <- betaPar(m.pi,s.pi)$b
+
+m.gamma <- .5
+s.gamma <- sqrt(.125)
+a.gamma <- betaPar(m.gamma,s.gamma)$a
+b.gamma <- betaPar(m.gamma,s.gamma)$b
+
+m.rho <- 0.8
+s.rho <- 0.2
+tau.rho <- 1/s.rho^2
+
+mu.amb <- 120
+sd.amb <- 20
+m.amb <- lognPar(mu.amb,sd.amb)$mulog
+s.amb <- lognPar(mu.amb,sd.amb)$sigmalog
+tau.amb <- 1/s.amb^2
+
+mu.hosp <- 5500
+sd.hosp <- 980
+m.hosp <- lognPar(mu.hosp,sd.hosp)$mulog
+s.hosp <- lognPar(mu.hosp,sd.hosp)$sigmalog
+tau.hosp <- 1/s.hosp^2
+```
+
+Finally, in step (3) and (4), we need to set population size that we want to predict and the cost of drug in each group.
+
+```{r}
+N = 1000
+c.drug <- c(110,520)
+```
+
+We now define the model and run Bayesian 
+
+```{r}
+model_string <- textConnection(
+  "model{
+  
+  #likelihood
+  for(i in 1:N.studies){
+  se[i] ~ dbin(pi[1],n[i])
+  amb[i] ~ dbin(gamma,se[i])
+  }
+  
+  # prior
+  pi[1] ~ dbeta(a.pi,b.pi)
+  pi[2]<- pi[1]*rho
+  
+  rho ~ dnorm(m.rho, tau.rho)
+  gamma ~ dbeta(a.gamma,b.gamma)
+  c.amb ~ dlnorm(m.amb,tau.amb)
+  c.hosp ~ dlnorm(m.hosp,tau.hosp)
+  
+  # Predictive distributions on the clinical outcomes
+  for(i in 1:2){
+  SE[i] ~ dbin(pi[i],N)
+  A[i] ~ dbin(gamma,SE[i])
+  H[i] <- SE[i] - A[i]
+  }
+  }")
+
+
+# data setup
+dat = list("a.pi" = a.pi,"b.pi" = b.pi,"a.gamma" = a.gamma,"b.gamma" = b.gamma,
+           "m.amb" = m.amb,"tau.amb" = tau.amb,
+           "m.hosp" = m.hosp,"tau.hosp" = tau.hosp, "m.rho" = m.rho,
+           "tau.rho" = tau.rho,"se" = se,"amb" = amb,
+           "N.studies" = N.studies, "n" = n, N = N)
+
+# initial stochastic variables
+inits <- function(){							
+	SE=rbinom(2,N,.2)
+	rho=runif(1)
+
+	list("pi"=c(runif(1),NA),gamma=runif(1),c.amb=rlnorm(1),
+	c.hosp=rlnorm(1),rho = rho,SE=SE,A=rbinom(2,SE,.2)
+	)
+}
+
+# fitting model and burn-in 10000 iterations
+model <- jags.model(model_string, data =  dat, inits = inits(), n.chains = 2)
+update(model, 10000, progress.bar="none")
+
+# parameters of interest
+params <- c("pi","gamma","c.amb","c.hosp","rho","SE","A","H")
+# get samples
+samples <- coda.samples(model,
+                        variable.names=params,
+                        n.iter=500, progress.bar="none")
+```
+
+
+Cost-effectiveness analysis
+
+cost anf effectiveness is calculated using `r lb(eq.5minus1)` and `r lb(eq.5minus2)`
+
+```{r, eval=FALSE}
+amb = lift_dl(rbind)(samples)
+ef = N - amb[,c("A[1]","A[2]")]
+cost = 
+```
+
+
+
+
 
 
 

@@ -13,7 +13,6 @@ output:
     code_folding: hide
 editor_options: 
   chunk_output_type: console
-fontfamily: Arial
 ---
 
 \newcommand{\tp}[1]{{#1}^{\top}}
