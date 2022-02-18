@@ -449,13 +449,21 @@ samples <- coda.samples(model,
 
 Cost-effectiveness analysis
 
-cost anf effectiveness is calculated using `r lb(eq.5minus1)` and `r lb(eq.5minus2)`
+cost and effectiveness is calculated using `r lb(eq.5minus1)` and `r lb(eq.5minus2)`.  Here we shall address the cost effectiveness by two manners, using function `bcea` of the package `BCEA` and coding manually. Then, we compare both results to ensure the later result aligns with the former. 
 
 ```{r, eval=FALSE}
 amb = lift_dl(rbind)(samples)
 ef = N - amb[,c("A[1]","A[2]")]
-cost = 
+cost = sapply(1:2, \(i){
+     c.drug[i]*ef[,i]+(c.drug[i]+amb[,'c.amb'])*amb[,i]+(c.drug[i]+amb[,'c.hosp'])*amb[,i+2]
+})
+
+library(BCEA)
+treats <- c("Old Chemotherapy","New Chemotherapy")
+m <- bcea(e=ef,c=cost,ref=2,interventions=treats,Kmax=50000)
+summary(m)
 ```
+
 
 
 

@@ -3,7 +3,7 @@ title: "Generate Samples with `Rjags`"
 description: "This note summarizes methods to generate samples and calculate measures of interest through such generated samples."
 author:
   - name: Nam-Anh
-date: "2022-02-12"
+date: "2022-02-17"
 bibliography: citation.bib
 csl: citation.csl
 output:
@@ -105,7 +105,7 @@ We now use `rjags` to simulate samples
 </div>
 
 
-and we obtained $\mathbb{E}(Y) =$ 13.2798829 and $\mathbb{P}(Y\ge 10) =$ 0.2825.
+and we obtained $\mathbb{E}(Y) =$ 13.1189579 and $\mathbb{P}(Y\ge 10) =$ 0.2935.
 
 ## A more complicated problem
 
@@ -149,7 +149,7 @@ we implement as follows
 </div>
 
 
-Mean of `item` is 9.6224 indicates there are about 10 items which can be repaired, Mean of `check` equals 1 indicates $n=20$ is sufficient. 
+Mean of `item` is 9.6375 indicates there are about 10 items which can be repaired, Mean of `check` equals 1 indicates $n=20$ is sufficient. 
 
 # Prediction with unknown parameters
 
@@ -237,7 +237,7 @@ Sample size per chain = 10000
    plus standard error of the mean:
 
           Mean             SD       Naive SE Time-series SE 
-       4.58930        2.86982        0.02870        0.02724 
+       4.57440        2.87418        0.02874        0.02874 
 
 2. Quantiles for each variable:
 
@@ -259,7 +259,7 @@ hence, 5 of 20 new students will join the club. If we'd like to calculate probab
 </details>
 
 ```
-[1] 0.4612
+[1] 0.4607
 ```
 
 </div>
@@ -346,15 +346,15 @@ We shall generate fake data for the model with $\alpha = 150$ and $\beta=-4$.
 <tbody>
   <tr>
    <td style="text-align:left;"> $\alpha$ </td>
-   <td style="text-align:right;"> 142.447553 </td>
-   <td style="text-align:right;"> 125.216342 </td>
-   <td style="text-align:right;"> 159.935246 </td>
+   <td style="text-align:right;"> 142.511306 </td>
+   <td style="text-align:right;"> 126.319743 </td>
+   <td style="text-align:right;"> 157.367373 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> $\beta$ </td>
-   <td style="text-align:right;"> -3.840994 </td>
-   <td style="text-align:right;"> -4.182985 </td>
-   <td style="text-align:right;"> -3.530533 </td>
+   <td style="text-align:right;"> -3.842339 </td>
+   <td style="text-align:right;"> -4.121486 </td>
+   <td style="text-align:right;"> -3.535975 </td>
   </tr>
 </tbody>
 </table>

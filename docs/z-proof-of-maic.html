@@ -87,7 +87,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>ANDOHA: Statistical cost-effectiveness</title>
+  <title>ANDOHA: The Proof of MAIC</title>
 
 
   <link rel="icon" type="image/png" href="images/logo.png"/>
@@ -98,21 +98,21 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <meta name="article:author" content="Nam-Anh"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="ANDOHA: Statistical cost-effectiveness"/>
+  <meta property="og:title" content="ANDOHA: The Proof of MAIC"/>
   <meta property="og:type" content="article"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="ANDOHA"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="ANDOHA: Statistical cost-effectiveness"/>
+  <meta property="twitter:title" content="ANDOHA: The Proof of MAIC"/>
 
   <!--/radix_placeholder_meta_tags-->
   
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","date","bibliography","csl","output"]}},"value":[{"type":"character","attributes":{},"value":["Statistical cost-effectiveness"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Nam-Anh"]}]}]},{"type":"character","attributes":{},"value":["2022-02-17"]},{"type":"character","attributes":{},"value":["citation.bib"]},{"type":"character","attributes":{},"value":["citation.csl"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth","pandoc_args","code_folding"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]},{"type":"character","attributes":{},"value":["--number-sections"]},{"type":"character","attributes":{},"value":["hide"]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","date","bibliography","csl","output","editor_options"]}},"value":[{"type":"character","attributes":{},"value":["The Proof of MAIC"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Nam-Anh"]}]}]},{"type":"character","attributes":{},"value":["2022-02-17"]},{"type":"character","attributes":{},"value":["citation.bib"]},{"type":"character","attributes":{},"value":["citation.csl"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth","pandoc_args","code_folding"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]},{"type":"character","attributes":{},"value":["--number-sections"]},{"type":"character","attributes":{},"value":["hide"]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["chunk_output_type"]}},"value":[{"type":"character","attributes":{},"value":["console"]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2041,8 +2041,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
-  <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
-  <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2157,7 +2155,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Statistical cost-effectiveness","authors":[{"author":"Nam-Anh","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-02-17T00:00:00.000-05:00","citationText":"Nam-Anh, 2022"}
+{"title":"The Proof of MAIC","authors":[{"author":"Nam-Anh","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-02-17T00:00:00.000-05:00","citationText":"Nam-Anh, 2022"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2204,7 +2202,7 @@ Notes 2
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Statistical cost-effectiveness</h1>
+<h1>The Proof of MAIC</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
 
@@ -2217,28 +2215,6 @@ Notes 2
 </div>
 
 <div class="d-article">
-<div class="d-contents d-contents-float">
-<nav class="l-text toc figcaption" id="TOC">
-<h3>Contents</h3>
-<ul>
-<li><a href="#mathematical-background"><span class="toc-section-number">1</span> Mathematical background</a></li>
-<li><a href="#the-setup-of-decision-making-in-health-economics"><span class="toc-section-number">2</span> The setup of decision-making in health economics</a>
-<ul>
-<li><a href="#statistical-framework"><span class="toc-section-number">2.1</span> Statistical framework</a></li>
-<li><a href="#decision-process"><span class="toc-section-number">2.2</span> Decision process</a></li>
-<li><a href="#choosing-a-utility-function-the-net-benefit"><span class="toc-section-number">2.3</span> Choosing a utility function: The net benefit</a></li>
-</ul></li>
-<li><a href="#the-value-of-information-voi"><span class="toc-section-number">3</span> The value of information (VoI)</a>
-<ul>
-<li><a href="#motivation"><span class="toc-section-number">3.1</span> Motivation</a></li>
-<li><a href="#probabilistic-sensitivity-analysis-psa"><span class="toc-section-number">3.2</span> Probabilistic sensitivity analysis (PSA)</a></li>
-<li><a href="#the-value-of-information-voi-1"><span class="toc-section-number">3.3</span> The value of information (VoI)</a></li>
-<li><a href="#the-value-of-partial-information"><span class="toc-section-number">3.4</span> The value of partial information</a></li>
-</ul></li>
-<li><a href="#examples"><span class="toc-section-number">4</span> Examples</a></li>
-</ul>
-</nav>
-</div>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
@@ -2258,606 +2234,55 @@ margin-bottom: 15px;
 }
 </style>
 </div>
-<h1 data-number="1" id="mathematical-background"><span class="header-section-number">1</span> Mathematical background</h1>
-<p>Let <span class="math inline">\(t \in \mathcal{T}\)</span> be a decision or intervention/treatment, and <span class="math inline">\(o \in \mathcal{O}\)</span> consequence or outcome. We also introduce the random quantity <span class="math inline">\(\boldsymbol{\omega} \in \Omega\)</span>, so the outcome can be described by relationship <span class="math inline">\(o = (\boldsymbol{\omega},t)\)</span> which could be interpreted as the result of selecting treatment <span class="math inline">\(t\)</span> with a series of random quantities obtained in the future.</p>
-<p>Since <span class="math inline">\(\boldsymbol{\omega}\)</span> is random component, we have the probability measure <span class="math inline">\(p(\boldsymbol{\omega})\)</span>, i.e. <span class="math inline">\(p: \Omega \rightarrow [0,1]\)</span>. Also, the value of each outcome is quantified by measure of utility <span class="math inline">\(u: \mathcal{O} \rightarrow \mathbb{R}\)</span>. In general, the random component is nothing but distribution, i.e. <span class="math inline">\(\boldsymbol{\omega} = (y,\boldsymbol{\theta})\)</span> where <span class="math inline">\(y \in \mathcal{Y}\)</span> is future result of individual(s), and <span class="math inline">\(\boldsymbol{\theta} \in \mathbb{\Theta}\)</span> is a set of parameters. Having had sub-components of <span class="math inline">\(\boldsymbol{\omega}\)</span>, the outcome can be rewritten as</p>
+<p>Let <span class="math inline">\(\boldsymbol{p} = {(p_1,p_2,\dots,p_n)}^{\top}\)</span> be propensity score and <span class="math inline">\(\boldsymbol{X} = {(\boldsymbol{x}_1,\boldsymbol{x}_2, \dots, \boldsymbol{x}_n)}^{\top}\)</span> baseline characteristics of subjects in IPD. Also, <span class="math inline">\(\boldsymbol{\mu}\)</span> denotes average vector of baseline characteristics found in SLD. We aim to estimate <span class="math inline">\(\boldsymbol{p}\)</span> such that <span class="math inline">\({\boldsymbol{p}}^{\top}\boldsymbol{X} = {\boldsymbol{\mu}}^{\top}\)</span>, i.e. we want to minimize <em>Kullback Leibler divergence</em> of <span class="math inline">\(\boldsymbol{p}\)</span> and empirical function with some constraints. Specifically, we want to minimize</p>
 <p><span class="math display">\[
-\begin{aligned}
-&amp;o = (y,\boldsymbol{\theta},t), \text{ implying that } \\
-&amp;p(o) = u(y,\boldsymbol{\theta},t)
-\end{aligned}
-\]</span> where</p>
-<p><span class="math display">\[
-p(y,\boldsymbol{\theta}) = p(y|\boldsymbol{\theta})p(\boldsymbol{\theta}).
+-{\boldsymbol{p}}^{\top}\ln(\frac{1}{n\boldsymbol{p}}),
 \]</span></p>
-<p>For example, we shall consider 5 states of happiness denoted by <span class="math inline">\(\{y_i\}_{i=1}^5\)</span>, each state has probability <span class="math inline">\(\boldsymbol{\theta}_i^t, t = 0,1\)</span>. We temporarily assume that the degree of uncertainty of <span class="math inline">\(\boldsymbol{\theta}^t_i\)</span> equal zero. Thus, The preferred outcome is can be obtained in either of two ways</p>
-<ol type="1">
-<li>directly, base on the probability of first state of each treatment, i.e. <span class="math inline">\(\boldsymbol{\theta}^t_1\)</span>.</li>
-<li>indirectly, through other states. In fact, state <span class="math inline">\(\{y_{s}\}_{s=2}^5\)</span> is often defined as the utilities equivalent to a scenario in which perfect health is obtained with probability <span class="math inline">\(\pi_s = u(y_s,t)\)</span>.</li>
-</ol>
-<p>Using the law of total probability we obtain the chance of preferred consequence <span class="math inline">\(y_1\)</span> as follows</p>
-<p><span class="math display" id="eq:1">\[
+<p>with two constraints:</p>
+<p><span class="math display">\[
+{\boldsymbol{p}}^{\top}\boldsymbol{1} = 1, \quad and \quad {\boldsymbol{p}}^{\top}\boldsymbol{X} = {\boldsymbol{\mu}}^{\top}
+\]</span></p>
+<p>We shall use <em>Lagrange Multiplier</em> to solve such an optimization problem as follows.</p>
+<p><span class="math display" id="eq:eq1">\[
 \begin{aligned}
-\mathbb{P}(y_1|\boldsymbol{\theta}^t) &amp;= \boldsymbol{\theta}_1^t + \sum_{s=2}^5\pi_s\mathbb{P}(y_s|\boldsymbol{\theta}^t)
-\\&amp;= \boldsymbol{\theta}_1^t+ \sum_{s=1}^5\pi_s\boldsymbol{\theta}_s^t
-\\&amp;=\sum_{s=1}^5u(y_s,t)\boldsymbol{\theta}_s^t
-\\&amp;= \mathbb{E}[u(Y,t)]
+\mathcal{L} &amp;= -{\boldsymbol{p}}^{\top}\ln(\frac{1}{n\boldsymbol{p}})\boldsymbol{1} - \lambda{({\boldsymbol{p}}^{\top}\boldsymbol{X} - {\boldsymbol{\mu}}^{\top})}^{\top} \\
+&amp;= {\boldsymbol{p}}^{\top}\ln(n\boldsymbol{p})\boldsymbol{1} - \lambda[( {\boldsymbol{X}}^{\top} - \boldsymbol{\mu}{\boldsymbol{1}}^{\top} )\boldsymbol{p}].
 \end{aligned}
 \tag{1}
 \]</span></p>
-<p>In practice, <span class="math inline">\(\boldsymbol{\theta}^t\)</span> always involves uncertainty, so we will need to consider <span class="math inline">\(p(\boldsymbol{\theta}^t|\mathcal{D})\)</span>, where <span class="math inline">\(\mathcal{D}\)</span> is the background information. The implication of Eq.<a href="#eq:1">(1)</a> is that the probability of obtaining the preferred options amounts to the expectation of utility function, more commonly referred to as the <strong>expected utility</strong> denoting <span class="math inline">\(\mathcal{U}^t\)</span>. Thus, the optimal decision criterion is to maximize the expected utility, i.e.</p>
-<div class="makebox">
-<p><span class="math display">\[
-t^* = \arg\max_{\mathcal{T}}\mathcal{U}^t
-\]</span></p>
-</div>
-<p>Also, we can generalize Eq.<a href="#eq:1">(1)</a> as follows</p>
-<p><span class="math display" id="eq:2">\[
-\mathcal{U}^t = \int_{\Theta}\int_{\mathcal{Y}} u(y,t)p(y|\boldsymbol{\theta}^t)p(\boldsymbol{\theta}^t|\mathcal{D})d\color{red}{y}d\boldsymbol{\color{blue}{\theta}}^t
+<p>Above equation could be solved by taking derivative w.r.t <span class="math inline">\(\boldsymbol{p}\)</span> and <span class="math inline">\(\lambda\)</span>, we then equate both derivations to zero and solve such equations. First, Taking derivative <span class="math inline">\(\mathcal{L}\)</span> w.r.t <span class="math inline">\(\lambda\)</span> we obtain</p>
+<p><span class="math display" id="eq:eq2">\[
+{\boldsymbol{p}}^{\top}\boldsymbol{X} = {\boldsymbol{\mu}}^{\top}.
 \tag{2}
 \]</span></p>
-<h1 data-number="2" id="the-setup-of-decision-making-in-health-economics"><span class="header-section-number">2</span> The setup of decision-making in health economics</h1>
-<h2 data-number="2.1" id="statistical-framework"><span class="header-section-number">2.1</span> Statistical framework</h2>
-<p>Let <span class="math inline">\(t \in \mathcal{T}:= \{0,1\}\)</span> be a set of interventions and <span class="math inline">\(y_i\)</span> outcome of <span class="math inline">\(i^{th}\)</span> subject which is constituted by effectiveness and cost, i.e. <span class="math inline">\(y = (e,c)\)</span>. Also, <span class="math inline">\(\boldsymbol{\theta} = (\theta_0,\theta_1)^{\top}\)</span> is the vector of parameters of interest. First, we aim to find the conditional distribution of <span class="math inline">\(\boldsymbol{\theta}\)</span> given data, i.e. posterior distribution of <span class="math inline">\(\boldsymbol{\theta}\)</span>. Let <span class="math inline">\(\mathcal{D}_t = \{y_i\}_{i=1}^{n_t}\)</span> and <span class="math inline">\(\mathcal{D} = \bigcup_{t\in\mathcal{T}}\mathcal{D}_t\)</span>, so the posterior has the form <span class="math inline">\(p(\boldsymbol{\theta}|\mathcal{D})\)</span>. In the second step, therefore, we are interested in predictive model which can be obtained by simulation.</p>
-<p>For example, suppose that <span class="math inline">\(\pi_1\)</span> and <span class="math inline">\(\pi_0\)</span> are probabilities that a patient is treated by active treatment and placebo, respectively, and <span class="math inline">\(\pi_1 = \pi_0\rho\)</span> where <span class="math inline">\(\rho\)</span> is the measure of difference, i.e absolute or relative difference. Conditionally on <span class="math inline">\(\pi_t\)</span>, <span class="math inline">\(\gamma\)</span> is the probability of needing ambulatory care and <span class="math inline">\(1-\gamma\)</span> is the probability a patient requires hospital admission.</p>
-<p>We take the sample size of <span class="math inline">\(N =1000\)</span> and the number of patients experiencing side effect is <span class="math inline">\(SE_t \sim \mathcal{Bin}(\pi_t,N)\)</span>; the number of patients requiring ambulatory care is <span class="math inline">\(A_t \sim \mathcal{Bin}(\gamma,SE_t)\)</span>, and hence the number of patients with side effects requiring hospital admission is <span class="math inline">\(H_t = SE_t-A_t\)</span>. Also, <span class="math inline">\(c_t^{drug}\)</span> is a fixed cost value and <span class="math inline">\(c^{hosp}\)</span> and <span class="math inline">\(c^{amb}\)</span> are costs of ambulatory care and hospital admission, such two costs are independent. We now modify the parameters of interest as <span class="math inline">\(\boldsymbol{\theta} = (\boldsymbol{\theta}_0,\boldsymbol{\theta}_1)\)</span> where <span class="math inline">\(\boldsymbol{\theta}_0 = (\pi_0,\gamma,c^{amb},c^{hosp})\)</span> and <span class="math inline">\(\boldsymbol{\theta}_1 = (\pi_1,\gamma,c^{amb},c^{hosp})\)</span>. Therefore, condition on <span class="math inline">\(\boldsymbol{\theta}\)</span> the observable outcome is <span class="math inline">\(Y = (SE_t,A_t,H_t)\)</span>.</p>
-<h2 data-number="2.2" id="decision-process"><span class="header-section-number">2.2</span> Decision process</h2>
-<p>Suppose an intervention <span class="math inline">\(t\)</span> is applied and we obtain the outcome <span class="math inline">\(y\)</span>. Thus, we can quantify by combining a clinical effectiveness <span class="math inline">\(e\)</span> of the outcome <span class="math inline">\(y\)</span> and the costs <span class="math inline">\(c\)</span> associated with intervention <span class="math inline">\(t\)</span>, for each <span class="math inline">\((y,t)\)</span> we associate <span class="math inline">\((e,c)\)</span>. We now let</p>
-<p><span class="math display">\[
-\Delta_e := \mathbb{E}(e|\theta_1) - \mathbb{E}(e|\theta_0), \text{ and}\quad \Delta_c:=\mathbb{E}(c|\theta_1) - \mathbb{E}(c|\theta_0)
-\]</span></p>
-<p>are the <em>increment in the mean effectiveness</em> and the <em>increment in the mean cost</em>. Obviously, these two functions are the function of <span class="math inline">\(\boldsymbol{\theta}\)</span>. Recall that we aim to find <span class="math inline">\(\mathcal{U}^*:= \max\mathcal{U}_t\)</span>, i.e. we choose <span class="math inline">\(t=1\)</span> if</p>
-<p><span class="math display" id="eq:3">\[
-EIB:= \mathcal{U}_1 - \mathcal{U}_0 &gt; 0
+<p>Next, taking derivative w.r.t <span class="math inline">\(p_i\)</span>:</p>
+<p><span class="math display" id="eq:eq3">\[
+\begin{aligned}
+&amp;\quad \frac{\partial\mathcal{L}}{\partial p_i} = 0 \\
+&amp;\Rightarrow \ln(np_i) +n -\lambda(x_i-\mu) = 0 \\
+&amp;\Rightarrow \ln(np_i) = \lambda(x_i-\mu)-n \\
+&amp;\Rightarrow p_i = \frac{\exp[\lambda(x_i -\mu)-n]}{n} \\
+&amp;\Rightarrow p_i = \frac{e^{-n}}{n}\exp[\lambda(x_i-\mu)]
+\end{aligned}
 \tag{3}
 \]</span></p>
 <p>thus,</p>
-<p><span class="math display">\[
-\mathcal{U}^* = \max\{EIB,0\}+\mathcal{U}_0.
-\]</span></p>
-<h2 data-number="2.3" id="choosing-a-utility-function-the-net-benefit"><span class="header-section-number">2.3</span> Choosing a utility function: The net benefit</h2>
-<p>To obtain Eq.<a href="#eq:2">(2)</a> we will need to a pre-defined function of utility <span class="math inline">\(u(y,t)\)</span> through <span class="math inline">\(e\)</span> and <span class="math inline">\(c\)</span>, the <em>net benefit</em>, for example,</p>
-<p><span class="math display">\[
-u(y,t) = ke-c,
-\]</span></p>
-<p>where <span class="math inline">\(k\)</span> is a willingness-to-pay parameter used to put the cost and benefit on the same scale, and it is the budget the decision-maker is willing to pay to upgrade the benefits by one unit. Let us review the relationship among aforementioned measures:</p>
-<div class="makebox">
-<ul>
-<li>The expected incremental benefit: <span class="math inline">\(EIB:=\mathcal{U}_t-\mathcal{U}_0\)</span>;</li>
-<li>The expected utility <span class="math inline">\(\mathcal{U}_t = \mathbb{E}[u(y,t)]\)</span>;</li>
-<li><span class="math inline">\(u(y,t) = ke-c\)</span></li>
-<li><span class="math inline">\(\Delta_e:= \mathbb{E}(e|\theta_1)-\mathbb{E}(e|\theta_0)\)</span>, and <span class="math inline">\(\Delta_c:= \mathbb{E}(c|\theta_1) - \mathbb{E}(c|\theta_0)\)</span></li>
-</ul>
-</div>
-<p>Thus,</p>
-<p><span class="math display" id="eq:4">\[
-EIB = \mathbb{E}(k\Delta_e-\Delta_c) = k\mathbb{E}(\Delta_e) - \mathbb{E}(\Delta_c),
+<p><span class="math display" id="eq:eq4">\[
+\begin{aligned}
+&amp;\quad 1 = \sum_{i=1}^np_i = \frac{e^{-n}}{n}\sum_{i=1}^n\exp[\lambda(x_i-\mu)] \\
+&amp; \Rightarrow \frac{n}{e^{-n}} = \sum_{i=1}^n\exp[\lambda(x_i-\mu)]
+\end{aligned}
 \tag{4}
 \]</span></p>
-<p>and because <span class="math inline">\(\Delta_e\)</span> and <span class="math inline">\(\Delta_c\)</span> are expectations of <span class="math inline">\(e|\boldsymbol{\theta}\)</span> and <span class="math inline">\(c|\boldsymbol{\theta}\)</span>, by total of expectation, <span class="math inline">\(EIB\)</span> is an expectation on distribution of <span class="math inline">\(\boldsymbol{\theta}\)</span>. Let us divide both sides of Eq.<a href="#eq:4">(4)</a> and arrange terms we obtain</p>
-<p><span class="math display">\[
-k = \frac{EIB+\mathbb{E}(\Delta_c)}{\mathbb{E}(\Delta_e)} = \frac{EIB}{\mathbb{E}(\Delta_e)}+ICER
-\]</span></p>
-<p>thus,</p>
-<p><span class="math display">\[
-ICER = k-\frac{EIB}{\mathbb{E}(\Delta_e)}
-\]</span></p>
-<p>if <span class="math inline">\(EIB &gt;0\)</span> (by Eq.<a href="#eq:3">(3)</a> this is the condition we expect to see), we have</p>
-<p><span class="math display">\[
-ICER &lt; k,
-\]</span></p>
-<p>so interventions having the <span class="math inline">\(ICER\)</span> is less than the willing-to-pay threshold are deemed cost-effective.</p>
-<p>Also, we will need to define an appropriate measures of the cost and effectiveness. The total cost relative to each treatment can be added up the cost of each patient, i.e</p>
-<p><span class="math display" id="eq:5minus2">\[
-c_t := c_t^{drug}(N-SE_t)+ (c_t^{drug}+c^{amb})A_t+(c_t^{drug}+c^{hosp})H_t.
+<p>substitute <a href="#eq:eq4">(4)</a> to <a href="#eq:eq3">(3)</a>`, we obtain</p>
+<div class="makebox">
+<p><span class="math display" id="eq:eq5">\[\begin{equation}
+p_i = \frac{\exp[\lambda(x_i - \mu)]}{\sum_{i=1}^n\exp[\lambda(x_i-\mu)]}
 \tag{5}
-\]</span></p>
-<p>As for the measure of effectiveness, we count the number of patients who do not experience side effects</p>
-<p><span class="math display" id="eq:5minus1">\[
-e_t:= N-SE_t.
-\tag{6}
-\]</span></p>
-<h1 data-number="3" id="the-value-of-information-voi"><span class="header-section-number">3</span> The value of information (VoI)</h1>
-<h2 data-number="3.1" id="motivation"><span class="header-section-number">3.1</span> Motivation</h2>
-<p>We shall consider the following table</p>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-hide
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>tab1</span><span class='op'>&lt;-</span>
-<span class='fu'>tibble</span><span class='op'>(</span>decision <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"d1"</span>,<span class='st'>"d2"</span>,<span class='st'>"d3"</span>,<span class='st'>"probability"</span><span class='op'>)</span>,
-       `state 1` <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>12</span>,<span class='fl'>15</span>,<span class='fl'>5</span>,<span class='fl'>0.5</span><span class='op'>)</span>,
-       `state 2` <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>9</span>,<span class='fl'>11</span>,<span class='fl'>18</span>,<span class='fl'>0.2</span><span class='op'>)</span>, 
-       `state 3` <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>13</span>,<span class='fl'>8</span>,<span class='fl'>10</span>,<span class='fl'>0.3</span><span class='op'>)</span>
-       <span class='op'>)</span>
-<span class='fu'>MyTable</span><span class='op'>(</span><span class='va'>tab1</span>, <span class='st'>"current information."</span><span class='op'>)</span>
-</code></pre>
+\end{equation}\]</span></p>
 </div>
-</details>
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>
-<span id="tab:tab1">Table 1: </span>current information.
-</caption>
-<thead>
-<tr>
-<th style="text-align:left;">
-decision
-</th>
-<th style="text-align:right;">
-state 1
-</th>
-<th style="text-align:right;">
-state 2
-</th>
-<th style="text-align:right;">
-state 3
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-d1
-</td>
-<td style="text-align:right;">
-12.0
-</td>
-<td style="text-align:right;">
-9.0
-</td>
-<td style="text-align:right;">
-13.0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-d2
-</td>
-<td style="text-align:right;">
-15.0
-</td>
-<td style="text-align:right;">
-11.0
-</td>
-<td style="text-align:right;">
-8.0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-d3
-</td>
-<td style="text-align:right;">
-5.0
-</td>
-<td style="text-align:right;">
-18.0
-</td>
-<td style="text-align:right;">
-10.0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-probability
-</td>
-<td style="text-align:right;">
-0.5
-</td>
-<td style="text-align:right;">
-0.2
-</td>
-<td style="text-align:right;">
-0.3
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>and two measures <em>expected value with perfect information (EVwPI)</em> and <em>expected value without perfect information (EVwoPI)</em>, which are defined as follows</p>
-<p><span class="math display" id="eq:5">\[
-EVwPI = \mathbb{E}[\max(S)];
-\tag{7}
-\]</span> <span class="math display" id="eq:6">\[
-EVwoPI = \max\mathbb{E}(S).
-\tag{8}
-\]</span></p>
-<p>Hence, we obtain <span class="math inline">\(\mathbb{E}(S)\)</span> for <span class="math inline">\(d_1\)</span>, <span class="math inline">\(d_2\)</span> and <span class="math inline">\(d_3\)</span> are</p>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-hide
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>exp_s</span><span class='op'>&lt;-</span>
-<span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span><span class='op'>(</span><span class='va'>tab1</span><span class='op'>[</span><span class='op'>-</span><span class='fl'>4</span>,<span class='op'>-</span><span class='fl'>1</span><span class='op'>]</span>, <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span><span class='op'>(</span><span class='va'>tab1</span><span class='op'>[</span><span class='fl'>4</span>,<span class='op'>-</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span><span class='op'><a href='https://rdrr.io/r/base/matmult.html'>%*%</a></span><span class='va'>x</span><span class='op'>)</span>
-<span class='va'>exp_s</span>
-</code></pre>
-</div>
-</details>
-<pre><code>state 1 state 2 state 3 
-   10.5    12.1    11.1 </code></pre>
-</div>
-<p>so <span class="math inline">\(\max\mathbb{E}(S)=\)</span> 12.1. Then we calculate <span class="math inline">\(\mathbb{E}[\max(S)]\)</span></p>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-hide
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>exp_max</span><span class='op'>&lt;-</span>
-<span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>as.matrix</a></span><span class='op'>(</span><span class='va'>tab1</span><span class='op'>[</span><span class='fl'>4</span>,<span class='op'>-</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span><span class='op'><a href='https://rdrr.io/r/base/matmult.html'>%*%</a></span><span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span><span class='op'>(</span><span class='va'>tab1</span><span class='op'>[</span><span class='op'>-</span><span class='fl'>4</span>,<span class='op'>-</span><span class='fl'>1</span><span class='op'>]</span>, <span class='va'>max</span><span class='op'>)</span><span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='va'>exp_max</span>
-</code></pre>
-</div>
-</details>
-<pre><code>[1] 15</code></pre>
-</div>
-<p>Finally, the so-called the <em>expected value of perfect information (EVPI)</em> is the difference between EVwPI and EVwoPI, i.e. <span class="math inline">\(EVwoPI - EVwPI =\)</span> 2.9.</p>
-<p>The rationale behind EVPI is very much similar to these calculations.</p>
-<h2 data-number="3.2" id="probabilistic-sensitivity-analysis-psa"><span class="header-section-number">3.2</span> Probabilistic sensitivity analysis (PSA)</h2>
-<p>We now suppose the prior distribution <span class="math inline">\(p(\boldsymbol{\theta}|\mathcal{D})\)</span> is close to one-point distribution at the true value. Hence, the expected utility is</p>
-<p><span class="math display">\[
-U(\theta_t) := \mathbb{E}[u(Y,t)|\mathcal{D}] = \int u(y,t)p(y|\theta_t)d\color{red}{y}.
-\]</span></p>
-<p>and <span class="math inline">\(U^*(\boldsymbol{\theta}):= \max_t U(\theta_t)\)</span>. Thus, we would choose <span class="math inline">\(t=1\)</span> as the <em>incremental benefit</em> <span class="math inline">\(IB(\boldsymbol{\theta}) &gt; 0\)</span> where</p>
-<p><span class="math display">\[
-IB(\boldsymbol{\theta}):= U(\theta_1) - U(\theta_0),
-\]</span></p>
-<p>and as previous expansion, we are able to obtain <span class="math inline">\(U^*(\boldsymbol{\theta}) = \max\{IB(\boldsymbol{\theta}),0\}+U(\theta_0)\)</span>. In practice, the certainty of <span class="math inline">\(\boldsymbol{\theta}\)</span> is not able to happen, so the value of information is often used rather than PSA.</p>
-<h2 data-number="3.3" id="the-value-of-information-voi-1"><span class="header-section-number">3.3</span> The value of information (VoI)</h2>
-<p>VoI will be obtained by two utilities term, namely <span class="math inline">\(U^*(\boldsymbol{\theta})\)</span> and <span class="math inline">\(\mathcal{U}^*\)</span> relative to the <em>expectation value with perfect information (EVwPI)</em> and the <em>expectation value without perfect information (EVwoPI)</em>. Indeed,</p>
-<p><span class="math display">\[
-VI(\boldsymbol{\theta}) := U^*(\boldsymbol{\theta}) - \mathcal{U}^*,
-\]</span></p>
-<p>which is a function of a random component <span class="math inline">\(\boldsymbol{\theta}\)</span>, and hence we are interested in the expectation of <span class="math inline">\(VI\)</span> instead of itself, i.e the <em>expected value of perfect information (EVPI)</em></p>
-<p><span class="math display">\[
-EVPI := \mathbb{E}[VI(\boldsymbol{\theta})] = \mathbb{E}_{\boldsymbol{\theta}|\mathcal{}D}[U^*(\boldsymbol{\theta})] -\mathbb{E}_{\boldsymbol{\theta}|\mathcal{D}}(\mathcal{U}^*) = \mathcal{V}^*-\mathcal{U}^*,
-\]</span></p>
-<p>we can consider <span class="math inline">\(\mathcal{V}^*\)</span> as EVwPI or “expectation of maximum,” and <span class="math inline">\(\mathcal{U}^*\)</span> EVwoPI or “maximum of expectation.”</p>
-<p>EVPI can also be described through the <em>opportunity loss (OL)</em>. Let <span class="math inline">\(\tau =\arg\max_t(\mathcal{U}_t)\)</span>, we have</p>
-<p><span class="math display">\[
-OL(\boldsymbol{\theta}) := U^*(\boldsymbol{\theta}) - U(\theta_{\tau})
-\]</span></p>
-<p>and then</p>
-<p><span class="math display">\[
-\mathbb{E}[OL(\boldsymbol{\theta})] = \mathbb{E}_{\boldsymbol{\theta}|\mathcal{D}}[U^*(\boldsymbol{\theta})] - \mathbb{E}_{\theta_{\tau}|\mathcal{D}}[U(\theta_{\tau})] = \mathcal{V}^*-\mathcal{U}^*
-\]</span></p>
-<p>note that <span class="math inline">\(\mathbb{E}_{\theta_{\tau}|\mathcal{D}}[U(\theta_{\tau})]\)</span> is equivalent to <span class="math inline">\(\max_{\tau}\mathbb{E}_{\boldsymbol{\theta}|\mathcal{D}}[U(\boldsymbol{\theta})]\)</span></p>
-<h2 data-number="3.4" id="the-value-of-partial-information"><span class="header-section-number">3.4</span> The value of partial information</h2>
-<h1 data-number="4" id="examples"><span class="header-section-number">4</span> Examples</h1>
-<p>For the sake of illustration, we shall consider the following example. Let <span class="math inline">\(t \in \{0,1\}\)</span> be treatment <span class="math inline">\(t\)</span>, <span class="math inline">\(\pi_t\)</span> the probability of an exposure under treatment <span class="math inline">\(t\)</span>. The effect size of interest is usually ratio or difference between probabilities <span class="math inline">\(\pi_0\)</span> and <span class="math inline">\(\pi_1\)</span>, so we assume <span class="math inline">\(\pi_1 = \pi_0\rho\)</span> where <span class="math inline">\(\rho = \pi_1/\pi_0\)</span> is the relative difference between two treatments. Conditioning on <span class="math inline">\(\pi_t\)</span>, <span class="math inline">\(\gamma\)</span> indicates the probability of needing ambulatory care. Therefore, the probability that an exposure needs hospital admission is <span class="math inline">\((1-\gamma)\)</span>. Furthermore, let <span class="math inline">\(N= 1000\)</span>, so the total number of patients having exposure is <span class="math inline">\(SE_t \sim \mathcal{B}in(N,\pi_t)\)</span> and <span class="math inline">\(A_t \sim \mathcal{B}in(\gamma,SE_t)\)</span> is the number of exposures requiring ambulatory care. As a result, <span class="math inline">\(H_t=SE_t-A_t\)</span> is the total number of exposures requiring hospital admission.</p>
-<p>As for the costs, all patients are subjected to the cost <span class="math inline">\(c^{drug}_t\)</span>. Additionally, those exposed patients are required paying extra cost, namely <span class="math inline">\(c^{amb}\)</span> for ambulatory care and <span class="math inline">\(c^{hosp}\)</span> for hospital admission. Hence, we consider parameter <span class="math inline">\(\boldsymbol{\theta} = (\boldsymbol{\theta}_0,\boldsymbol{\theta}_1)\)</span> where <span class="math inline">\(\boldsymbol{\theta}_t = (\pi_t,\gamma,c^{amb},c^{hosp})\)</span> with <span class="math inline">\(t=0,1\)</span>.</p>
-<p>We now summary the model as follows:</p>
-<p>Suppose we have observed <code>N.studies</code> studies, each study reported the number of exposures <code>se</code> out of <span class="math inline">\(n\)</span> patients and <code>amb</code> patients exposed requires only ambulatory care. This information would be used to update <span class="math inline">\(\pi_0\)</span> and <span class="math inline">\(\gamma\)</span>. Thus, the prior information in this case can be expressed as <span class="math inline">\(Y = (se_0,amb_0)\)</span>. <span class="math inline">\(t=0\)</span> is the current treatment being used.</p>
-<ol type="1">
-<li>Based on the prior information we can can set <span class="math inline">\(se_0 \sim \mathcal{B}in(\pi_0,n)\)</span> and <span class="math inline">\(amb_0 \sim \mathcal{B}in(\gamma,se_0)\)</span>;</li>
-<li>Also,
-<ol type="i">
-<li><span class="math inline">\(\pi_1 := \pi_0\rho\)</span>, and</li>
-<li><span class="math inline">\(\pi_0 \sim \mathcal{B}eta(a_{\pi_0},b_{\pi_0})\)</span>, <span class="math inline">\(\rho \sim \mathcal{N}(m_{\rho},\tau_{\rho})\)</span> and <span class="math inline">\(\gamma \sim \mathcal{B}eta(a_{\gamma},b_{\gamma})\)</span>.</li>
-<li>For the costs, we set <span class="math inline">\(c^{amb} \sim \log\mathcal{N}(m_{amb},\tau_{amb})\)</span> and <span class="math inline">\(c^{hosp} \sim \log\mathcal{N}(m_{hosp},\tau_{hosp})\)</span>.</li>
-</ol></li>
-<li>For prediction, we estimate the number of exposures under treatment <span class="math inline">\(t =1\)</span>, i.e <span class="math inline">\(SE_1 \sim \mathcal{B}in(\pi_1,N)\)</span>, and the number of patients exposed requiring ambulatory <span class="math inline">\(A_1 \sim \mathcal{B}in(\gamma,SE_1)\)</span>.</li>
-<li>Besides, we set <span class="math inline">\(c_0^{drug} = 110\)</span> and <span class="math inline">\(c_1^{drug} = 520\)</span>.</li>
-</ol>
-<p>Obviously, step (1) is likelihood that we can observed from data; step (2) is prior information obtained from previous studies; step (4) is predictive distribution of interest; and step (4) is pre-defined values.</p>
-<p>In step 1, we shall generate fake data as follows</p>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-hide
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1234</span><span class='op'>)</span>
-<span class='co'>## Generates data for the number of side effects under t=0</span>
-<span class='va'>N.studies</span> <span class='op'>&lt;-</span> <span class='fl'>5</span> <span class='co'># the number of accessible studies </span>
-<span class='va'>sample.size</span> <span class='op'>&lt;-</span> <span class='fl'>32</span> <span class='co'># potential sample size in each study </span>
-<span class='va'>prop.pi</span> <span class='op'>&lt;-</span> <span class='fl'>.24</span> <span class='co'># TRUE VALUE of the proportion of exposure</span>
-<span class='va'>n</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Poisson.html'>rpois</a></span><span class='op'>(</span><span class='va'>N.studies</span>,<span class='va'>sample.size</span><span class='op'>)</span> <span class='co'># we simulate sample size for N.studies studies. </span>
-<span class='va'>se</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Binomial.html'>rbinom</a></span><span class='op'>(</span><span class='va'>N.studies</span>,<span class='va'>n</span>,<span class='va'>prop.pi</span><span class='op'>)</span> <span class='co'># simulate the number of exposure for each study </span>
-
-<span class='co'>## Generates the data for the number of patients with exposure requiring ambulatory care</span>
-<span class='va'>prop.gamma</span> <span class='op'>&lt;-</span> <span class='fl'>.619</span> <span class='co'># TRUE VALUE of the proportion of patients exposed requiring ambulatory</span>
-<span class='va'>amb</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Binomial.html'>rbinom</a></span><span class='op'>(</span><span class='va'>N.studies</span>,<span class='va'>se</span>,<span class='va'>prop.gamma</span><span class='op'>)</span> <span class='co'># simulate the number of ambulatory </span>
-
-<span class='va'>dat</span><span class='op'>&lt;-</span> <span class='fu'>tibble</span><span class='op'>(</span>
-          Study <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>,
-          n <span class='op'>=</span> <span class='va'>n</span>,
-          exposure <span class='op'>=</span> <span class='va'>se</span>,
-          ambulatory <span class='op'>=</span> <span class='va'>amb</span><span class='op'>)</span>
-
-<span class='fu'>MyTable</span><span class='op'>(</span><span class='va'>dat</span>, <span class='st'>"Observed data"</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<caption>
-<span id="tab:tab2">Table 2: </span>Observed data
-</caption>
-<thead>
-<tr>
-<th style="text-align:right;">
-Study
-</th>
-<th style="text-align:right;">
-n
-</th>
-<th style="text-align:right;">
-exposure
-</th>
-<th style="text-align:right;">
-ambulatory
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-25
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-4
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-33
-</td>
-<td style="text-align:right;">
-11
-</td>
-<td style="text-align:right;">
-8
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-34
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-27
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-6
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-34
-</td>
-<td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-5
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>In step 2, we shall set hyper-parameters for prior distributions. There being 5 prior distributions, hyper-parameters should be chosen such that such the available prior information at hand can be delineated adequately through hyper-parameters. Thus,</p>
-<ul>
-<li><em>Distribution of <span class="math inline">\(\pi_0\)</span></em>: describes the proportion of exposure and follows <span class="math inline">\(\mathcal{B}eta\)</span> distribution. Thus, such hyper-parameters are used to warrant uncertainties of parameters. for illustration, we select mean <span class="math inline">\(m_{\pi_0} = 0.5\)</span> and standard deviation <span class="math inline">\(s_{\pi_0} = \sqrt{0.125}\)</span> for the <span class="math inline">\(\mathcal{B}eta\)</span> distribution.</li>
-<li><em>Distribution of <span class="math inline">\(\gamma\)</span></em>: delineates the probability that patients exposed requires ambulatory .Again, we set <span class="math inline">\(\gamma\)</span> to follow <span class="math inline">\(\mathcal{B}eta\)</span> distribution with <span class="math inline">\(m_{\gamma} = 0.5\)</span> and <span class="math inline">\(s_{\gamma} = \sqrt{0.125}\)</span></li>
-<li><em>Distribution of <span class="math inline">\(\rho\)</span></em>: delineates relative difference between two groups, and set <span class="math inline">\(\rho \sim \mathcal{N}(0.8,0.2^2)\)</span>.</li>
-</ul>
-<p>We shall consider prior distributions in step (2.iii), i.e. distribution costs</p>
-<ul>
-<li>Both costs for ambulatory and hospital follow log-normal with mean and standard deviation <span class="math inline">\((120,20)\)</span> and <span class="math inline">\((5500,980)\)</span>, respectively.</li>
-<li>Also, we need to define functions that convert prior metrics to distribution’s parameters. More specifically, we obtain parameters for Beta and log-normal distribution. Thus</li>
-</ul>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-hide
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>betaPar</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>m</span>,<span class='va'>s</span><span class='op'>)</span><span class='op'>{</span>
-<span class='va'>a</span> <span class='op'>&lt;-</span> <span class='va'>m</span><span class='op'>*</span><span class='op'>(</span><span class='op'>(</span><span class='va'>m</span><span class='op'>*</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>-</span><span class='va'>m</span><span class='op'>)</span><span class='op'>/</span><span class='va'>s</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>-</span><span class='fl'>1</span><span class='op'>)</span>
-<span class='va'>b</span> <span class='op'>&lt;-</span> <span class='op'>(</span><span class='fl'>1</span><span class='op'>-</span><span class='va'>m</span><span class='op'>)</span><span class='op'>*</span><span class='op'>(</span><span class='op'>(</span><span class='va'>m</span><span class='op'>*</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>-</span><span class='va'>m</span><span class='op'>)</span><span class='op'>/</span><span class='va'>s</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>-</span><span class='fl'>1</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>a<span class='op'>=</span><span class='va'>a</span>,b<span class='op'>=</span><span class='va'>b</span><span class='op'>)</span>
-<span class='op'>}</span>
-
-<span class='va'>lognPar</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>m</span>,<span class='va'>s</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='va'>s2</span> <span class='op'>&lt;-</span> <span class='va'>s</span><span class='op'>^</span><span class='fl'>2</span>
-<span class='va'>mulog</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>m</span><span class='op'>)</span><span class='op'>-</span><span class='fl'>0.5</span><span class='op'>*</span><span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>+</span><span class='va'>s2</span><span class='op'>/</span><span class='va'>m</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span>
-<span class='va'>s2log</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>+</span><span class='op'>(</span><span class='va'>s2</span><span class='op'>/</span><span class='va'>m</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>sigmalog</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='va'>s2log</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>mulog<span class='op'>=</span><span class='va'>mulog</span>,sigmalog<span class='op'>=</span><span class='va'>sigmalog</span><span class='op'>)</span>
-<span class='op'>}</span>
-</code></pre>
-</div>
-</details>
-</div>
-<p>Then, we utilize above functions to obtain hyper-parameters as follows abut</p>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-hide
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'>## Computes the hyper-parameters for the informative prior distributions </span>
-<span class='va'>m.pi</span> <span class='op'>&lt;-</span> <span class='fl'>.5</span> 
-<span class='va'>s.pi</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='fl'>.125</span><span class='op'>)</span>
-<span class='va'>a.pi</span> <span class='op'>&lt;-</span> <span class='fu'>betaPar</span><span class='op'>(</span><span class='va'>m.pi</span>,<span class='va'>s.pi</span><span class='op'>)</span><span class='op'>$</span><span class='va'>a</span>
-<span class='va'>b.pi</span> <span class='op'>&lt;-</span> <span class='fu'>betaPar</span><span class='op'>(</span><span class='va'>m.pi</span>,<span class='va'>s.pi</span><span class='op'>)</span><span class='op'>$</span><span class='va'>b</span>
-
-<span class='va'>m.gamma</span> <span class='op'>&lt;-</span> <span class='fl'>.5</span>
-<span class='va'>s.gamma</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='fl'>.125</span><span class='op'>)</span>
-<span class='va'>a.gamma</span> <span class='op'>&lt;-</span> <span class='fu'>betaPar</span><span class='op'>(</span><span class='va'>m.gamma</span>,<span class='va'>s.gamma</span><span class='op'>)</span><span class='op'>$</span><span class='va'>a</span>
-<span class='va'>b.gamma</span> <span class='op'>&lt;-</span> <span class='fu'>betaPar</span><span class='op'>(</span><span class='va'>m.gamma</span>,<span class='va'>s.gamma</span><span class='op'>)</span><span class='op'>$</span><span class='va'>b</span>
-
-<span class='va'>m.rho</span> <span class='op'>&lt;-</span> <span class='fl'>0.8</span>
-<span class='va'>s.rho</span> <span class='op'>&lt;-</span> <span class='fl'>0.2</span>
-<span class='va'>tau.rho</span> <span class='op'>&lt;-</span> <span class='fl'>1</span><span class='op'>/</span><span class='va'>s.rho</span><span class='op'>^</span><span class='fl'>2</span>
-
-<span class='va'>mu.amb</span> <span class='op'>&lt;-</span> <span class='fl'>120</span>
-<span class='va'>sd.amb</span> <span class='op'>&lt;-</span> <span class='fl'>20</span>
-<span class='va'>m.amb</span> <span class='op'>&lt;-</span> <span class='fu'>lognPar</span><span class='op'>(</span><span class='va'>mu.amb</span>,<span class='va'>sd.amb</span><span class='op'>)</span><span class='op'>$</span><span class='va'>mulog</span>
-<span class='va'>s.amb</span> <span class='op'>&lt;-</span> <span class='fu'>lognPar</span><span class='op'>(</span><span class='va'>mu.amb</span>,<span class='va'>sd.amb</span><span class='op'>)</span><span class='op'>$</span><span class='va'>sigmalog</span>
-<span class='va'>tau.amb</span> <span class='op'>&lt;-</span> <span class='fl'>1</span><span class='op'>/</span><span class='va'>s.amb</span><span class='op'>^</span><span class='fl'>2</span>
-
-<span class='va'>mu.hosp</span> <span class='op'>&lt;-</span> <span class='fl'>5500</span>
-<span class='va'>sd.hosp</span> <span class='op'>&lt;-</span> <span class='fl'>980</span>
-<span class='va'>m.hosp</span> <span class='op'>&lt;-</span> <span class='fu'>lognPar</span><span class='op'>(</span><span class='va'>mu.hosp</span>,<span class='va'>sd.hosp</span><span class='op'>)</span><span class='op'>$</span><span class='va'>mulog</span>
-<span class='va'>s.hosp</span> <span class='op'>&lt;-</span> <span class='fu'>lognPar</span><span class='op'>(</span><span class='va'>mu.hosp</span>,<span class='va'>sd.hosp</span><span class='op'>)</span><span class='op'>$</span><span class='va'>sigmalog</span>
-<span class='va'>tau.hosp</span> <span class='op'>&lt;-</span> <span class='fl'>1</span><span class='op'>/</span><span class='va'>s.hosp</span><span class='op'>^</span><span class='fl'>2</span>
-</code></pre>
-</div>
-</details>
-</div>
-<p>Finally, in step (3) and (4), we need to set population size that we want to predict and the cost of drug in each group.</p>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-hide
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>N</span> <span class='op'>=</span> <span class='fl'>1000</span>
-<span class='va'>c.drug</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>110</span>,<span class='fl'>520</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
-</div>
-<p>We now define the model and run Bayesian</p>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-hide
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>model_string</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/textconnections.html'>textConnection</a></span><span class='op'>(</span>
-  <span class='st'>"model{
-  
-  #likelihood
-  for(i in 1:N.studies){
-  se[i] ~ dbin(pi[1],n[i])
-  amb[i] ~ dbin(gamma,se[i])
-  }
-  
-  # prior
-  pi[1] ~ dbeta(a.pi,b.pi)
-  pi[2]&lt;- pi[1]*rho
-  
-  rho ~ dnorm(m.rho, tau.rho)
-  gamma ~ dbeta(a.gamma,b.gamma)
-  c.amb ~ dlnorm(m.amb,tau.amb)
-  c.hosp ~ dlnorm(m.hosp,tau.hosp)
-  
-  # Predictive distributions on the clinical outcomes
-  for(i in 1:2){
-  SE[i] ~ dbin(pi[i],N)
-  A[i] ~ dbin(gamma,SE[i])
-  H[i] &lt;- SE[i] - A[i]
-  }
-  }"</span><span class='op'>)</span>
-
-
-<span class='co'># data setup</span>
-<span class='va'>dat</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='st'>"a.pi"</span> <span class='op'>=</span> <span class='va'>a.pi</span>,<span class='st'>"b.pi"</span> <span class='op'>=</span> <span class='va'>b.pi</span>,<span class='st'>"a.gamma"</span> <span class='op'>=</span> <span class='va'>a.gamma</span>,<span class='st'>"b.gamma"</span> <span class='op'>=</span> <span class='va'>b.gamma</span>,
-           <span class='st'>"m.amb"</span> <span class='op'>=</span> <span class='va'>m.amb</span>,<span class='st'>"tau.amb"</span> <span class='op'>=</span> <span class='va'>tau.amb</span>,
-           <span class='st'>"m.hosp"</span> <span class='op'>=</span> <span class='va'>m.hosp</span>,<span class='st'>"tau.hosp"</span> <span class='op'>=</span> <span class='va'>tau.hosp</span>, <span class='st'>"m.rho"</span> <span class='op'>=</span> <span class='va'>m.rho</span>,
-           <span class='st'>"tau.rho"</span> <span class='op'>=</span> <span class='va'>tau.rho</span>,<span class='st'>"se"</span> <span class='op'>=</span> <span class='va'>se</span>,<span class='st'>"amb"</span> <span class='op'>=</span> <span class='va'>amb</span>,
-           <span class='st'>"N.studies"</span> <span class='op'>=</span> <span class='va'>N.studies</span>, <span class='st'>"n"</span> <span class='op'>=</span> <span class='va'>n</span>, N <span class='op'>=</span> <span class='va'>N</span><span class='op'>)</span>
-
-<span class='co'># initial stochastic variables</span>
-<span class='va'>inits</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='op'>)</span><span class='op'>{</span>              
-  <span class='va'>SE</span><span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/stats/Binomial.html'>rbinom</a></span><span class='op'>(</span><span class='fl'>2</span>,<span class='va'>N</span>,<span class='fl'>.2</span><span class='op'>)</span>
-  <span class='va'>rho</span><span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>
-
-  <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='st'>"pi"</span><span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>,<span class='cn'>NA</span><span class='op'>)</span>,gamma<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>,c.amb<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/stats/Lognormal.html'>rlnorm</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>,
-  c.hosp<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/stats/Lognormal.html'>rlnorm</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>,rho <span class='op'>=</span> <span class='va'>rho</span>,SE<span class='op'>=</span><span class='va'>SE</span>,A<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/stats/Binomial.html'>rbinom</a></span><span class='op'>(</span><span class='fl'>2</span>,<span class='va'>SE</span>,<span class='fl'>.2</span><span class='op'>)</span>
-  <span class='op'>)</span>
-<span class='op'>}</span>
-
-<span class='co'># fitting model and burn-in 10000 iterations</span>
-<span class='va'>model</span> <span class='op'>&lt;-</span> <span class='fu'>jags.model</span><span class='op'>(</span><span class='va'>model_string</span>, data <span class='op'>=</span>  <span class='va'>dat</span>, inits <span class='op'>=</span> <span class='fu'>inits</span><span class='op'>(</span><span class='op'>)</span>, n.chains <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
-<pre><code>Compiling model graph
-   Resolving undeclared variables
-   Allocating nodes
-Graph information:
-   Observed stochastic nodes: 10
-   Unobserved stochastic nodes: 9
-   Total graph size: 39
-
-Initializing model</code></pre>
-<details>
-<summary>
-hide
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/update.html'>update</a></span><span class='op'>(</span><span class='va'>model</span>, <span class='fl'>10000</span>, progress.bar<span class='op'>=</span><span class='st'>"none"</span><span class='op'>)</span>
-
-<span class='co'># parameters of interest</span>
-<span class='va'>params</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"pi"</span>,<span class='st'>"gamma"</span>,<span class='st'>"c.amb"</span>,<span class='st'>"c.hosp"</span>,<span class='st'>"rho"</span>,<span class='st'>"SE"</span>,<span class='st'>"A"</span>,<span class='st'>"H"</span><span class='op'>)</span>
-<span class='co'># get samples</span>
-<span class='va'>samples</span> <span class='op'>&lt;-</span> <span class='fu'>coda.samples</span><span class='op'>(</span><span class='va'>model</span>,
-                        variable.names<span class='op'>=</span><span class='va'>params</span>,
-                        n.iter<span class='op'>=</span><span class='fl'>500</span>, progress.bar<span class='op'>=</span><span class='st'>"none"</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
-</div>
-<p>Cost-effectiveness analysis</p>
-<p>cost and effectiveness is calculated using Eq.<a href="#eq:5minus1">(6)</a> and Eq.<a href="#eq:5minus2">(5)</a>. Here we shall address the cost effectiveness by two manners, using function <code>bcea</code> of the package <code>BCEA</code> and coding manually. Then, we compare both results to ensure the later result aligns with the former.</p>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-hide
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>amb</span> <span class='op'>=</span> <span class='fu'>lift_dl</span><span class='op'>(</span><span class='va'>rbind</span><span class='op'>)</span><span class='op'>(</span><span class='va'>samples</span><span class='op'>)</span>
-<span class='va'>ef</span> <span class='op'>=</span> <span class='va'>N</span> <span class='op'>-</span> <span class='va'>amb</span><span class='op'>[</span>,<span class='fu'><a href='https://rdrr.io/pkg/BCEA/man/Smoking.html'>c</a></span><span class='op'>(</span><span class='st'>"A[1]"</span>,<span class='st'>"A[2]"</span><span class='op'>)</span><span class='op'>]</span>
-<span class='va'>cost</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>sapply</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span>, \<span class='op'>(</span><span class='va'>i</span><span class='op'>)</span><span class='op'>{</span>
-     <span class='va'>c.drug</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span><span class='op'>*</span><span class='va'>ef</span><span class='op'>[</span>,<span class='va'>i</span><span class='op'>]</span><span class='op'>+</span><span class='op'>(</span><span class='va'>c.drug</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span><span class='op'>+</span><span class='va'>amb</span><span class='op'>[</span>,<span class='st'>'c.amb'</span><span class='op'>]</span><span class='op'>)</span><span class='op'>*</span><span class='va'>amb</span><span class='op'>[</span>,<span class='va'>i</span><span class='op'>]</span><span class='op'>+</span><span class='op'>(</span><span class='va'>c.drug</span><span class='op'>[</span><span class='va'>i</span><span class='op'>]</span><span class='op'>+</span><span class='va'>amb</span><span class='op'>[</span>,<span class='st'>'c.hosp'</span><span class='op'>]</span><span class='op'>)</span><span class='op'>*</span><span class='va'>amb</span><span class='op'>[</span>,<span class='va'>i</span><span class='op'>+</span><span class='fl'>2</span><span class='op'>]</span>
-<span class='op'>}</span><span class='op'>)</span>
-
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://www.statistica.it/gianluca/software/bcea/'>BCEA</a></span><span class='op'>)</span>
-<span class='va'>treats</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/BCEA/man/Smoking.html'>c</a></span><span class='op'>(</span><span class='st'>"Old Chemotherapy"</span>,<span class='st'>"New Chemotherapy"</span><span class='op'>)</span>
-<span class='va'>m</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/BCEA/man/bcea.html'>bcea</a></span><span class='op'>(</span>e<span class='op'>=</span><span class='va'>ef</span>,c<span class='op'>=</span><span class='va'>cost</span>,ref<span class='op'>=</span><span class='fl'>2</span>,interventions<span class='op'>=</span><span class='va'>treats</span>,Kmax<span class='op'>=</span><span class='fl'>50000</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>m</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
-</div>
-<!-- ------------------------------------------------------------------- -->
-<p>(cont.)</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p><a href="#eq:eq5">(5)</a> indicates that <span class="math inline">\(p_i\)</span> can be estimated by fitting logistic model in which <span class="math inline">\(z_i= x_i-\mu\)</span> is one covariate, and <span class="math inline">\(z_i\)</span> must be statisfying <a href="#eq:eq2">(2)</a>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
