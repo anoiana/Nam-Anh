@@ -1,0 +1,141 @@
+---
+title: "Calculation of The Power"
+theme: theme.css
+author:
+  - name: Nam-Anh
+date: "`r Sys.Date()`"
+bibliography: citation.bib
+csl: citation.csl
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 3
+    #pandoc_args: ["--number-sections"]
+    code_folding: hide
+description: |
+---
+
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\bf}[1]{\boldsymbol{#1}}
+\usepackage{bbm}
+
+
+```{r setup, include=FALSE}
+if(!library(pacman, logical.return = TRUE)) install.packages("pacman")
+pacman::p_load(tidyverse, rjags, magrittr, kableExtra)
+
+lb = function(...){
+     x = unlist(strsplit(as.character(rlang::expr(...)),"\\."))
+     word = switch(which(c("tab","fig","eq")%in% x[1]),"Table ","Figure ","Eq.")
+     paste0(word,"\\@ref(",x[1],":",x[2],")")
+}
+
+MyTable = function(x, cap = NULL, scroll_box = FALSE, ...){
+      result<-
+          kableExtra::kbl(x, booktab = TRUE, caption = cap,...)|>
+          kableExtra::kable_styling(bootstrap_options = c("striped"))
+     
+     if(scroll_box){
+          
+          css = c("border:0.1px;", 
+                  "margin-left: auto;", 
+                  "margin-right: auto;", 
+                  "margin-bottom: 25px;")
+          result|>  
+               kableExtra::scroll_box(height = "500px",
+                                      extra_css  = paste0(css, collapse = ""))
+     }
+      result
+}
+```
+
+There are four types of measures pertaining to the power of hypothesis testing, namely predictive power of success, conditional power, probability of success and power. Such measures could be categorized into 2 groups characterized by the fact that whether or not the knowledge of current data is integrated.
+
+# Predictive group 
+
+This group comprises predictive power of success and conditional power. Recall two types of predictive distributions, prior predictive distribution and posterior distribution which are formulated as follows
+
+$$
+p_{PRI}(Y) = \int p(Y|\theta)\color{red}{p(\theta)}d\theta
+(\#eq:1)
+$$
+and 
+
+$$
+p_{POS}(Y|x) = \int p(Y|\theta,x)\color{blue}{p(\theta|x)}d\theta,
+(\#eq:2)
+$$
+respectively. Both measures pertaining to this group are calculated based on the posterior distribution.
+
+Also, suppose that there are two phases: 
+
+1. Interim phase in which the number of participants observed less than pre-specified number of participants;
+2. Completed phase or final phase where all participants are have been observed.
+
+Let $N$ be the pre-specified number of patients and $n$ the number of patients at the interim phase. For beta-binomial case, Lee and colleague proposed the following formula to calculate the predictive power of success, i.e. the probability of clinical success.[@lee2008]
+
+$$
+\begin{aligned}
+PPoS &= \sum_{i=0}^{N-n} \mathbf{I}\big[\mathbb{P}(\theta > \theta_0|x,Y=i)>\delta_T\big]\times\mathbb{P}(Y=i|x) \\
+&= \int_{\Theta} \sum_{i=n+1}^N \mathbf{I}\big[\mathbb{P}(\theta > \theta_0|x,Y=i)>\delta_T\big]\times
+p(Y=i|\theta,x)p(\theta|x)d\theta
+\end{aligned}
+(\#eq:3)
+$$
+
+To simulate the numerical result, we employ the following steps
+
+1. At the interim analysis, sample the parameter of interest $\theta$ from the current posterior given current data $x$.
+2. Complete the dataset by sampling future samples $Y$, observations not yet observed at the interim analysis, from the predictive distribution.
+3. Use the complete dataset to calculate success criteria (p-value, posterior probability). If success criteria is met (i.e. p-value < 0.05), the trial is a success. 
+4. Repeat steps 1-3 a total of B times; the predictive probability (PPoS) is the proportion of simulated trials that achieve success.
+
+The step 1 accounts for the variability of parameter of interest given interim analysis.
+
+If the knowledge of $\theta|x$ is summarized by point estimation, e.g. $\hat{\theta}_{MLE}$ based on only the interim analysis. This is called *conditional power* (CP). Relating to `r lb(eq.3)`, we can write as follows
+
+$$
+CP = \sum_{i=0}^{N-n} \mathbf{I}\big[\mathbb{P}(P > p_0|x,Y=i)>\delta_T\big]\times\mathbb{P}(Y=i|\hat{\theta}_{MLE},x) 
+(\#eq:4)
+$$
+
+note that for the sake of intuition we kept both terms $\hat{\theta}_{MLE}$ and $x$ in `r lb(eq.4)`, yet we can drop one of two such terms since $\hat{\theta}_{MLE}$ is sufficient statistic of data $x$. For example, $p(Y|x)$ can be calculated with the assumption that $\hat{\theta}_{MLE}$ is the true proportion, i.e. $Y|x \sim \mathcal{B}in(N-n,\hat{\theta}_{MLE})$. to simulate `r lb(eq.4)` we remove step 1 in the list of simulation step above. 
+
+Also, it is worth knowing other options likely used in lieu of $CP_{MLE}$, such as original $H_a$ $(CP_{H_a})$ and null hypothesis $H_0$ $(CP_{H_0})$. 
+
+The interesting point that can be deduced from the second equation of `r lb(eq.3)` is that if we can warrant the posterior distribution $p(\theta|x)$ such that it approximates to $\hat{\theta}_{MLE}$, i.e. all knowledge is contributed by only data, PPoS will approximate to CP. This can be achieved by setting the variance of prior distribution $p(\theta)$ a huge value. 
+
+# Prior group
+
+This group comprises probability of success and the power. The idea is similar to Posterior group, the ony difference lies at `r lb(eq.1)` that will be used in lieu of `r lb(eq.2)`. 
+
+(cont.)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

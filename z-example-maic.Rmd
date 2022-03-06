@@ -29,10 +29,16 @@ lb = function(...){
      paste0(word,"\\@ref(",x[1],":",x[2],")")
 }
 
-MyTable = function(x, cap = NULL, ...){
-     kableExtra::kbl(x, booktab = FALSE, caption = cap,...)|>
-     kableExtra::kable_styling(bootstrap_options = c("striped"))
-}
+MyTable = function(x, cap = NULL, scroll_box = FALSE, ...){
+     result<-
+          kableExtra::kbl(x, booktab = TRUE, caption = cap,...)|>
+          kableExtra::kable_styling(bootstrap_options = c("striped"))
+     if(scroll_box){
+          result|>  
+               kableExtra::scroll_box(height = "500px",
+                                      extra_css  = "border:0.1px; margin-left: auto;margin-right: auto; margin-bottom: 25px;")
+     }
+     }
 ```
 
 We delineate an example in which we'd like to compare two treatments A and C. However, only individual-patient data of treatment A and B are available, and treatment C is only available through a previous study that compare treatment B and C. All information of treatment C reported in the study comprises mean and standard deviation of outcomes and baseline characteristics, so this type of data is usually called aggregate data. For example, 
@@ -40,14 +46,46 @@ We delineate an example in which we'd like to compare two treatments A and C. Ho
 ```{r tab1, fig.align='center'}
 set.seed(1234)
 ipd = tibble(
-     trt = sample(c("treatment","placebo"),100, replace = T),
+     outcome = rnorm(100, mean = 10),
+     trt = sample(c("treatmentA","placebo"),100, replace = T),
      age = rpois(100,30),
      gender = sample(c("F","M"),100, prob = c(0.3,0.7), replace = T),
      weight = rgamma(100,70,1.2),
      region = sample(c("urban","rural","suburban"), 100, replace = T, prob = c(0.5,0.4,0.1))
 )
 
-ipd|> MyTable("Individual patient data.", format = "html")|>
-     kableExtra::scroll_box(height = "500px", width = "400px",
-                            extra_css  = "border:0.1px; margin-left: auto;margin-right: auto;")
+ipd|> MyTable("Individual patient data.", TRUE, format = "html")
 ```
+
+We could obtain first and second moments of continuous variables and proportions of discrete variables through `r lb(tab.tab1)`. Thus, mean and variance of `age` and `weight` are shown in the following table
+
+```{r}
+d1<-
+ipd[,c("age","weight")]|>
+     vapply(\(x) c("mean" = mean(x),"variance"=var(x)), rep(NA_real_,2))
+d1
+```
+
+and proportions of `gender` and `region` are
+
+```{r}
+d2<-
+ipd[,c("gender","region")]|>
+     lapply(\(x) table(x)/sum(table(x)))
+d2
+```
+
+Another type of data is aggregate data which can be found in many articles. The aggregate data disclose only summarized statistics, such as mean, standard deviation (continuous variables), proportions (discrete variables). For example, We obtain summarized statistics from an article in which `treatmentB` is compared to `placebo` as follows
+
+```{r}
+d3 = matrix(c(35,25,62,47.5), ncol = 2)%>%
+     `colnames<-`(c("age","weight"))%>%
+     `row.names<-`(c("mean","variance"))
+d3
+d4 = list('gender' = c("F" = 0.4,"M" = 0.6), 'region' = c("rural" = 0.4,"suburban" = 0.2, "urban" = 0.4))
+d4
+```
+
+Also, we obtain different mean and its variance (usually calculated from CI) are `r diffB<- 15; diffB` and `r v2 <- 2; v2`, respectively. 
+
+

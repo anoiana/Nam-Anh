@@ -1,0 +1,103 @@
+---
+title: "Use Historical Data"
+theme: theme.css
+author:
+  - name: Nam-Anh
+date: "`r Sys.Date()`"
+bibliography: citation.bib
+csl: citation.csl
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 3
+    #pandoc_args: ["--number-sections"]
+    code_folding: hide
+description: |
+     *this note is*
+---
+
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\bf}[1]{\boldsymbol{#1}}
+
+
+```{r setup, include=FALSE}
+if(!library(pacman, logical.return = TRUE)) install.packages("pacman")
+pacman::p_load(tidyverse, rjags, magrittr, kableExtra)
+
+lb = function(...){
+     x = unlist(strsplit(as.character(rlang::expr(...)),"\\."))
+     word = switch(which(c("tab","fig","eq")%in% x[1]),"Table ","Figure ","Eq.")
+     paste0(word,"\\@ref(",x[1],":",x[2],")")
+}
+
+MyTable = function(x, cap = NULL, scroll_box = FALSE, ...){
+      result<-
+          kableExtra::kbl(x, booktab = TRUE, caption = cap,...)|>
+          kableExtra::kable_styling(bootstrap_options = c("striped"))
+     
+     if(scroll_box){
+          
+          css = c("border:0.1px;", 
+                  "margin-left: auto;", 
+                  "margin-right: auto;", 
+                  "margin-bottom: 25px;")
+          result|>  
+               kableExtra::scroll_box(height = "500px",
+                                      extra_css  = paste0(css, collapse = ""))
+     }
+      result
+}
+```
+
+# Motivations 
+
+
+# Methods
+
+Before delving into the exposition, we shall mathematically notate information used in later analyses. Assuming that there are *J* trials intrinsic to historical information $\mathcal{H}$, more specifically this information is often summarized through summary statistics, of which three typical metrics comprise mean, standard deviation (SD), proportions. Let $\bf{Y}_{\mathcal{J}} = \{Y_1,\dots,Y_J\}$ is a collection of $\mathcal{H}$, and $\theta_j$ is parameter pertaining to $Y_j$. We'd like to combine accrued data $\bf{Y}_{\mathcal{J}}$ with current data $Y_*$ to estimate $\theta_*$. $Y_*$ is also called the direct evidence and $\bf{Y}_{\mathcal{J}}$ indirect evidence. There appears two ways to achieve this
+
+1. Obtain $p(\theta_*|\bf{Y}_{\mathcal{J}})$, and then update $\theta_*$ by $Y_*$. This approach is called *meta-analytic-predictive* (MAP);
+2. Directly obtain $p(\theta_*|\bf{Y}_{\mathcal{J}},Y_*)$, which is called *meta-analytic-combined* (MAC).
+
+## An illustrative example
+
+We shall utilize the following example as an illustration for theories developed throughout this note. We found 5 studies that reported the time to independent walking (in days) of children with Guillain-Barre syndrome (GBS).[@goodmana2005]
+
+```{r tab1}
+gbs = dplyr::tibble(
+     study = 1:5,
+     n = c(56,37,14,18,9),
+     median = c(40,NA,NA,43,NA),
+     mean = c(45.6,58.7,60.2,NA,50),
+     sd = c(24.7,44,43.6,NA,29)
+)
+
+gbs|>
+     {\(x) modify(x, ~ifelse(is.na(.),"",.))}()|>
+     MyTable("*Historical data of the time to independent walking (in days) of children with Guillain-Barre syndrome.*")
+```
+
+## Normal-normal hierachical model (NNHM)
+
+Suppose that $Y_j|\theta_j \sim \mathcal{N}(\theta_j,s^2_j)$ which is called *data model*, and 
+
+$$
+\theta_j = \mu + \varepsilon_j, \quad \varepsilon_j \sim \mathcal{N}(0,\tau^2),
+(\#eq:1)
+$$
+
+or $\theta_j|\mu,\tau \sim \mathcal{N}(\mu,\tau^2)$ is *parameter model*. According to `r lb(tab.tab1)` the mean is consistently greater than SD through 5 studies, so parameter $\mu$ could follow log-normal distribution with parameters $\mu$ and $\sigma$. Therefore, the median, mean and variance of $\mu$ are $e^{\mu}$, $e^{\mu+\sigma^2/2}$ and $e^{2\mu+\sigma^2}(e^{\sigma^2}-1)$, respectively. For each study in `r lb(tab.tab1)`, we can calculate $\mu$ and $\sigma$ by method of moment. For study 2,3 and 5 we use the mean and SD while the median will be used for calculation for study 1 and 4. Formulae to calculate $\sigma$ and $\mu$ are 
+
+$$
+\mu = \ln(SD^2/mean^2+1), \quad \sigma = \sqrt{2[\ln(mean)-\mu]},
+$$
+
+respectively. If median is used in lieu of mean,  
+
+
+
+
+
+
+
+

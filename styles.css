@@ -1,14 +1,14 @@
 
 /*Header fonts*/
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Sans-Serif";
+  font-family: "Playfair Display";
   letter-spacing: 2px;  
   line-height: 2rem; /* increases, so wrapping headers don't overlap */ 
 }
 
 /*body font*/
 body {
-  font-family: "Sans-Serif";
+  font-family: "Asap";
   color: #1f1f1f;
   font-size: 12pt;
 }
@@ -83,10 +83,9 @@ d-appendix {
 
 
 
-/*change fontsize for caption*/
-
-caption {
-  font-size: 11pt;
-  font-style: italic;
-  font-family: "Sans-Serif";
+/* Change link appearance */
+d-article a {
+  border-bottom: 1px solid DeepPink;
+  text-decoration: none;
 }
+

@@ -1,0 +1,53 @@
+---
+title: "Some Terms Used in Statistics"
+author:
+  - name: Nam-Anh
+date: "`r Sys.Date()`"
+bibliography: citation.bib
+csl: citation.csl
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 3
+    #pandoc_args: ["--number-sections"]
+    code_folding: hide
+editor_options: 
+  chunk_output_type: console
+---
+
+\newcommand{\V}[1]{\boldsymbol{#1}}
+
+
+```{r setup, include=FALSE}
+if(!library(pacman, logical.return = TRUE)) install.packages("pacman")
+pacman::p_load(tidyverse, rjags, magrittr, kableExtra)
+
+lb = function(...){
+     x = unlist(strsplit(as.character(rlang::expr(...)),"\\."))
+     word = switch(which(c("tab","fig","eq")%in% x[1]),"Table ","Figure ","")
+     word = sprintf("<span style='color: %s;'>%s</span>", "inherit;",word)
+     paste0(word,"\\@ref(",x[1],":",x[2],")")
+}
+
+MyTable = function(x, cap = NULL, scroll_box = FALSE, ...){
+     result<-
+          kableExtra::kbl(x, booktab = TRUE, caption = cap,...)|>
+          kableExtra::kable_styling(bootstrap_options = c("striped"))
+     if(scroll_box){
+          result|>  
+               kableExtra::scroll_box(height = "500px",
+                                      extra_css  = "border:0.1px; margin-left: auto;margin-right: auto; margin-bottom: 25px;")
+     } else result
+     }
+```
+
+Let us start with distinguishing three terms, namely _**variability, heterogeneity**_ and **_uncertainty_**. 
+
+# Variability 
+
+The variability is often called first-order 
+
+
+
+
+

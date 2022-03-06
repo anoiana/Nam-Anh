@@ -1,5 +1,6 @@
 name: "website"
 title: "ANDOHA"
+theme: theme.css
 description: |
 output_dir: "docs"
 favicon: 'images/logo.png'
@@ -19,6 +20,8 @@ navbar:
         href: "z-generate-sample-with-rjags.html"
       - text: "Statistical cost-effectiveness"
         href: "z-statistical-cost-effectiveness.html"
+      - text: "Calculation of The Power"
+        href: "z-the-power.html"
     - text: "Notes 2"
       menu:
       - text: "Proof of MAIC"
@@ -28,3 +31,4 @@ navbar:
 output: 
   distill::distill_article:
     css: styles.css
+
