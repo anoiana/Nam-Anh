@@ -2558,9 +2558,9 @@ Notes 2
 </ul>
 </nav>
 </div>
-<p>There are four types of measures pertaining to the power of hypothesis testing, namely predictive power of success, conditional power, probability of success and power. Such measures could be categorized into 2 groups characterized by the fact that whether or not the knowledge of current data is integrated.</p>
+<p>There are four types of measures pertaining to the power of hypothesis testing, namely predictive power of success (PPoS), predictive conditional power (PCoS), prior power of success (PrPoS) and prior conditional power of success (PrCoS). Such measures could be categorized into 2 groups characterized by the fact that whether or not the knowledge of current data is integrated.</p>
 <h1 id="predictive-group">Predictive group</h1>
-<p>This group comprises predictive power of success and conditional power. Recall two types of predictive distributions, prior predictive distribution and posterior distribution which are formulated as follows</p>
+<p>This group comprises PPoS and PCoS. Recall two types of predictive distributions, prior predictive distribution and posterior distribution which are formulated as follows</p>
 <p><span class="math display" id="eq:1">\[
 p_{PRI}(Y) = \int p(Y|\theta)\color{red}{p(\theta)}d\theta
 \tag{1}
@@ -2574,7 +2574,7 @@ p_{POS}(Y|x) = \int p(Y|\theta,x)\color{blue}{p(\theta|x)}d\theta,
 <li>Interim phase in which the number of participants observed less than pre-specified number of participants;</li>
 <li>Completed phase or final phase where all participants are have been observed.</li>
 </ol>
-<p>Let <span class="math inline">\(N\)</span> be the pre-specified number of patients and <span class="math inline">\(n\)</span> the number of patients at the interim phase. For beta-binomial case, Lee and colleague proposed the following formula to calculate the predictive power of success, i.e. the probability of clinical success.<span class="citation" data-cites="lee2008"><sup><a href="#ref-lee2008" role="doc-biblioref">1</a></sup></span></p>
+<p>Let <span class="math inline">\(N\)</span> be the pre-specified number of patients and <span class="math inline">\(n\)</span> the number of patients at the interim phase. For beta-binomial case, Lee and colleague proposed the following formula to calculate the PPoS.<span class="citation" data-cites="lee2008"><sup><a href="#ref-lee2008" role="doc-biblioref">1</a></sup></span></p>
 <p><span class="math display" id="eq:3">\[
 \begin{aligned}
 PPoS &amp;= \sum_{i=0}^{N-n} \mathbf{I}\big[\mathbb{P}(\theta &gt; \theta_0|x,Y=i)&gt;\delta_T\big]\times\mathbb{P}(Y=i|x) \\
@@ -2588,19 +2588,19 @@ p(Y=i|\theta,x)p(\theta|x)d\theta
 <li>At the interim analysis, sample the parameter of interest <span class="math inline">\(\theta\)</span> from the current posterior given current data <span class="math inline">\(x\)</span>.</li>
 <li>Complete the dataset by sampling future samples <span class="math inline">\(Y\)</span>, observations not yet observed at the interim analysis, from the predictive distribution.</li>
 <li>Use the complete dataset to calculate success criteria (p-value, posterior probability). If success criteria is met (i.e. p-value &lt; 0.05), the trial is a success.</li>
-<li>Repeat steps 1-3 a total of B times; the predictive probability (PPoS) is the proportion of simulated trials that achieve success.</li>
+<li>Repeat steps 1-3 a total of B times; the PPoS is the proportion of simulated trials that achieve success.</li>
 </ol>
 <p>The step 1 accounts for the variability of parameter of interest given interim analysis.</p>
-<p>If the knowledge of <span class="math inline">\(\theta|x\)</span> is summarized by point estimation, e.g. <span class="math inline">\(\hat{\theta}_{MLE}\)</span> based on only the interim analysis. This is called <em>conditional power</em> (CP). Relating to Eq.<a href="#eq:3">(3)</a>, we can write as follows</p>
+<p>If the knowledge of <span class="math inline">\(\theta|x\)</span> is summarized by point estimation, e.g. <span class="math inline">\(\hat{\theta}_{MLE}\)</span> based on only the interim analysis. This is the PCoS. Relating to Eq.<a href="#eq:3">(3)</a>, we can write as follows</p>
 <p><span class="math display" id="eq:4">\[
-CP = \sum_{i=0}^{N-n} \mathbf{I}\big[\mathbb{P}(P &gt; p_0|x,Y=i)&gt;\delta_T\big]\times\mathbb{P}(Y=i|\hat{\theta}_{MLE},x) 
+PCoS = \sum_{i=0}^{N-n} \mathbf{I}\big[\mathbb{P}(P &gt; p_0|x,Y=i)&gt;\delta_T\big]\times\mathbb{P}(Y=i|\hat{\theta}_{MLE},x) 
 \tag{4}
 \]</span></p>
-<p>note that for the sake of intuition we kept both terms <span class="math inline">\(\hat{\theta}_{MLE}\)</span> and <span class="math inline">\(x\)</span> in Eq.<a href="#eq:4">(4)</a>, yet we can drop one of two such terms since <span class="math inline">\(\hat{\theta}_{MLE}\)</span> is sufficient statistic of data <span class="math inline">\(x\)</span>. For example, <span class="math inline">\(p(Y|x)\)</span> can be calculated with the assumption that <span class="math inline">\(\hat{\theta}_{MLE}\)</span> is the true proportion, i.e. <span class="math inline">\(Y|x \sim \mathcal{B}in(N-n,\hat{\theta}_{MLE})\)</span>. to simulate Eq.<a href="#eq:4">(4)</a> we remove step 1 in the list of simulation step above.</p>
+<p>note that for the sake of intuition we kept both terms <span class="math inline">\(\hat{\theta}_{MLE}\)</span> and <span class="math inline">\(x\)</span> in Eq.<a href="#eq:4">(4)</a>, yet we can drop one of two such terms since <span class="math inline">\(\hat{\theta}_{MLE}\)</span> is sufficient statistic of data <span class="math inline">\(x\)</span>. For example, <span class="math inline">\(p(Y|x)\)</span> can be calculated with the assumption that <span class="math inline">\(\hat{\theta}_{MLE}\)</span> is the true proportion, i.e. <span class="math inline">\(Y|x \sim \mathcal{B}in(N-n,\hat{\theta}_{MLE})\)</span>. To simulate Eq.<a href="#eq:4">(4)</a> we remove step 1 in the list of simulation step above.</p>
 <p>Also, it is worth knowing other options likely used in lieu of <span class="math inline">\(CP_{MLE}\)</span>, such as original <span class="math inline">\(H_a\)</span> <span class="math inline">\((CP_{H_a})\)</span> and null hypothesis <span class="math inline">\(H_0\)</span> <span class="math inline">\((CP_{H_0})\)</span>.</p>
-<p>The interesting point that can be deduced from the second equation of Eq.<a href="#eq:3">(3)</a> is that if we can warrant the posterior distribution <span class="math inline">\(p(\theta|x)\)</span> such that it approximates to <span class="math inline">\(\hat{\theta}_{MLE}\)</span>, i.e. all knowledge is contributed by only data, PPoS will approximate to CP. This can be achieved by setting the variance of prior distribution <span class="math inline">\(p(\theta)\)</span> a huge value.</p>
+<p>The interesting point that can be deduced from the second equation of Eq.<a href="#eq:3">(3)</a> is that if we can warrant the posterior distribution <span class="math inline">\(p(\theta|x)\)</span> such that it approximates to <span class="math inline">\(\hat{\theta}_{MLE}\)</span>, i.e. all knowledge is contributed by only data, PPoS will approximate to the PCoS. This can be achieved by setting the variance of prior distribution <span class="math inline">\(p(\theta)\)</span> a huge value.</p>
 <h1 id="prior-group">Prior group</h1>
-<p>This group comprises probability of success and the power. The idea is similar to Posterior group, the ony difference lies at Eq.<a href="#eq:1">(1)</a> that will be used in lieu of Eq.<a href="#eq:2">(2)</a>.</p>
+<p>This group comprises the PrPoS and the PRCoS. The idea is similar to the posterior group, the only difference lies at Eq.<a href="#eq:1">(1)</a> that will be used in lieu of Eq.<a href="#eq:2">(2)</a>.</p>
 <p>(cont.)</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references csl-bib-body" role="doc-bibliography">
