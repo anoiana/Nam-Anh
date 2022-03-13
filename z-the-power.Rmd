@@ -107,7 +107,7 @@ The interesting point that can be deduced from the second equation of `r lb(eq.3
 
 # Prior group
 
-This group comprises the PrPoS and the PRCoS. The idea is similar to the posterior group, the only difference lies at `r lb(eq.1)` that will be used in lieu of `r lb(eq.2)`. 
+This group comprises the PrPoS and the PRCoS. The idea is very similar to the posterior group, but the only difference lies at `r lb(eq.1)` that will be used in lieu of `r lb(eq.2)`. Thus, instead of sampling a half of data for interim analysis, we will sample the complete data set, and a first half of the complete data set is used for interim analysis, and the remaining data will be integrated to the first half od data set for final analysis at the second stage.   
 
 (cont.)
 

@@ -36,67 +36,84 @@ margin-bottom: 15px;
 Let $\bf{p} = \tp{(p_1,p_2,\dots,p_n)}$ be propensity score and $\bf X = \tp{(\bf{x}_1,\bf{x}_2, \dots, \bf{x}_n)}$ baseline characteristics of subjects in IPD. Also, $\bf{\mu}$ denotes average vector of baseline characteristics found in SLD. We aim to estimate $\bf p$ such that $\tp{\bf{p}}\bf{X} = \tp{\bf{\mu}}$, i.e. we want to minimize *Kullback Leibler divergence* of $\bf p$ and empirical function with some constraints. Specifically, we want to minimize 
 
 $$
--\tp{\bf{p}}\ln(\frac{1}{n\bf{p}}),
+\mathcal{L} = -\tp{\bf{p}}\ln(\frac{1}{n\bf{p}}),
 $$
 
 with two constraints:
 
 $$
-\tp{\bf{p}}\bf{1} = 1, \quad and \quad \tp{\bf{p}}\bf{X} = \tp{\bf{\mu}}
+\tp{\bf{p}}\bf{1} = 1, \quad and \quad \tp{\bf{p}}\bf{X} = \tp{\bf{\mu}}.
 $$ 
 
-We shall use *Lagrange Multiplier* to solve such an optimization problem as follows.
+Alternatively, we optimize 
 
 $$
-\begin{aligned}
-\mathcal{L} &= -\tp{\bf{p}}\ln(\frac{1}{n\bf{p}})\bf{1} - \lambda\tp{(\tp{\bf{p}}\bf{X} - \tp{\bf{\mu}})} \\
-&= \tp{\bf{p}}\ln(n\bf{p})\bf{1} - \lambda[( \tp{\bf{X}} - \bf{\mu}\tp{\bf{1}} )\bf{p}].
-\end{aligned}
+\mathcal{L} = -\tp{\bf{p}}\ln(\frac{1}{n\bf{p}}) - \alpha_0\Big(\sum_{i=1}^np_i -1\Big) - \alpha_1(p^{\top}X-\boldsymbol{\mu}^{\top})
 (\#eq:eq1)
 $$
 
-Above equation could be solved by taking derivative w.r.t $\bf{p}$ and $\lambda$, we then equate both derivations to zero and solve such equations. First, Taking derivative $\mathcal{L}$ w.r.t $\lambda$ we obtain 
+Equation \@ref(eq:eq1) could be solved by taking derivative w.r.t $\bf{p}$, $\alpha_0$ and $\alpha_1$ followed by equating derivations to zero and solve equations. 
 
-$$
-\tp{\bf{p}}\bf{X} = \tp{\bf{\mu}}.
-(\#eq:eq2)
-$$
-
-Next, taking derivative w.r.t $p_i$:
+Taking derivative w.r.t $p_i$:
 
 $$
 \begin{aligned}
 &\quad \frac{\partial\mathcal{L}}{\partial p_i} = 0 \\
-&\Rightarrow \ln(np_i) +n -\lambda(x_i-\mu) = 0 \\
-&\Rightarrow \ln(np_i) = \lambda(x_i-\mu)-n \\
-&\Rightarrow p_i = \frac{\exp[\lambda(x_i -\mu)-n]}{n} \\
-&\Rightarrow p_i = \frac{e^{-n}}{n}\exp[\lambda(x_i-\mu)]
+&\Rightarrow \ln(np_i) +n -\alpha_0 -\alpha_1(x_i-\mu) = 0 \\
+&\Rightarrow \ln(np_i) = \alpha_1(x_i-\mu)+\alpha_0 -n \\
+&\Rightarrow p_i = \frac{\exp[\alpha_0+\alpha_1(x_i -\mu)-n]}{n} \\
+&\Rightarrow p_i = \frac{e^{-n}}{n}\exp[\alpha_0+ \alpha_1(x_i-\mu)]
+\end{aligned}
+(\#eq:eq2)
+$$
+
+Also,
+
+$$
+\begin{aligned}
+&\quad 1 = \sum_{i=1}^np_i = \frac{e^{-n}}{n}\sum_{i=1}^n\exp[\alpha_0+\alpha_1(x_i-\mu)] \\
+& \Rightarrow \frac{n}{e^{-n}} = \sum_{i=1}^n\exp[\alpha_0+ \alpha_1(x_i-\mu)]
 \end{aligned}
 (\#eq:eq3)
+$$
+
+substitute \@ref(eq:eq3) to \@ref(eq:eq2), we obtain 
+
+::: {.makebox}
+\begin{equation}
+p_i = \frac{\exp[\alpha_0+\alpha_1(x_i - \mu)]}{\sum_{i=1}^n\exp[\alpha_0 +\alpha_1(x_i-\mu)]}
+(\#eq:eq4)
+\end{equation}
+:::
+
+Let $z_i = x_i-\mu$, and hence $p_i = \frac{\exp[\alpha_1 z_i]}{\sum_{i=1}^n\exp[\alpha_1 z_i]}$, implying the weight
+
+$$
+w_i = p_i\sum_{j=1}^n\exp[\alpha_1z_j] = \exp (\alpha_1z_i)\ge 0.
 $$
 
 thus,
 
 $$
-\begin{aligned}
-&\quad 1 = \sum_{i=1}^np_i = \frac{e^{-n}}{n}\sum_{i=1}^n\exp[\lambda(x_i-\mu)] \\
-& \Rightarrow \frac{n}{e^{-n}} = \sum_{i=1}^n\exp[\lambda(x_i-\mu)]
-\end{aligned}
-(\#eq:eq4)
+\sum_{i=1}^nw_iz_i = \sum_{i=1}^n\Big(p_i\sum_{j=1}^n\exp[\alpha_1z_j]\Big)z_i = \exp (\alpha_1z_i)\ge 0.
+(\#eq:eq5)
 $$
 
-substitute \@ref(eq:eq4) to \@ref(eq:eq3)`, we obtain 
+Recall that $z_i = x_i-\mu$ and we are interested in $\sum_{i=1}^np_ix_i = \mu$ implying that 
 
-::: {.makebox}
-\begin{equation}
-p_i = \frac{\exp[\lambda(x_i - \mu)]}{\sum_{i=1}^n\exp[\lambda(x_i-\mu)]}
-(\#eq:eq5)
-\end{equation}
-:::
+$$
+\sum_{i=1}^n p_iz_i= 0.
+(\#eq:eq6)
+$$
 
-\@ref(eq:eq5) indicates that $p_i$ can be estimated by fitting logistic model in which $z_i= x_i-\mu$ is one covariate, and $z_i$ must be statisfying \@ref(eq:eq2).
+Also, the second term in \@ref(eq:eq5) can be rewritten as 
 
+$$
+k\sum_{i=1}^np_iz_i
+(\#eq:eq7)
+$$
 
+where $k = \sum_{j=1}^n\exp[\alpha_1z_j]$. Thus, the condition \@ref(eq:eq6) is satisfied as the equation \@ref(eq:eq7) equals zero. which is equivalent to minimizing the right hand side of \@ref(eq:eq5).
 
 
 

@@ -10,3 +10,33 @@ site: distill::distill_website
 <p style="font-family:papyrus;text-align: right;">"No mud, no lotus"</p>
 <p style="font-family:papyrus;text-align: right;">"Smile to the cloud in your tea"</p>
 <p style="font-family:papyrus; font-size:15px;text-align: right;" >_Thich Nhat Hanh_</p>
+
+
+```{r setup, include=FALSE}
+if(!library(pacman, logical.return = TRUE)) install.packages("pacman")
+pacman::p_load(tidyverse, rjags, magrittr, kableExtra)
+
+lb = function(...){
+     x = unlist(strsplit(as.character(rlang::expr(...)),"\\."))
+     word = switch(which(c("tab","fig","eq")%in% x[1]),"Table ","Figure ","Eq.")
+     paste0(word,"\\@ref(",x[1],":",x[2],")")
+}
+
+MyTable = function(x, cap = NULL, scroll_box = FALSE, ...){
+      result<-
+          kableExtra::kbl(x, booktab = TRUE, caption = cap,...)|>
+          kableExtra::kable_styling(bootstrap_options = c("striped"))
+     
+     if(scroll_box){
+          
+          css = c("border:0.1px;", 
+                  "margin-left: auto;", 
+                  "margin-right: auto;", 
+                  "margin-bottom: 25px;")
+          result|>  
+               kableExtra::scroll_box(height = "500px",
+                                      extra_css  = paste0(css, collapse = ""))
+     }
+      result
+}
+```

@@ -114,8 +114,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <link rel="icon" type="image/png" href="images/logo.png"/>
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2022-03-05"/>
-  <meta property="article:created" itemprop="dateCreated" content="2022-03-05"/>
+  <meta property="article:published" itemprop="datePublished" content="2022-03-11"/>
+  <meta property="article:created" itemprop="dateCreated" content="2022-03-11"/>
   <meta name="article:author" content="Nam-Anh"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
@@ -134,7 +134,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","theme","author","date","bibliography","csl","output","description"]}},"value":[{"type":"character","attributes":{},"value":["Calculation of The Power"]},{"type":"character","attributes":{},"value":["theme.css"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Nam-Anh"]}]}]},{"type":"character","attributes":{},"value":["2022-03-05"]},{"type":"character","attributes":{},"value":["citation.bib"]},{"type":"character","attributes":{},"value":["citation.csl"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth","code_folding"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]},{"type":"character","attributes":{},"value":["hide"]}]}]},{"type":"NULL"}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","theme","author","date","bibliography","csl","output","description"]}},"value":[{"type":"character","attributes":{},"value":["Calculation of The Power"]},{"type":"character","attributes":{},"value":["theme.css"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Nam-Anh"]}]}]},{"type":"character","attributes":{},"value":["2022-03-11"]},{"type":"character","attributes":{},"value":["citation.bib"]},{"type":"character","attributes":{},"value":["citation.csl"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth","code_folding"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]},{"type":"character","attributes":{},"value":["hide"]}]}]},{"type":"NULL"}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2488,7 +2488,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Calculation of The Power","authors":[{"author":"Nam-Anh","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-03-05T00:00:00.000-05:00","citationText":"Nam-Anh, 2022"}
+{"title":"Calculation of The Power","authors":[{"author":"Nam-Anh","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-03-11T00:00:00.000-05:00","citationText":"Nam-Anh, 2022"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2545,7 +2545,7 @@ Notes 2
 <div class="d-byline">
   Nam-Anh  
   
-<br/>2022-03-05
+<br/>2022-03-11
 </div>
 
 <div class="d-article">
@@ -2600,7 +2600,7 @@ PCoS = \sum_{i=0}^{N-n} \mathbf{I}\big[\mathbb{P}(P &gt; p_0|x,Y=i)&gt;\delta_T\
 <p>Also, it is worth knowing other options likely used in lieu of <span class="math inline">\(CP_{MLE}\)</span>, such as original <span class="math inline">\(H_a\)</span> <span class="math inline">\((CP_{H_a})\)</span> and null hypothesis <span class="math inline">\(H_0\)</span> <span class="math inline">\((CP_{H_0})\)</span>.</p>
 <p>The interesting point that can be deduced from the second equation of Eq.<a href="#eq:3">(3)</a> is that if we can warrant the posterior distribution <span class="math inline">\(p(\theta|x)\)</span> such that it approximates to <span class="math inline">\(\hat{\theta}_{MLE}\)</span>, i.e. all knowledge is contributed by only data, PPoS will approximate to the PCoS. This can be achieved by setting the variance of prior distribution <span class="math inline">\(p(\theta)\)</span> a huge value.</p>
 <h1 id="prior-group">Prior group</h1>
-<p>This group comprises the PrPoS and the PRCoS. The idea is similar to the posterior group, the only difference lies at Eq.<a href="#eq:1">(1)</a> that will be used in lieu of Eq.<a href="#eq:2">(2)</a>.</p>
+<p>This group comprises the PrPoS and the PRCoS. The idea is very similar to the posterior group, but the only difference lies at Eq.<a href="#eq:1">(1)</a> that will be used in lieu of Eq.<a href="#eq:2">(2)</a>. Thus, instead of sampling a half of data for interim analysis, we will sample the complete data set, and a first half of the complete data set is used for interim analysis, and the remaining data will be integrated to the first half od data set for final analysis at the second stage.</p>
 <p>(cont.)</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references csl-bib-body" role="doc-bibliography">
