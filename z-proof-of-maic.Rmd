@@ -24,7 +24,7 @@ if(!library(pacman, logical.return = TRUE)) install.packages("pacman")
 pacman::p_load(tidyverse, rjags, magrittr)
 ```
 
-```{css, echo=FALSE}
+```{css, include = FALSE}
 .makebox{
 border: 2px solid #566573;
 border-radius: 5px; 

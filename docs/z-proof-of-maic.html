@@ -2527,25 +2527,6 @@ Notes 2
 </div>
 
 <div class="d-article">
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-hide
-</summary>
-<div class="sourceCode" id="cb1"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.makebox</span>{</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">border</span>: <span class="dv">2</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">#566573</span><span class="op">;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">border-radius</span>: <span class="dv">5</span><span class="dt">px</span><span class="op">;</span> </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">margin-bottom</span>: <span class="dv">15</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-</details>
-<style type="text/css">
-.makebox{
-border: 2px solid #566573;
-border-radius: 5px; 
-margin-bottom: 15px;
-}
-</style>
-</div>
 <p>Let <span class="math inline">\(\boldsymbol{p} = {(p_1,p_2,\dots,p_n)}^{\top}\)</span> be propensity score and <span class="math inline">\(\boldsymbol{X} = {(\boldsymbol{x}_1,\boldsymbol{x}_2, \dots, \boldsymbol{x}_n)}^{\top}\)</span> baseline characteristics of subjects in IPD. Also, <span class="math inline">\(\boldsymbol{\mu}\)</span> denotes average vector of baseline characteristics found in SLD. We aim to estimate <span class="math inline">\(\boldsymbol{p}\)</span> such that <span class="math inline">\({\boldsymbol{p}}^{\top}\boldsymbol{X} = {\boldsymbol{\mu}}^{\top}\)</span>, i.e. we want to minimize <em>Kullback Leibler divergence</em> of <span class="math inline">\(\boldsymbol{p}\)</span> and empirical function with some constraints. Specifically, we want to minimize</p>
 <p><span class="math display">\[
 \mathcal{L} = -{\boldsymbol{p}}^{\top}\ln(\frac{1}{n\boldsymbol{p}}),
@@ -2606,7 +2587,7 @@ k\sum_{i=1}^np_iz_i
 \tag{7}
 \]</span></p>
 <p>where <span class="math inline">\(k = \sum_{j=1}^n\exp[\alpha_1z_j]\)</span>. Thus, the condition <a href="#eq:eq6">(6)</a> is satisfied as the equation <a href="#eq:eq7">(7)</a> equals zero. which is equivalent to minimizing the right hand side of <a href="#eq:eq5">(5)</a>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
