@@ -2573,7 +2573,7 @@ w_i = p_i\sum_{j=1}^n\exp[\alpha_1z_j] = \exp (\alpha_1z_i)\ge 0.
 \]</span></p>
 <p>thus,</p>
 <p><span class="math display" id="eq:eq5">\[
-\sum_{i=1}^nw_iz_i = \sum_{i=1}^n\Big(p_i\sum_{j=1}^n\exp[\alpha_1z_j]\Big)z_i = \exp (\alpha_1z_i)\ge 0.
+\sum_{i=1}^nw_iz_i = \sum_{i=1}^n\Big(p_i\sum_{j=1}^n\exp[\alpha_1z_j]\Big)z_i = \sum_{i=1}^n\exp (\alpha_1z_i)\ge 0.
 \tag{5}
 \]</span></p>
 <p>Recall that <span class="math inline">\(z_i = x_i-\mu\)</span> and we are interested in <span class="math inline">\(\sum_{i=1}^np_ix_i = \mu\)</span> implying that</p>
@@ -2586,7 +2586,10 @@ w_i = p_i\sum_{j=1}^n\exp[\alpha_1z_j] = \exp (\alpha_1z_i)\ge 0.
 k\sum_{i=1}^np_iz_i
 \tag{7}
 \]</span></p>
-<p>where <span class="math inline">\(k = \sum_{j=1}^n\exp[\alpha_1z_j]\)</span>. Thus, the condition <a href="#eq:eq6">(6)</a> is satisfied as the equation <a href="#eq:eq7">(7)</a> equals zero. which is equivalent to minimizing the right hand side of <a href="#eq:eq5">(5)</a>.</p>
+<p>where <span class="math inline">\(k = \sum_{j=1}^n\exp[\alpha_1z_j]\)</span>. Thus, the condition <a href="#eq:eq6">(6)</a> is satisfied as the equation <a href="#eq:eq7">(7)</a> equals zero. which is equivalent to minimizing the right hand side of <a href="#eq:eq5">(5)</a>, <span class="math inline">\(\sum_{i=1}^n\exp (\alpha_1z_i)\ge 0\)</span>, which can rewritten in matrix form when there are more than one effect modifiers</p>
+<p><span class="math display">\[
+\boldsymbol{1}^{\top}\exp(\boldsymbol{Z\alpha}_1) = \sum_{i=1}^n\exp(\boldsymbol{z}_i^{\top}\boldsymbol{\alpha}_1).
+\]</span></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
