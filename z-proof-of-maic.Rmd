@@ -130,7 +130,7 @@ k\sum_{i=1}^np_iz_i
 (\#eq:eq7)
 $$
 
-where $k = \sum_{j=1}^n\exp[\alpha_1z_j]$. Thus, the condition \@ref(eq:eq6) is satisfied as the equation \@ref(eq:eq7) equals zero, which is equivalent to minimizing the right hand side of \@ref(eq:eq5), $\sum_{i=1}^n\exp (\alpha_1z_i)\ge 0$, which can rewritten in matrix form when there are more than one effect modifiers 
+where $k = \sum_{j=1}^n\exp[\alpha_1z_j]$. Thus, the condition \@ref(eq:eq6) is satisfied as the equation \@ref(eq:eq7) equals zero, which is equivalent to minimizing the right hand side of \@ref(eq:eq5), $\sum_{i=1}^n\exp (\alpha_1z_i)\ge 0$, which can be rewritten in the matrix form when there are more than one effect modifiers 
 
 $$
 \boldsymbol{1}^{\top}\exp(\boldsymbol{Z\alpha}_1) = \sum_{i=1}^n\exp(\boldsymbol{z}_i^{\top}\boldsymbol{\alpha}_1).
