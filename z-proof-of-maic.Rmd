@@ -21,7 +21,24 @@ editor_options:
 
 ```{r setup, include=FALSE}
 if(!library(pacman, logical.return = TRUE)) install.packages("pacman")
-pacman::p_load(tidyverse, rjags, magrittr)
+pacman::p_load(tidyverse, rjags, magrittr, kableExtra)
+
+MyTable = function(x, cap = NULL, scroll_box = FALSE, ...){
+      result<-
+          kableExtra::kbl(x, booktab = TRUE, caption = cap,...)|>
+          kableExtra::kable_styling(bootstrap_options = c("striped"))
+     
+     if(scroll_box){
+          
+          css = c("border:0.1px;", 
+                  "margin-left: auto;", 
+                  "margin-right: auto;", 
+                  "margin-bottom: 25px;")
+          result|>  
+               kableExtra::scroll_box(height = "500px",
+                                      extra_css  = paste0(css, collapse = ""))
+     } else result
+}
 ```
 
 ```{css, include = FALSE}
@@ -89,13 +106,13 @@ p_i = \frac{\exp[\alpha_0+\alpha_1(x_i - \mu)]}{\sum_{i=1}^n\exp[\alpha_0 +\alph
 Let $z_i = x_i-\mu$, and hence $p_i = \frac{\exp[\alpha_1 z_i]}{\sum_{i=1}^n\exp[\alpha_1 z_i]}$, implying the weight
 
 $$
-w_i = p_i\sum_{j=1}^n\exp[\alpha_1z_j] = \exp (\alpha_1z_i)\ge 0.
+w_i = p_i\sum_{j=1}^n\exp[\alpha_1z_j] = \exp (\alpha_1z_i)> 0.
 $$
 
-thus,
+Thus,
 
 $$
-\sum_{i=1}^nw_iz_i = \sum_{i=1}^n\Big(p_i\sum_{j=1}^n\exp[\alpha_1z_j]\Big)z_i = \sum_{i=1}^n\exp (\alpha_1z_i)\ge 0.
+\sum_{i=1}^nw_iz_i = \sum_{i=1}^n\Big(p_i\sum_{j=1}^n\exp[\alpha_1z_j]\Big)z_i = \sum_{i=1}^n\exp (\alpha_1z_i)> 0.
 (\#eq:eq5)
 $$
 
@@ -113,11 +130,54 @@ k\sum_{i=1}^np_iz_i
 (\#eq:eq7)
 $$
 
-where $k = \sum_{j=1}^n\exp[\alpha_1z_j]$. Thus, the condition \@ref(eq:eq6) is satisfied as the equation \@ref(eq:eq7) equals zero. which is equivalent to minimizing the right hand side of \@ref(eq:eq5), $\sum_{i=1}^n\exp (\alpha_1z_i)\ge 0$, which can rewritten in matrix form when there are more than one effect modifiers 
+where $k = \sum_{j=1}^n\exp[\alpha_1z_j]$. Thus, the condition \@ref(eq:eq6) is satisfied as the equation \@ref(eq:eq7) equals zero, which is equivalent to minimizing the right hand side of \@ref(eq:eq5), $\sum_{i=1}^n\exp (\alpha_1z_i)\ge 0$, which can rewritten in matrix form when there are more than one effect modifiers 
 
 $$
 \boldsymbol{1}^{\top}\exp(\boldsymbol{Z\alpha}_1) = \sum_{i=1}^n\exp(\boldsymbol{z}_i^{\top}\boldsymbol{\alpha}_1).
 $$
+
+For the sake of illustration, we shall consider the following example. Suppose we have effect modifiers age and gender of 100 patients as follows
+
+```{r}
+set.seed(1234)
+age = rnorm(100,50,5)
+gender = sample(c(0,1),100, replace = T)
+
+data.frame(patient= 1:100,age = age, gender = gender)|>
+     MyTable(scroll_box = T, cap = "Age and Gender of 100 patients. For *Gender*: 1: Female; 0: Male.")
+```
+
+Mean of `age` and proportion of `female` are $\hat{\theta}_{age}$ = `r mean(age)` and $\hat{\theta}_{sex}$ = `r mean(gender)`, respectively. We shall match both $\hat{\theta}_{age}$ and $\hat{\theta}_{sex}$ to `r age2=52;age2` and `r gender2=0.5;gender2`. To this end, we follow above instruction to determine $\alpha_1$ and $p_i$. Thus,
+
+```{r}
+Z = matrix(c(age-age2,gender-gender2), ncol = 2)
+objfn = function(alpha,Z) sum(exp(Z%*%alpha))
+alpha = optim(par = c(0,0), fn = objfn, Z = Z)$par
+p = exp(Z%*%alpha)|>
+     {\(x) x/sum(x)}()
+
+data.frame(patient= 1:100,age = age, gender = gender, p = p)|>
+     MyTable(scroll_box = T, cap = "Age and Gender and MAIC proportion of 100 patients.")
+```
+
+Using `p` to calculate weighted mean and proportion of `age` and `gender`,
+
+```{r}
+t(p)%*%matrix(c(age,gender),ncol=2)
+```
+
+We also calculate effective sample size
+
+```{r}
+w = c(exp(Z%*%alpha))
+ess = sum(w)^2/sum(w^2)
+ess
+```
+
+Thus, to balance effect modifiers, we lose about `r ceiling(100 - ess)` participants.
+
+
+
 
 
 
