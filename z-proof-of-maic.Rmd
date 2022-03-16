@@ -75,10 +75,10 @@ Taking derivative w.r.t $p_i$:
 $$
 \begin{aligned}
 &\quad \frac{\partial\mathcal{L}}{\partial p_i} = 0 \\
-&\Rightarrow \ln(np_i) +n -\alpha_0 -\alpha_1(x_i) = 0 \\
-&\Rightarrow \ln(np_i) = \alpha_1(x_i)+\alpha_0 -n \\
-&\Rightarrow p_i = \frac{\exp[\alpha_0+\alpha_1(x_i)-n]}{n} \\
-&\Rightarrow p_i = \frac{e^{-n}}{n}\exp[\alpha_0+ \alpha_1(x_i)]
+&\Rightarrow \ln(np_i) +1 -\alpha_0 -\alpha_1(x_i) = 0 \\
+&\Rightarrow \ln(np_i) = \alpha_1(x_i)+\alpha_0 -1 \\
+&\Rightarrow p_i = \frac{\exp[\alpha_0+\alpha_1(x_i)-1]}{n} \\
+&\Rightarrow p_i = \frac{e^{-1}}{n}\exp[\alpha_0+ \alpha_1(x_i)]
 \end{aligned}
 (\#eq:eq2)
 $$
@@ -87,8 +87,8 @@ Also,
 
 $$
 \begin{aligned}
-&\quad 1 = \sum_{i=1}^np_i = \frac{e^{-n}}{n}\sum_{i=1}^n\exp[\alpha_0+\alpha_1(x_i)] \\
-& \Rightarrow \frac{n}{e^{-n}} = \sum_{i=1}^n\exp[\alpha_0+ \alpha_1(x_i)]
+&\quad 1 = \sum_{i=1}^np_i = \frac{e^{-1}}{n}\sum_{i=1}^n\exp[\alpha_0+\alpha_1(x_i)] \\
+& \Rightarrow \frac{n}{e^{-1}} = \sum_{i=1}^n\exp[\alpha_0+ \alpha_1(x_i)]
 \end{aligned}
 (\#eq:eq3)
 $$
@@ -101,7 +101,7 @@ $$
 which is equivalent to
 
 $$
-p_i = \frac{\exp[\alpha_0+\alpha_1(x_i-\mu)]}{\sum_{i=1}^n\exp[\alpha_0 +\alpha_1(x_i-\mu)]}
+p_i = \frac{\exp[\alpha_1(x_i-\mu)]}{\sum_{i=1}^n\exp[\alpha_1(x_i-\mu)]}
 (\#eq:eq4)
 $$
 

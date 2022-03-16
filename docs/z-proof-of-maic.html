@@ -2570,18 +2570,18 @@ Notes 2
 <p><span class="math display" id="eq:eq2">\[
 \begin{aligned}
 &amp;\quad \frac{\partial\mathcal{L}}{\partial p_i} = 0 \\
-&amp;\Rightarrow \ln(np_i) +n -\alpha_0 -\alpha_1(x_i) = 0 \\
-&amp;\Rightarrow \ln(np_i) = \alpha_1(x_i)+\alpha_0 -n \\
-&amp;\Rightarrow p_i = \frac{\exp[\alpha_0+\alpha_1(x_i)-n]}{n} \\
-&amp;\Rightarrow p_i = \frac{e^{-n}}{n}\exp[\alpha_0+ \alpha_1(x_i)]
+&amp;\Rightarrow \ln(np_i) +1 -\alpha_0 -\alpha_1(x_i) = 0 \\
+&amp;\Rightarrow \ln(np_i) = \alpha_1(x_i)+\alpha_0 -1 \\
+&amp;\Rightarrow p_i = \frac{\exp[\alpha_0+\alpha_1(x_i)-1]}{n} \\
+&amp;\Rightarrow p_i = \frac{e^{-1}}{n}\exp[\alpha_0+ \alpha_1(x_i)]
 \end{aligned}
 \tag{2}
 \]</span></p>
 <p>Also,</p>
 <p><span class="math display" id="eq:eq3">\[
 \begin{aligned}
-&amp;\quad 1 = \sum_{i=1}^np_i = \frac{e^{-n}}{n}\sum_{i=1}^n\exp[\alpha_0+\alpha_1(x_i)] \\
-&amp; \Rightarrow \frac{n}{e^{-n}} = \sum_{i=1}^n\exp[\alpha_0+ \alpha_1(x_i)]
+&amp;\quad 1 = \sum_{i=1}^np_i = \frac{e^{-1}}{n}\sum_{i=1}^n\exp[\alpha_0+\alpha_1(x_i)] \\
+&amp; \Rightarrow \frac{n}{e^{-1}} = \sum_{i=1}^n\exp[\alpha_0+ \alpha_1(x_i)]
 \end{aligned}
 \tag{3}
 \]</span></p>
@@ -2590,7 +2590,7 @@ Notes 2
 p_i = \frac{\exp[\alpha_0+\alpha_1(x_i)]}{\sum_{i=1}^n\exp[\alpha_0 +\alpha_1(x_i)]}
 \]</span> which is equivalent to</p>
 <p><span class="math display" id="eq:eq4">\[
-p_i = \frac{\exp[\alpha_0+\alpha_1(x_i-\mu)]}{\sum_{i=1}^n\exp[\alpha_0 +\alpha_1(x_i-\mu)]}
+p_i = \frac{\exp[\alpha_1(x_i-\mu)]}{\sum_{i=1}^n\exp[\alpha_1(x_i-\mu)]}
 \tag{4}
 \]</span></p>
 <p>Let <span class="math inline">\(z_i = x_i-\mu\)</span>, and hence <span class="math inline">\(p_i = \frac{\exp[\alpha_1 z_i]}{\sum_{i=1}^n\exp[\alpha_1 z_i]}\)</span>, implying the weight</p>
