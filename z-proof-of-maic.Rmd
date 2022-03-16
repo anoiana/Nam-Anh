@@ -10,7 +10,7 @@ output:
     toc: true
     toc_depth: 3
     pandoc_args: ["--number-sections"]
-    code_folding: hide
+    code_folding: no
 editor_options: 
   chunk_output_type: console
 ---
@@ -48,7 +48,6 @@ border-radius: 5px;
 margin-bottom: 15px;
 }
 ```
-
 
 Let $\bf{p} = \tp{(p_1,p_2,\dots,p_n)}$ be propensity score and $\bf X = \tp{(\bf{x}_1,\bf{x}_2, \dots, \bf{x}_n)}$ baseline characteristics of subjects in IPD. Also, $\bf{\mu}$ denotes average vector of baseline characteristics found in SLD. We aim to estimate $\bf p$ such that $\tp{\bf{p}}\bf{X} = \tp{\bf{\mu}}$, i.e. we want to minimize *Kullback Leibler divergence* of $\bf p$ and empirical function with some constraints. Specifically, we want to minimize 
 
@@ -175,6 +174,8 @@ ess
 ```
 
 Thus, to balance effect modifiers, we lose about `r ceiling(100 - ess)` participants.
+
+Further elucidations and applications can be found in Signorovitch's paper and NICE technical support documents.[@signorovitch2010;@phillippo2016]
 
 
 
