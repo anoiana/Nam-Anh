@@ -49,22 +49,22 @@ margin-bottom: 15px;
 }
 ```
 
-Let $\bf{p} = \tp{(p_1,p_2,\dots,p_n)}$ be propensity score and $\bf X = \tp{(\bf{x}_1,\bf{x}_2, \dots, \bf{x}_n)}$ baseline characteristics of subjects in IPD. Also, $\bf{\mu}$ denotes average vector of baseline characteristics found in SLD. We aim to estimate $\bf p$ such that $\tp{\bf{p}}\bf{X} = \tp{\bf{\mu}}$, i.e. we want to minimize *Kullback Leibler divergence* of $\bf p$ and empirical function with some constraints. Specifically, we want to minimize 
+Let $\boldsymbol{p} = (p_1,p_2,\dots,p_n)^{\top}$ be propensity score and $\boldsymbol{x} = (x_1,x_2,\dots,x_n)^{\top}$ baseline characteristics of subjects in IPD. Also, $\mu$ denotes average vector of baseline characteristics found in SLD. We aim to estimate $\bf p$ such that $\boldsymbol{p}^{\top}\boldsymbol{x}-\mu=0$, i.e. we want to minimize *Kullback Leibler divergence* of $\bf p$ and empirical function with some constraints. Specifically, we want to minimize 
 
 $$
-\mathcal{L} = -\tp{\bf{p}}\ln(\frac{1}{n\bf{p}}),
+\mathcal{L} = -\boldsymbol{p}^{\top}\ln(\frac{1}{n\boldsymbol{p}}),
 $$
 
 with two constraints:
 
 $$
-\tp{\bf{p}}\bf{1} = 1, \quad and \quad \tp{\bf{p}}\bf{X} = \tp{\bf{\mu}}.
+\boldsymbol{1}^{\top}\boldsymbol{p} = 1,\, and\quad \boldsymbol{p}^{\top}\bf{x} =\mu.
 $$ 
 
 Alternatively, we optimize 
 
 $$
-\mathcal{L} = -\tp{\bf{p}}\ln(\frac{1}{n\bf{p}}) - \alpha_0\Big(\sum_{i=1}^np_i -1\Big) - \alpha_1(p^{\top}X-\boldsymbol{\mu}^{\top})
+\mathcal{L} = -\boldsymbol{p}^{\top}\ln(\frac{1}{n\boldsymbol{p}}) - \alpha_0\Big(\sum_{i=1}^np_i -1\Big) - \alpha_1(\boldsymbol{p}^{\top}\boldsymbol{x}-\mu)
 (\#eq:eq1)
 $$
 
@@ -75,10 +75,10 @@ Taking derivative w.r.t $p_i$:
 $$
 \begin{aligned}
 &\quad \frac{\partial\mathcal{L}}{\partial p_i} = 0 \\
-&\Rightarrow \ln(np_i) +n -\alpha_0 -\alpha_1(x_i-\mu) = 0 \\
-&\Rightarrow \ln(np_i) = \alpha_1(x_i-\mu)+\alpha_0 -n \\
-&\Rightarrow p_i = \frac{\exp[\alpha_0+\alpha_1(x_i -\mu)-n]}{n} \\
-&\Rightarrow p_i = \frac{e^{-n}}{n}\exp[\alpha_0+ \alpha_1(x_i-\mu)]
+&\Rightarrow \ln(np_i) +n -\alpha_0 -\alpha_1(x_i) = 0 \\
+&\Rightarrow \ln(np_i) = \alpha_1(x_i)+\alpha_0 -n \\
+&\Rightarrow p_i = \frac{\exp[\alpha_0+\alpha_1(x_i)-n]}{n} \\
+&\Rightarrow p_i = \frac{e^{-n}}{n}\exp[\alpha_0+ \alpha_1(x_i)]
 \end{aligned}
 (\#eq:eq2)
 $$
@@ -87,20 +87,23 @@ Also,
 
 $$
 \begin{aligned}
-&\quad 1 = \sum_{i=1}^np_i = \frac{e^{-n}}{n}\sum_{i=1}^n\exp[\alpha_0+\alpha_1(x_i-\mu)] \\
-& \Rightarrow \frac{n}{e^{-n}} = \sum_{i=1}^n\exp[\alpha_0+ \alpha_1(x_i-\mu)]
+&\quad 1 = \sum_{i=1}^np_i = \frac{e^{-n}}{n}\sum_{i=1}^n\exp[\alpha_0+\alpha_1(x_i)] \\
+& \Rightarrow \frac{n}{e^{-n}} = \sum_{i=1}^n\exp[\alpha_0+ \alpha_1(x_i)]
 \end{aligned}
 (\#eq:eq3)
 $$
 
 substitute \@ref(eq:eq3) to \@ref(eq:eq2), we obtain 
 
-::: {.makebox}
-\begin{equation}
-p_i = \frac{\exp[\alpha_0+\alpha_1(x_i - \mu)]}{\sum_{i=1}^n\exp[\alpha_0 +\alpha_1(x_i-\mu)]}
+$$
+p_i = \frac{\exp[\alpha_0+\alpha_1(x_i)]}{\sum_{i=1}^n\exp[\alpha_0 +\alpha_1(x_i)]}
+$$
+which is equivalent to
+
+$$
+p_i = \frac{\exp[\alpha_0+\alpha_1(x_i-\mu)]}{\sum_{i=1}^n\exp[\alpha_0 +\alpha_1(x_i-\mu)]}
 (\#eq:eq4)
-\end{equation}
-:::
+$$
 
 Let $z_i = x_i-\mu$, and hence $p_i = \frac{\exp[\alpha_1 z_i]}{\sum_{i=1}^n\exp[\alpha_1 z_i]}$, implying the weight
 

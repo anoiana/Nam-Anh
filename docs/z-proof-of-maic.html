@@ -2552,17 +2552,17 @@ Notes 2
 </div>
 
 <div class="d-article">
-<p>Let <span class="math inline">\(\boldsymbol{p} = {(p_1,p_2,\dots,p_n)}^{\top}\)</span> be propensity score and <span class="math inline">\(\boldsymbol{X} = {(\boldsymbol{x}_1,\boldsymbol{x}_2, \dots, \boldsymbol{x}_n)}^{\top}\)</span> baseline characteristics of subjects in IPD. Also, <span class="math inline">\(\boldsymbol{\mu}\)</span> denotes average vector of baseline characteristics found in SLD. We aim to estimate <span class="math inline">\(\boldsymbol{p}\)</span> such that <span class="math inline">\({\boldsymbol{p}}^{\top}\boldsymbol{X} = {\boldsymbol{\mu}}^{\top}\)</span>, i.e. we want to minimize <em>Kullback Leibler divergence</em> of <span class="math inline">\(\boldsymbol{p}\)</span> and empirical function with some constraints. Specifically, we want to minimize</p>
+<p>Let <span class="math inline">\(\boldsymbol{p} = (p_1,p_2,\dots,p_n)^{\top}\)</span> be propensity score and <span class="math inline">\(\boldsymbol{x} = (x_1,x_2,\dots,x_n)^{\top}\)</span> baseline characteristics of subjects in IPD. Also, <span class="math inline">\(\mu\)</span> denotes average vector of baseline characteristics found in SLD. We aim to estimate <span class="math inline">\(\boldsymbol{p}\)</span> such that <span class="math inline">\(\boldsymbol{p}^{\top}\boldsymbol{x}-\mu=0\)</span>, i.e. we want to minimize <em>Kullback Leibler divergence</em> of <span class="math inline">\(\boldsymbol{p}\)</span> and empirical function with some constraints. Specifically, we want to minimize</p>
 <p><span class="math display">\[
-\mathcal{L} = -{\boldsymbol{p}}^{\top}\ln(\frac{1}{n\boldsymbol{p}}),
+\mathcal{L} = -\boldsymbol{p}^{\top}\ln(\frac{1}{n\boldsymbol{p}}),
 \]</span></p>
 <p>with two constraints:</p>
 <p><span class="math display">\[
-{\boldsymbol{p}}^{\top}\boldsymbol{1} = 1, \quad and \quad {\boldsymbol{p}}^{\top}\boldsymbol{X} = {\boldsymbol{\mu}}^{\top}.
+\boldsymbol{1}^{\top}\boldsymbol{p} = 1,\, and\quad \boldsymbol{p}^{\top}\boldsymbol{x} =\mu.
 \]</span></p>
 <p>Alternatively, we optimize</p>
 <p><span class="math display" id="eq:eq1">\[
-\mathcal{L} = -{\boldsymbol{p}}^{\top}\ln(\frac{1}{n\boldsymbol{p}}) - \alpha_0\Big(\sum_{i=1}^np_i -1\Big) - \alpha_1(p^{\top}X-\boldsymbol{\mu}^{\top})
+\mathcal{L} = -\boldsymbol{p}^{\top}\ln(\frac{1}{n\boldsymbol{p}}) - \alpha_0\Big(\sum_{i=1}^np_i -1\Big) - \alpha_1(\boldsymbol{p}^{\top}\boldsymbol{x}-\mu)
 \tag{1}
 \]</span></p>
 <p>Equation <a href="#eq:eq1">(1)</a> could be solved by taking derivative w.r.t <span class="math inline">\(\boldsymbol{p}\)</span>, <span class="math inline">\(\alpha_0\)</span> and <span class="math inline">\(\alpha_1\)</span> followed by equating derivations to zero and solve equations.</p>
@@ -2570,28 +2570,29 @@ Notes 2
 <p><span class="math display" id="eq:eq2">\[
 \begin{aligned}
 &amp;\quad \frac{\partial\mathcal{L}}{\partial p_i} = 0 \\
-&amp;\Rightarrow \ln(np_i) +n -\alpha_0 -\alpha_1(x_i-\mu) = 0 \\
-&amp;\Rightarrow \ln(np_i) = \alpha_1(x_i-\mu)+\alpha_0 -n \\
-&amp;\Rightarrow p_i = \frac{\exp[\alpha_0+\alpha_1(x_i -\mu)-n]}{n} \\
-&amp;\Rightarrow p_i = \frac{e^{-n}}{n}\exp[\alpha_0+ \alpha_1(x_i-\mu)]
+&amp;\Rightarrow \ln(np_i) +n -\alpha_0 -\alpha_1(x_i) = 0 \\
+&amp;\Rightarrow \ln(np_i) = \alpha_1(x_i)+\alpha_0 -n \\
+&amp;\Rightarrow p_i = \frac{\exp[\alpha_0+\alpha_1(x_i)-n]}{n} \\
+&amp;\Rightarrow p_i = \frac{e^{-n}}{n}\exp[\alpha_0+ \alpha_1(x_i)]
 \end{aligned}
 \tag{2}
 \]</span></p>
 <p>Also,</p>
 <p><span class="math display" id="eq:eq3">\[
 \begin{aligned}
-&amp;\quad 1 = \sum_{i=1}^np_i = \frac{e^{-n}}{n}\sum_{i=1}^n\exp[\alpha_0+\alpha_1(x_i-\mu)] \\
-&amp; \Rightarrow \frac{n}{e^{-n}} = \sum_{i=1}^n\exp[\alpha_0+ \alpha_1(x_i-\mu)]
+&amp;\quad 1 = \sum_{i=1}^np_i = \frac{e^{-n}}{n}\sum_{i=1}^n\exp[\alpha_0+\alpha_1(x_i)] \\
+&amp; \Rightarrow \frac{n}{e^{-n}} = \sum_{i=1}^n\exp[\alpha_0+ \alpha_1(x_i)]
 \end{aligned}
 \tag{3}
 \]</span></p>
 <p>substitute <a href="#eq:eq3">(3)</a> to <a href="#eq:eq2">(2)</a>, we obtain</p>
-<div class="makebox">
-<p><span class="math display" id="eq:eq4">\[\begin{equation}
-p_i = \frac{\exp[\alpha_0+\alpha_1(x_i - \mu)]}{\sum_{i=1}^n\exp[\alpha_0 +\alpha_1(x_i-\mu)]}
+<p><span class="math display">\[
+p_i = \frac{\exp[\alpha_0+\alpha_1(x_i)]}{\sum_{i=1}^n\exp[\alpha_0 +\alpha_1(x_i)]}
+\]</span> which is equivalent to</p>
+<p><span class="math display" id="eq:eq4">\[
+p_i = \frac{\exp[\alpha_0+\alpha_1(x_i-\mu)]}{\sum_{i=1}^n\exp[\alpha_0 +\alpha_1(x_i-\mu)]}
 \tag{4}
-\end{equation}\]</span></p>
-</div>
+\]</span></p>
 <p>Let <span class="math inline">\(z_i = x_i-\mu\)</span>, and hence <span class="math inline">\(p_i = \frac{\exp[\alpha_1 z_i]}{\sum_{i=1}^n\exp[\alpha_1 z_i]}\)</span>, implying the weight</p>
 <p><span class="math display">\[
 w_i = p_i\sum_{j=1}^n\exp[\alpha_1z_j] = \exp (\alpha_1z_i)&gt; 0.
