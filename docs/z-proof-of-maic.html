@@ -2601,9 +2601,9 @@ w_i = p_i\sum_{j=1}^n\exp[\alpha_1z_j] = \exp (\alpha_1z_i)&gt; 0.
 <p><span class="math display" id="eq:eq5">\[
 \sum_{i=1}^nw_iz_i = \sum_{i=1}^n\Big(p_iz_i\sum_{j=1}^n\exp[\alpha_1z_j]\Big) = \sum_{i=1}^n\frac{\partial}{\partial\alpha_1}\exp (\alpha_1z_i)&gt; 0.
 \tag{5}
-\]</span> differentiating both sides of <a href="#eq:eq5">(5)</a> w.r.t <span class="math inline">\(\alpha_1\)</span></p>
+\]</span> integrating both sides of <a href="#eq:eq5">(5)</a> w.r.t <span class="math inline">\(\alpha_1\)</span></p>
 <p><span class="math display">\[
-\sum_{i=1}^n\bigg(p_iz_i\sum_{j=1}^n\Big[\exp[\alpha_1z_j]+constant\Big]\bigg) = \sum_{i=1}^n\exp (\alpha_1z_i)&gt; 0.
+\sum_{j=1}^n\exp(\alpha_1z_j)\sum_{i=1}^np_iz_i = \sum_{i=1}^n\exp (\alpha_1z_i)+constant&gt; 0.
 \]</span></p>
 <p>Recall that <span class="math inline">\(z_i = x_i-\mu\)</span> and we are interested in <span class="math inline">\(\sum_{i=1}^np_ix_i = \mu\)</span> implying that</p>
 <p><span class="math display" id="eq:eq6">\[
@@ -2615,7 +2615,7 @@ w_i = p_i\sum_{j=1}^n\exp[\alpha_1z_j] = \exp (\alpha_1z_i)&gt; 0.
 k\sum_{i=1}^np_iz_i
 \tag{7}
 \]</span></p>
-<p>where <span class="math inline">\(k = \sum_{j=1}^n\big[\exp[\alpha_1z_j]+constant\big]\)</span>. Thus, the condition <a href="#eq:eq6">(6)</a> is satisfied as the equation <a href="#eq:eq7">(7)</a> equals zero, which is equivalent to minimizing the right hand side of <a href="#eq:eq5">(5)</a>, <span class="math inline">\(\sum_{i=1}^n\exp (\alpha_1z_i)\ge 0\)</span>, which can be rewritten in the matrix form when there are more than one effect modifiers</p>
+<p>where <span class="math inline">\(k = \sum_{j=1}^n\exp[\alpha_1z_j]\)</span>. Thus, the condition <a href="#eq:eq6">(6)</a> is satisfied as the equation <a href="#eq:eq7">(7)</a> equals zero, which is equivalent to minimizing the right hand side of <a href="#eq:eq5">(5)</a>, <span class="math inline">\(\sum_{i=1}^n\exp (\alpha_1z_i)\ge 0\)</span>, which can be rewritten in the matrix form when there are more than one effect modifiers</p>
 <p><span class="math display">\[
 \boldsymbol{1}^{\top}\exp(\boldsymbol{Z\alpha}_1) = \sum_{i=1}^n\exp(\boldsymbol{z}_i^{\top}\boldsymbol{\alpha}_1).
 \]</span></p>

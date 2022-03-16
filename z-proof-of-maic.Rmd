@@ -117,10 +117,10 @@ $$
 \sum_{i=1}^nw_iz_i = \sum_{i=1}^n\Big(p_iz_i\sum_{j=1}^n\exp[\alpha_1z_j]\Big) = \sum_{i=1}^n\frac{\partial}{\partial\alpha_1}\exp (\alpha_1z_i)> 0.
 (\#eq:eq5)
 $$
-differentiating both sides of \@ref(eq:eq5) w.r.t $\alpha_1$
+integrating both sides of \@ref(eq:eq5) w.r.t $\alpha_1$
 
 $$
-\sum_{i=1}^n\bigg(p_iz_i\sum_{j=1}^n\Big[\exp[\alpha_1z_j]+constant\Big]\bigg) = \sum_{i=1}^n\exp (\alpha_1z_i)> 0.
+\sum_{j=1}^n\exp(\alpha_1z_j)\sum_{i=1}^np_iz_i = \sum_{i=1}^n\exp (\alpha_1z_i)+constant> 0.
 $$
 
 Recall that $z_i = x_i-\mu$ and we are interested in $\sum_{i=1}^np_ix_i = \mu$ implying that 
@@ -137,7 +137,7 @@ k\sum_{i=1}^np_iz_i
 (\#eq:eq7)
 $$
 
-where $k = \sum_{j=1}^n\big[\exp[\alpha_1z_j]+constant\big]$. Thus, the condition \@ref(eq:eq6) is satisfied as the equation \@ref(eq:eq7) equals zero, which is equivalent to minimizing the right hand side of \@ref(eq:eq5), $\sum_{i=1}^n\exp (\alpha_1z_i)\ge 0$, which can be rewritten in the matrix form when there are more than one effect modifiers 
+where $k = \sum_{j=1}^n\exp[\alpha_1z_j]$. Thus, the condition \@ref(eq:eq6) is satisfied as the equation \@ref(eq:eq7) equals zero, which is equivalent to minimizing the right hand side of \@ref(eq:eq5), $\sum_{i=1}^n\exp (\alpha_1z_i)\ge 0$, which can be rewritten in the matrix form when there are more than one effect modifiers 
 
 $$
 \boldsymbol{1}^{\top}\exp(\boldsymbol{Z\alpha}_1) = \sum_{i=1}^n\exp(\boldsymbol{z}_i^{\top}\boldsymbol{\alpha}_1).
