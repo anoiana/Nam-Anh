@@ -1,5 +1,5 @@
 name: "website"
-title: "ANDOHA"
+title: "Nam-Anh"
 theme: theme.css
 description: |
 output_dir: "docs"
@@ -20,7 +20,7 @@ navbar:
         href: "z-generate-sample-with-rjags.html"
       - text: "Statistical cost-effectiveness"
         href: "z-statistical-cost-effectiveness.html"
-      - text: "Calculation of The Power"
+      - text: "Type I/II Error and Power"
         href: "z-the-power.html"
     - text: "Notes 2"
       menu:

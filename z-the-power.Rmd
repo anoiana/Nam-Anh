@@ -1,5 +1,5 @@
 ---
-title: "Calculation of The Power"
+title: "Power and Type I Error"
 theme: theme.css
 author:
   - name: Nam-Anh
@@ -49,67 +49,155 @@ MyTable = function(x, cap = NULL, scroll_box = FALSE, ...){
 }
 ```
 
-There are four types of measures pertaining to the power of hypothesis testing, namely predictive power of success (PPoS), predictive conditional power (PCoS), prior power of success (PrPoS) and prior conditional power of success (PrCoS). Such measures could be categorized into 2 groups characterized by the fact that whether or not the knowledge of current data is integrated.
-
-# Predictive group 
-
-This group comprises PPoS and PCoS. Recall two types of predictive distributions, prior predictive distribution and posterior distribution which are formulated as follows
-
-$$
-p_{PRI}(Y) = \int p(Y|\theta)\color{red}{p(\theta)}d\theta
-(\#eq:1)
-$$
-and 
-
-$$
-p_{POS}(Y|x) = \int p(Y|\theta,x)\color{blue}{p(\theta|x)}d\theta,
-(\#eq:2)
-$$
-respectively. Both measures pertaining to this group are calculated based on the posterior distribution.
-
-Also, suppose that there are two phases: 
-
-1. Interim phase in which the number of participants observed less than pre-specified number of participants;
-2. Completed phase or final phase where all participants are have been observed.
-
-Let $N$ be the pre-specified number of patients and $n$ the number of patients at the interim phase. For beta-binomial case, Lee and colleague proposed the following formula to calculate the PPoS.[@lee2008]
-
-$$
-\begin{aligned}
-PPoS &= \sum_{i=0}^{N-n} \mathbf{I}\big[\mathbb{P}(\theta > \theta_0|x,Y=i)>\delta_T\big]\times\mathbb{P}(Y=i|x) \\
-&= \int_{\Theta} \sum_{i=n+1}^N \mathbf{I}\big[\mathbb{P}(\theta > \theta_0|x,Y=i)>\delta_T\big]\times
-p(Y=i|\theta,x)p(\theta|x)d\theta
-\end{aligned}
-(\#eq:3)
-$$
-
-To simulate the numerical result, we employ the following steps
-
-1. At the interim analysis, sample the parameter of interest $\theta$ from the current posterior given current data $x$.
-2. Complete the dataset by sampling future samples $Y$, observations not yet observed at the interim analysis, from the predictive distribution.
-3. Use the complete dataset to calculate success criteria (p-value, posterior probability). If success criteria is met (i.e. p-value < 0.05), the trial is a success. 
-4. Repeat steps 1-3 a total of B times; the PPoS is the proportion of simulated trials that achieve success.
-
-The step 1 accounts for the variability of parameter of interest given interim analysis.
-
-If the knowledge of $\theta|x$ is summarized by point estimation, e.g. $\hat{\theta}_{MLE}$ based on only the interim analysis. This is the PCoS. Relating to `r lb(eq.3)`, we can write as follows
-
-$$
-PCoS = \sum_{i=0}^{N-n} \mathbf{I}\big[\mathbb{P}(P > p_0|x,Y=i)>\delta_T\big]\times\mathbb{P}(Y=i|\hat{\theta}_{MLE},x) 
-(\#eq:4)
-$$
-
-note that for the sake of intuition we kept both terms $\hat{\theta}_{MLE}$ and $x$ in `r lb(eq.4)`, yet we can drop one of two such terms since $\hat{\theta}_{MLE}$ is sufficient statistic of data $x$. For example, $p(Y|x)$ can be calculated with the assumption that $\hat{\theta}_{MLE}$ is the true proportion, i.e. $Y|x \sim \mathcal{B}in(N-n,\hat{\theta}_{MLE})$. To simulate `r lb(eq.4)` we remove step 1 in the list of simulation step above. 
-
-Also, it is worth knowing other options likely used in lieu of $CP_{MLE}$, such as original $H_a$ $(CP_{H_a})$ and null hypothesis $H_0$ $(CP_{H_0})$. 
-
-The interesting point that can be deduced from the second equation of `r lb(eq.3)` is that if we can warrant the posterior distribution $p(\theta|x)$ such that it approximates to $\hat{\theta}_{MLE}$, i.e. all knowledge is contributed by only data, PPoS will approximate to the PCoS. This can be achieved by setting the variance of prior distribution $p(\theta)$ a huge value. 
+Four types of measures pertaining to the power of hypothesis testing are posterior predictive power (PoPP), posterior conditional power (PoCP), prior predictive power (PrPP) and prior conditional power (PrCP). Such measures could be categorized into 2 groups characterized by the fact that whether or not the knowledge of current data is integrated. 
 
 # Prior group
 
-This group comprises the PrPoS and the PRCoS. The idea is very similar to the posterior group, but the only difference lies at `r lb(eq.1)` that will be used in lieu of `r lb(eq.2)`. Thus, instead of sampling a half of data for interim analysis, we will sample the complete data set, and a first half of the complete data set is used for interim analysis, and the remaining data will be integrated to the first half od data set for final analysis at the second stage.   
+Both PrPP and PrCP belong to this group since we consider variability of parameters through prior distribution. Let $\boldsymbol{x}_1$ and $\boldsymbol{x}_2$ are data generated in phase I and phase II, respectively. to obtain PrCP we use the prior information of parameters as fixed metrics, say $\bar\theta$, and we generate full data $\boldsymbol{x}$ based on those parameters, i.e $p(\boldsymbol{x}|\bar\theta)$, where $\boldsymbol{x}^{\top} = (\boldsymbol{x}_1^{\top},\boldsymbol{x}_2^{\top})$. Then, $\boldsymbol{x}_1$ will be used for analyses in the first phase, for example, futility analysis, superiority analysis based on pre-specified rule. All treatments that do not satisfy early dropping rule will be assessed in the second phase with the total sample size, i.e full data $\boldsymbol{x}$. Thus, The PrCP is calculated over $S$ simulated data $\boldsymbol{x}$. For example, we simulate $S$ full data set $\{\boldsymbol{x}^{(1)},\boldsymbol{x}^{(2)},\dots,\boldsymbol{x}^{(S)}\}$, for the $s$th set we use $\boldsymbol{x}^{(s)}_1$ for futility analysis, i.e
 
-(cont.)
+$$
+p^{(s)} := \mathbb{P}(\theta_t<\theta_0|\boldsymbol{x}_1^{(s)})
+$$
+where $t = 1,2$, $\theta_0$ is a fixed value. The treatment $t$ will be dropped early if $p^{(s)}\ge \delta$, where $\delta$ is a threshold representing the minimum value $\mathbb{P}(\theta_t < \theta_0|\boldsymbol{x}_1)$ is significant. Assuming that the first treatment is futile while the remaining treatments are considered effective and retained to be re-evaluated in the final analysis. In phase II, we evaluate efficacy of the remaining treatment based on full data $\boldsymbol{x}$, and PrCP is obtained as follows:
+
+$$
+\text{PrCP} = \int_{\mathfrak{X}} \mathcal{I}[\mathbb{P}(\theta_2 >\theta_0|\boldsymbol{x})>\delta]\times f(\boldsymbol{x}|\bar\theta)d\boldsymbol{x},
+(\#eq:1)
+$$
+more specifically,
+
+$$
+\text{PrCP} = \frac{1}{S}\sum \mathcal{I}[\mathbb{P}(\theta_2 >\theta_0|\boldsymbol{x})>\delta],
+(\#eq:2)
+$$
+
+We call the above expression *prior conditional power* since when simulating $S$ data sets, we use one value $\bar\theta$, which means our belief in $\theta$ is perfect, i.e $\mathbb{P}(\theta = \bar\theta) \to 1$. 
+
+On the other hand, when we integrate the variability of $\theta$ to calculate the prior power, it is call the PrPP. This can be achieved by adjusting \@ref(eq:1) as follows:
+
+$$
+\text{PrPP} = \int_{\mathfrak{X}} \int_{\Theta} \mathcal{I}[\mathbb{P}(\theta_2 >\theta_0|\boldsymbol{x})>\delta]\times f(\boldsymbol{x}|\theta)\times f(\theta)d\theta d\boldsymbol{x}.
+(\#eq:3)
+$$
+
+We can obtain equation \@ref(eq:3) by simulating. To this end, for the $s$th set (1) we simulate $\theta$ from prior distribution$f(\theta|\bar\theta)$, (2) and then we use such a $\theta$ to simulate $x$. Both steps are repeated $n$ times to get a set $\boldsymbol{x}^{(s)}$. Finally, PrPP will be calculated based on \@ref(eq:2). 
+
+# Predictive group
+
+This group differ the previous one from integrating information of data set $\boldsymbol{x}_1$ with prior information to obtain the posterior distribution that will be used to generate $\boldsymbol{x}_2$. PoPP will be calculated based on predictive distribution $f(\boldsymbol{x}_2|\boldsymbol{x}_1)$, i.e.
+
+$$
+\begin{aligned}
+\text{PoPP} &= \int_{\mathfrak{X}_2|\mathfrak{X}_1}\mathcal{I}[\mathbb{P}(\theta_2>\theta_0|\boldsymbol{x}_2,\boldsymbol{x}_1)\ge \delta]\times f(\boldsymbol{x}_2|\boldsymbol{x}_1)d(\boldsymbol{x}_2)
+\\&= \int_{\mathfrak{X}_2|\mathfrak{X}_1}\int_{\Theta} \mathcal{I}[\mathbb{P}(\theta_2>\theta_0|\boldsymbol{x}_2,\boldsymbol{x}_1)\ge \delta]\times f(\boldsymbol{x}_2|\theta)\times f(\theta|\boldsymbol{x}_1)d\theta d\boldsymbol{x}_2
+\end{aligned}
+(\#eq:4)
+$$
+
+On the other hand, if we ignore the variability of $f(\theta|\boldsymbol{x}_1)$, we will obtain the PoCP, i.e.
+
+$$
+\text{PoPP} = \int_{\mathfrak{X}_2|\mathfrak{X}_1} \mathcal{I}[\mathbb{P}(\theta_2>\theta_0|\boldsymbol{x}_2,\boldsymbol{x}_1)\ge \delta]\times f(\boldsymbol{x}_2|\bar\theta)d\boldsymbol{x}_2,
+$$
+where $\bar\theta$ is defined such that $\mathbb{P}(\theta=\bar\theta|\boldsymbol{x}_1)\to 1$, i.e. our belief in $\bar\theta$ based on prior and interim (phase I) information is "unshakable".
+
+# Type I error
+
+We now delineate type I/II error, false positive, and false negative in the Bayesian framework. We know definition of tyep I error is the probability that the null hypothesis is rejected given it is true, i.e
+
+$$
+\alpha = \mathbb{P}(R|\theta\le\theta_0),
+$$
+where $\theta\le\theta_0$ is the null hypothesis $H_o$ and $R$ is rejecting $H_o$. Similarly, type II error is defined as follows:
+
+$$
+\beta = \mathbb{P}(A|\theta\ge\theta_0),
+$$
+where $\theta\ge\theta_0$ is alternative hypothesis $H_1$ and $A$ is fail to reject $H_1$. Lee and colleagues suggested another form of type I and II errors[@lee2000] which are 
+
+$$
+\alpha^* = \mathbb{P}(\theta\le\theta_0|R), \quad \beta^* = \mathbb{P}(\theta\ge\theta_0|A),
+$$
+respectively; also, these measures pertain to *false positive* and *false negative*.[@dong2012] False positive is obtained as follows:
+
+$$
+\begin{aligned}
+\alpha^* &= \frac{\mathbb{P}(\theta\le\theta_0,R)}{\mathbb{P}(R)}
+\\&= \frac{\int_U^\infty F(\theta_0|\boldsymbol{x}_2)f(\boldsymbol{x}_2|\boldsymbol{x}_1)d\boldsymbol{x}_2}{\int_U^{\infty}f(\boldsymbol{x}_2|\boldsymbol x_1)d\boldsymbol x_2}
+\\&= \frac{\int_{\Theta}\int_U^\infty F(\theta_0|\boldsymbol{x}_2)f(\boldsymbol{x}_2|\theta)f(\theta|\boldsymbol{x}_1)d\boldsymbol{x}_2d\theta}{\int_{\Theta}\int_U^{\infty}f(\boldsymbol{x}_2|\theta)f(\theta|\boldsymbol{x}_1)d\boldsymbol x_2d\theta}.
+\end{aligned}
+$$
+
+Similarly, the power is
+
+$$
+1 - \beta^* = \frac{\int_{\Theta}\int_U^\infty \big[1-F(\theta_1|\boldsymbol{x}_2)\big] f(\boldsymbol{x}_2|\theta)f(\theta|\boldsymbol{x}_1)d\boldsymbol{x}_2d\theta}{\int_{\Theta}\int_U^{\infty}f(\boldsymbol{x}_2|\theta)f(\theta|\boldsymbol{x}_1)d\boldsymbol x_2d\theta}.
+$$
+
+
+
+
+
+
+
+
+
+<!-- # Predictive group  -->
+
+<!-- Recall two types of predictive distributions, prior predictive distribution and posterior distribution which are formulated as follows -->
+
+<!-- $$ -->
+<!-- p_{PRI}(Y) = \int p(Y|\theta)\color{red}{p(\theta)}d\theta -->
+<!-- (\#eq:1) -->
+<!-- $$ -->
+<!-- and  -->
+
+<!-- $$ -->
+<!-- p_{POS}(Y|x) = \int p(Y|\theta,x)\color{blue}{p(\theta|x)}d\theta, -->
+<!-- (\#eq:2) -->
+<!-- $$ -->
+<!-- respectively.  -->
+
+<!-- Both PoPP and PoCP are calculated based on the posterior distribution.   -->
+
+<!-- Also, suppose that there are two phases:  -->
+
+<!-- 1. Interim phase where the number of participants observed less than pre-specified number of participants; -->
+<!-- 2. Completed phase or final phase where all participants are have been observed. -->
+
+<!-- Let $N$ be the pre-specified number of patients and $n$ the number of patients at the interim phase. For beta-binomial case, Lee and colleague proposed the following formula to calculate the PPoS.[@lee2008] -->
+
+<!-- $$ -->
+<!-- \begin{aligned} -->
+<!-- PPoS &= \sum_{i=0}^{N-n} \mathbf{I}\big[\mathbb{P}(\theta > \theta_0|x,Y=i)>\delta_T\big]\times\mathbb{P}(Y=i|x) \\ -->
+<!-- &= \int_{\Theta} \sum_{i=n+1}^N \mathbf{I}\big[\mathbb{P}(\theta > \theta_0|x,Y=i)>\delta_T\big]\times -->
+<!-- p(Y=i|\theta,x)p(\theta|x)d\theta -->
+<!-- \end{aligned} -->
+<!-- (\#eq:3) -->
+<!-- $$ -->
+
+<!-- To simulate the numerical result, we employ the following steps -->
+
+<!-- 1. At the interim analysis, sample the parameter of interest $\theta$ from the current posterior given current data $x$. -->
+<!-- 2. Complete the dataset by sampling future samples $Y$, observations not yet observed at the interim analysis, from the predictive distribution. -->
+<!-- 3. Use the complete dataset to calculate success criteria (p-value, posterior probability). If success criteria is met (i.e. p-value < 0.05), the trial is a success.  -->
+<!-- 4. Repeat steps 1-3 a total of B times; the PPoS is the proportion of simulated trials that achieve success. -->
+
+<!-- The step 1 accounts for the variability of parameter of interest given interim analysis. -->
+
+<!-- If the knowledge of $\theta|x$ is summarized by point estimation, e.g. $\hat{\theta}_{MLE}$ based on only the interim analysis. This is the PCoS. Relating to `r lb(eq.3)`, we can write as follows -->
+
+<!-- $$ -->
+<!-- PCoS = \sum_{i=0}^{N-n} \mathbf{I}\big[\mathbb{P}(P > p_0|x,Y=i)>\delta_T\big]\times\mathbb{P}(Y=i|\hat{\theta}_{MLE},x)  -->
+<!-- (\#eq:4) -->
+<!-- $$ -->
+
+<!-- note that for the sake of intuition we kept both terms $\hat{\theta}_{MLE}$ and $x$ in `r lb(eq.4)`, yet we can drop one of two such terms since $\hat{\theta}_{MLE}$ is sufficient statistic of data $x$. For example, $p(Y|x)$ can be calculated with the assumption that $\hat{\theta}_{MLE}$ is the true proportion, i.e. $Y|x \sim \mathcal{B}in(N-n,\hat{\theta}_{MLE})$. To simulate `r lb(eq.4)` we remove step 1 in the list of simulation step above.  -->
+
+<!-- Also, it is worth knowing other options likely used in lieu of $CP_{MLE}$, such as original $H_a$ $(CP_{H_a})$ and null hypothesis $H_0$ $(CP_{H_0})$.  -->
+
+<!-- The interesting point that can be deduced from the second equation of `r lb(eq.3)` is that if we can warrant the posterior distribution $p(\theta|x)$ such that it approximates to $\hat{\theta}_{MLE}$, i.e. all knowledge is contributed by only data, PPoS will approximate to the PCoS. This can be achieved by setting the variance of prior distribution $p(\theta)$ a huge value.  -->
+
 
 
 

@@ -85,7 +85,7 @@ d-appendix {
 
 /* Change link appearance */
 d-article a {
-  border-bottom: none;
-  color: deeppink;
+  border-bottom: 1px solid DeepPink;
+  text-decoration: none;
 }
 
