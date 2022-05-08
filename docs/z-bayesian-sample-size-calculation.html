@@ -85,58 +85,34 @@ code span.vs { color: #20794d; } /* VerbatimString */
 code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
-<style>
-  div.csl-bib-body { }
-  div.csl-entry {
-    clear: both;
-    }
-  .hanging div.csl-entry {
-    margin-left:2em;
-    text-indent:-2em;
-  }
-  div.csl-left-margin {
-    min-width:2em;
-    float:left;
-  }
-  div.csl-right-inline {
-    margin-left:2em;
-    padding-left:1em;
-  }
-  div.csl-indent {
-    margin-left: 2em;
-  }
-</style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>Nam-Anh: Use Historical Data</title>
+  <title>Nam-Anh: Bayesian Sample Size Calculation</title>
 
-  <meta property="description" itemprop="description" content="*this note is*"/>
 
   <link rel="icon" type="image/png" href="images/logo.png"/>
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2022-03-19"/>
-  <meta property="article:created" itemprop="dateCreated" content="2022-03-19"/>
+  <meta property="article:published" itemprop="datePublished" content="2022-05-07"/>
+  <meta property="article:created" itemprop="dateCreated" content="2022-05-07"/>
   <meta name="article:author" content="Nam-Anh"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Nam-Anh: Use Historical Data"/>
+  <meta property="og:title" content="Nam-Anh: Bayesian Sample Size Calculation"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="*this note is*"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="Nam-Anh"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Nam-Anh: Use Historical Data"/>
-  <meta property="twitter:description" content="*this note is*"/>
+  <meta property="twitter:title" content="Nam-Anh: Bayesian Sample Size Calculation"/>
 
   <!--/radix_placeholder_meta_tags-->
   
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","theme","author","date","bibliography","csl","output","description"]}},"value":[{"type":"character","attributes":{},"value":["Use Historical Data"]},{"type":"character","attributes":{},"value":["theme.css"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Nam-Anh"]}]}]},{"type":"character","attributes":{},"value":["2022-03-19"]},{"type":"character","attributes":{},"value":["citation.bib"]},{"type":"character","attributes":{},"value":["citation.csl"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth","code_folding"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]},{"type":"character","attributes":{},"value":["hide"]}]}]},{"type":"character","attributes":{},"value":["*this note is*"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","theme","author","date","bibliography","csl","output","description"]}},"value":[{"type":"character","attributes":{},"value":["Bayesian Sample Size Calculation"]},{"type":"character","attributes":{},"value":["theme.css"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Nam-Anh"]}]}]},{"type":"character","attributes":{},"value":["2022-05-07"]},{"type":"character","attributes":{},"value":["citation.bib"]},{"type":"character","attributes":{},"value":["citation.csl"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_depth","code_folding"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]},{"type":"character","attributes":{},"value":["hide"]}]}]},{"type":"NULL"}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2376,8 +2352,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   }</style>
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
-  <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
-  <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2443,6 +2417,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       padding: 10px 0px;
       margin: 10px 14px; 
     }
+
   }
 
   d-appendix {
@@ -2492,7 +2467,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Use Historical Data","description":"*this note is*","authors":[{"author":"Nam-Anh","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-03-19T00:00:00.000-04:00","citationText":"Nam-Anh, 2022"}
+{"title":"Bayesian Sample Size Calculation","authors":[{"author":"Nam-Anh","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-05-07T00:00:00.000-04:00","citationText":"Nam-Anh, 2022"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2540,16 +2515,16 @@ Notes 2
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Use Historical Data</h1>
+<h1>Bayesian Sample Size Calculation</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p><em>this note is</em></p></p>
+
 </div>
 
 <div class="d-byline">
   Nam-Anh  
   
-<br/>2022-03-19
+<br/>2022-05-07
 </div>
 
 <div class="d-article">
@@ -2557,168 +2532,13 @@ Notes 2
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#motivations">Motivations</a></li>
-<li><a href="#methods">Methods</a>
-<ul>
-<li><a href="#an-illustrative-example">An illustrative example</a></li>
-<li><a href="#normal-normal-hierachical-model-nnhm">Normal-normal hierachical model (NNHM)</a></li>
-</ul></li>
+<li><a href="#introduction">Introduction</a></li>
 </ul>
 </nav>
 </div>
-<h1 id="motivations">Motivations</h1>
-<h1 id="methods">Methods</h1>
-<p>Before delving into the exposition, we shall mathematically notate information used in later analyses. Assuming that there are <em>J</em> trials intrinsic to historical information <span class="math inline">\(\mathcal{H}\)</span>, more specifically this information is often summarized through summary statistics, of which three typical metrics comprise mean, standard deviation (SD), proportions. Let <span class="math inline">\(\boldsymbol{Y}_{\mathcal{J}} = \{Y_1,\dots,Y_J\}\)</span> is a collection of <span class="math inline">\(\mathcal{H}\)</span>, and <span class="math inline">\(\theta_j\)</span> is parameter pertaining to <span class="math inline">\(Y_j\)</span>. We’d like to combine accrued data <span class="math inline">\(\boldsymbol{Y}_{\mathcal{J}}\)</span> with current data <span class="math inline">\(Y_*\)</span> to estimate <span class="math inline">\(\theta_*\)</span>. <span class="math inline">\(Y_*\)</span> is also called the direct evidence and <span class="math inline">\(\boldsymbol{Y}_{\mathcal{J}}\)</span> indirect evidence. There appears two ways to achieve this</p>
-<ol type="1">
-<li>Obtain <span class="math inline">\(p(\theta_*|\boldsymbol{Y}_{\mathcal{J}})\)</span>, and then update <span class="math inline">\(\theta_*\)</span> by <span class="math inline">\(Y_*\)</span>. This approach is called <em>meta-analytic-predictive</em> (MAP);</li>
-<li>Directly obtain <span class="math inline">\(p(\theta_*|\boldsymbol{Y}_{\mathcal{J}},Y_*)\)</span>, which is called <em>meta-analytic-combined</em> (MAC).</li>
-</ol>
-<h2 id="an-illustrative-example">An illustrative example</h2>
-<p>We shall utilize the following example as an illustration for theories developed throughout this note. We found 5 studies that reported the time to independent walking (in days) of children with Guillain-Barre syndrome (GBS).<span class="citation" data-cites="goodmana2005"><sup><a href="#ref-goodmana2005" role="doc-biblioref">1</a></sup></span></p>
-<div class="layout-chunk" data-layout="l-body">
-<details>
-<summary>
-hide
-</summary>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>gbs</span> <span class='op'>=</span> <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
-     study <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>,
-     n <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/BCEA/man/Smoking.html'>c</a></span><span class='op'>(</span><span class='fl'>56</span>,<span class='fl'>37</span>,<span class='fl'>14</span>,<span class='fl'>18</span>,<span class='fl'>9</span><span class='op'>)</span>,
-     median <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/BCEA/man/Smoking.html'>c</a></span><span class='op'>(</span><span class='fl'>40</span>,<span class='cn'>NA</span>,<span class='cn'>NA</span>,<span class='fl'>43</span>,<span class='cn'>NA</span><span class='op'>)</span>,
-     mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/BCEA/man/Smoking.html'>c</a></span><span class='op'>(</span><span class='fl'>45.6</span>,<span class='fl'>58.7</span>,<span class='fl'>60.2</span>,<span class='cn'>NA</span>,<span class='fl'>50</span><span class='op'>)</span>,
-     sd <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/BCEA/man/Smoking.html'>c</a></span><span class='op'>(</span><span class='fl'>24.7</span>,<span class='fl'>44</span>,<span class='fl'>43.6</span>,<span class='cn'>NA</span>,<span class='fl'>29</span><span class='op'>)</span>
-<span class='op'>)</span>
-
-<span class='va'>gbs</span>|&gt;
-     <span class='op'>{</span>\<span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fu'>modify</span><span class='op'>(</span><span class='va'>x</span>, <span class='op'>~</span><span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>.</span><span class='op'>)</span>,<span class='st'>""</span>,<span class='va'>.</span><span class='op'>)</span><span class='op'>)</span><span class='op'>}</span><span class='op'>(</span><span class='op'>)</span>|&gt;
-     <span class='fu'>MyTable</span><span class='op'>(</span><span class='st'>"*Historical data of the time to independent walking (in days) of children with Guillain-Barre syndrome.*"</span><span class='op'>)</span>
-</code></pre>
-</div>
-</details>
-<table class="table table-striped" style="margin-left: auto; margin-right: auto;">
-<caption>
-<span id="tab:tab1">Table 1: </span><em>Historical data of the time to independent walking (in days) of children with Guillain-Barre syndrome.</em>
-</caption>
-<thead>
-<tr>
-<th style="text-align:right;">
-study
-</th>
-<th style="text-align:right;">
-n
-</th>
-<th style="text-align:left;">
-median
-</th>
-<th style="text-align:left;">
-mean
-</th>
-<th style="text-align:left;">
-sd
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-56
-</td>
-<td style="text-align:left;">
-40
-</td>
-<td style="text-align:left;">
-45.6
-</td>
-<td style="text-align:left;">
-24.7
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-37
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-58.7
-</td>
-<td style="text-align:left;">
-44
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-14
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-60.2
-</td>
-<td style="text-align:left;">
-43.6
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-18
-</td>
-<td style="text-align:left;">
-43
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-50
-</td>
-<td style="text-align:left;">
-29
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="normal-normal-hierachical-model-nnhm">Normal-normal hierachical model (NNHM)</h2>
-<p>Suppose that <span class="math inline">\(Y_j|\theta_j \sim \mathcal{N}(\theta_j,s^2_j)\)</span> which is called <em>data model</em>, and</p>
-<p><span class="math display" id="eq:1">\[
-\theta_j = \mu + \varepsilon_j, \quad \varepsilon_j \sim \mathcal{N}(0,\tau^2),
-\tag{1}
-\]</span></p>
-<p>or <span class="math inline">\(\theta_j|\mu,\tau \sim \mathcal{N}(\mu,\tau^2)\)</span> is <em>parameter model</em>. According to Table <a href="#tab:tab1">1</a> the mean is consistently greater than SD through 5 studies, so parameter <span class="math inline">\(\mu\)</span> could follow log-normal distribution with parameters <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>. Therefore, the median, mean and variance of <span class="math inline">\(\mu\)</span> are <span class="math inline">\(e^{\mu}\)</span>, <span class="math inline">\(e^{\mu+\sigma^2/2}\)</span> and <span class="math inline">\(e^{2\mu+\sigma^2}(e^{\sigma^2}-1)\)</span>, respectively. For each study in Table <a href="#tab:tab1">1</a>, we can calculate <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span> by method of moment. For study 2,3 and 5 we use the mean and SD while the median will be used for calculation for study 1 and 4. Formulae to calculate <span class="math inline">\(\sigma\)</span> and <span class="math inline">\(\mu\)</span> are</p>
-<p><span class="math display">\[
-\mu = \ln(SD^2/mean^2+1), \quad \sigma = \sqrt{2[\ln(mean)-\mu]},
-\]</span></p>
-<p>respectively. If median is used in lieu of mean,</p>
+<h1 id="introduction">Introduction</h1>
+<p>Unlike frequentist sample size calculation, Bayesian framework allows incorporating related information from the broad spectrum of sources, e.g., retrospective studies. This is the most attractive feature when calculating sample size using Bayesian paradigm. For example, we want to calculate sample size for a trial to assess the efficacy of treatment A and B which were compared retrospectively. Thus, we can find result of evaluation in studies. According to one of studies, the outcome is absolute risk <span class="math inline">\(\rho = \widehat{p}_1 - \widehat{p}_0\)</span>. We then extract values of <span class="math inline">\(\widehat p_1\)</span> and <span class="math inline">\(\widehat p_0\)</span> as prior information for our prospective trial.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<div id="refs" class="references csl-bib-body" role="doc-bibliography">
-<div id="ref-goodmana2005" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">1. </div><div class="csl-right-inline">Goodmana SN, Sladkyb JT. A bayesian approach to randomized controlled trials in children utilizing information from adults: The case of guillain-barre syndrome. <em>Clinical Trials</em> 2005; 2: 305–310.</div>
-</div>
-</div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
